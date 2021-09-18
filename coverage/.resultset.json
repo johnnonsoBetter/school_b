@@ -678,6 +678,16 @@
           1,
           1,
           1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/root/school_b/app/models/score_type.rb": {
+        "lines": [
+          1,
+          1,
+          1,
           null,
           null
         ]
@@ -688,10 +698,13 @@
           null,
           1,
           1,
+          null,
+          1,
+          null,
           null
         ]
       }
     },
-    "timestamp": 1631987205
+    "timestamp": 1631987892
   }
 }
