@@ -9,4 +9,5 @@ class Student < ActiveRecord::Base
   belongs_to :school
   has_many :term_activities
   has_and_belongs_to_many :guidances
+  has_many :bills
 end
