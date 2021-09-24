@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_23_193217) do
+ActiveRecord::Schema.define(version: 2021_09_24_130806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,18 @@ ActiveRecord::Schema.define(version: 2021_09_23_193217) do
     t.index ["name"], name: "index_schools_on_name", unique: true
   end
 
+  create_table "score_reports", force: :cascade do |t|
+    t.integer "max"
+    t.integer "score"
+    t.string "remark"
+    t.bigint "teacher_id", null: false
+    t.bigint "term_activity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["teacher_id"], name: "index_score_reports_on_teacher_id"
+    t.index ["term_activity_id"], name: "index_score_reports_on_term_activity_id"
+  end
+
   create_table "score_types", force: :cascade do |t|
     t.string "name"
     t.bigint "school_id", null: false
@@ -201,6 +213,8 @@ ActiveRecord::Schema.define(version: 2021_09_23_193217) do
   add_foreign_key "bills", "students"
   add_foreign_key "classrooms", "schools"
   add_foreign_key "payment_histories", "bills"
+  add_foreign_key "score_reports", "teachers"
+  add_foreign_key "score_reports", "term_activities"
   add_foreign_key "score_types", "schools"
   add_foreign_key "students", "schools"
   add_foreign_key "subjects", "classrooms"
