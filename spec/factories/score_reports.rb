@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :score_report do
-    max { 1 }
-    score { 1 }
+    max { 50 }
+    score { 30 }
     remark { "MyString" }
     teacher { nil }
-    term_activity { nil }
+   
   end
 end

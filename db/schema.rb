@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_24_130806) do
+ActiveRecord::Schema.define(version: 2021_09_25_180929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,10 +44,8 @@ ActiveRecord::Schema.define(version: 2021_09_24_130806) do
 
   create_table "attendances", force: :cascade do |t|
     t.boolean "present"
-    t.bigint "term_activity_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["term_activity_id"], name: "index_attendances_on_term_activity_id"
   end
 
   create_table "bills", force: :cascade do |t|
@@ -121,11 +119,15 @@ ActiveRecord::Schema.define(version: 2021_09_24_130806) do
     t.integer "score"
     t.string "remark"
     t.bigint "teacher_id", null: false
-    t.bigint "term_activity_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "subject_id", null: false
+    t.bigint "student_id", null: false
+    t.bigint "score_type_id", null: false
+    t.index ["score_type_id"], name: "index_score_reports_on_score_type_id"
+    t.index ["student_id"], name: "index_score_reports_on_student_id"
+    t.index ["subject_id"], name: "index_score_reports_on_subject_id"
     t.index ["teacher_id"], name: "index_score_reports_on_teacher_id"
-    t.index ["term_activity_id"], name: "index_score_reports_on_term_activity_id"
   end
 
   create_table "score_types", force: :cascade do |t|
@@ -148,14 +150,15 @@ ActiveRecord::Schema.define(version: 2021_09_24_130806) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "name"
-    t.string "nickname"
     t.string "image"
     t.string "email"
     t.json "tokens"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "school_id", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "middle_name"
     t.index ["confirmation_token"], name: "index_students_on_confirmation_token", unique: true
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
@@ -193,6 +196,7 @@ ActiveRecord::Schema.define(version: 2021_09_24_130806) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "school_id", null: false
+    t.string "full_name"
     t.index ["confirmation_token"], name: "index_teachers_on_confirmation_token", unique: true
     t.index ["email"], name: "index_teachers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
@@ -200,25 +204,17 @@ ActiveRecord::Schema.define(version: 2021_09_24_130806) do
     t.index ["uid", "provider"], name: "index_teachers_on_uid_and_provider", unique: true
   end
 
-  create_table "term_activities", force: :cascade do |t|
-    t.string "term"
-    t.bigint "student_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["student_id"], name: "index_term_activities_on_student_id"
-  end
-
   add_foreign_key "admins", "schools"
-  add_foreign_key "attendances", "term_activities"
   add_foreign_key "bills", "students"
   add_foreign_key "classrooms", "schools"
   add_foreign_key "payment_histories", "bills"
+  add_foreign_key "score_reports", "score_types"
+  add_foreign_key "score_reports", "students"
+  add_foreign_key "score_reports", "subjects"
   add_foreign_key "score_reports", "teachers"
-  add_foreign_key "score_reports", "term_activities"
   add_foreign_key "score_types", "schools"
   add_foreign_key "students", "schools"
   add_foreign_key "subjects", "classrooms"
   add_foreign_key "subjects", "teachers"
   add_foreign_key "teachers", "schools"
-  add_foreign_key "term_activities", "students"
 end

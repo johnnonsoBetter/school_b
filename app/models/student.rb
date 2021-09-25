@@ -7,7 +7,7 @@ class Student < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
   belongs_to :school
-  has_many :term_activities
   has_and_belongs_to_many :guidances
   has_many :bills
+  has_many :score_reports
 end

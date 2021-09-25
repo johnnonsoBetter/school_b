@@ -15,11 +15,10 @@ Rails.application.routes.draw do
       as :guidance do
         # Define routes for Guidance within this block.
         get 'guidance_dashboards', to: 'guidance_dashboards#index'
+        get 'guidance_score_reports', to: 'guidance_score_reports#index'
        
       end
-      as :guidance do
-        # Define routes for Guidance within this block.
-      end
+    
       as :teacher do
         # Define routes for Teacher within this block.
       end

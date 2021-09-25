@@ -479,7 +479,7 @@
           null,
           null,
           null,
-          null,
+          1,
           null,
           null,
           null,
@@ -607,9 +607,8 @@
           1,
           null,
           1,
-          null,
-          null,
           1,
+          null,
           null,
           null,
           1,
@@ -693,7 +692,7 @@
       "/root/school_b/app/models/attendance.rb": {
         "lines": [
           1,
-          1,
+          null,
           null
         ]
       },
@@ -751,6 +750,8 @@
           1,
           1,
           1,
+          1,
+          1,
           null
         ]
       },
@@ -775,31 +776,47 @@
           null
         ]
       },
-      "/root/school_b/app/models/term_activity.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/root/school_b/app/controllers/api/v1/guidance_dashboards_controller.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
       "/root/school_b/app/controllers/application_controller.rb": {
         "lines": [
           1,
           1,
           null
         ]
+      },
+      "/root/school_b/app/controllers/api/v1/guidance_dashboards_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
+      "/root/school_b/app/controllers/api/v1/guidance_score_reports_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          2,
+          2,
+          null,
+          2,
+          null,
+          2,
+          null,
+          null,
+          null,
+          2,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1632490954
+    "timestamp": 1632593703
   }
 }
