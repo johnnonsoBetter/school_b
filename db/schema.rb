@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_25_180929) do
+ActiveRecord::Schema.define(version: 2021_09_25_182503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,18 @@ ActiveRecord::Schema.define(version: 2021_09_25_180929) do
     t.boolean "present"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "behaviour_reports", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "type"
+    t.bigint "student_id", null: false
+    t.bigint "teacher_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_behaviour_reports_on_student_id"
+    t.index ["teacher_id"], name: "index_behaviour_reports_on_teacher_id"
   end
 
   create_table "bills", force: :cascade do |t|
@@ -205,6 +217,8 @@ ActiveRecord::Schema.define(version: 2021_09_25_180929) do
   end
 
   add_foreign_key "admins", "schools"
+  add_foreign_key "behaviour_reports", "students"
+  add_foreign_key "behaviour_reports", "teachers"
   add_foreign_key "bills", "students"
   add_foreign_key "classrooms", "schools"
   add_foreign_key "payment_histories", "bills"

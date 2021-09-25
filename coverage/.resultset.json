@@ -654,6 +654,7 @@
           1,
           1,
           1,
+          1,
           null
         ]
       },
@@ -668,6 +669,8 @@
           null,
           1,
           null,
+          1,
+          1,
           1,
           1,
           1,
@@ -699,6 +702,16 @@
       "/root/school_b/app/models/application_record.rb": {
         "lines": [
           1,
+          1,
+          null
+        ]
+      },
+      "/root/school_b/app/models/behaviour_report.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
           1,
           null
         ]
@@ -811,12 +824,13 @@
           null,
           null,
           null,
+          null,
           2,
           null,
           null
         ]
       }
     },
-    "timestamp": 1632593703
+    "timestamp": 1632594805
   }
 }

@@ -10,4 +10,5 @@ class Student < ActiveRecord::Base
   has_and_belongs_to_many :guidances
   has_many :bills
   has_many :score_reports
+  has_many :behaviour_reports
 end

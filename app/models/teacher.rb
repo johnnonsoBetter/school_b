@@ -10,4 +10,6 @@ class Teacher < ActiveRecord::Base
   belongs_to :school
   has_many :subjects
   has_many :classrooms, through: :subjects
+  has_many :behaviour_reports
+  has_many :score_reports
 end

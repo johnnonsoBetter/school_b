@@ -8,7 +8,8 @@ class Api::V1::GuidanceScoreReportsController < ApplicationController
 
         if params[:date].present? && params[:student_id].present?
 
-           @score_reports = student.score_reports.where(created_at: Time.zone.parse(params[:date]).beginning_of_day..Time.zone.parse(params[:date]).end_of_day)
+           @score_reports = student.score_reports.where(created_at: Time.zone.parse(params[:date]).beginning_of_day..Time.zone.parse(params[:date]).end_of_day).includes(:teacher, :score_type, :subject)
+           
 
         end
         
