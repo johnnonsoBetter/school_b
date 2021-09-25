@@ -592,24 +592,25 @@
         "lines": [
           1,
           null,
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
           null,
           1,
           1,
           1,
           null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
           1,
@@ -816,6 +817,21 @@
           null
         ]
       },
+      "/root/school_b/app/controllers/api/v1/guidance_bills_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          null,
+          2,
+          null,
+          2,
+          null,
+          null
+        ]
+      },
       "/root/school_b/app/controllers/api/v1/guidance_dashboards_controller.rb": {
         "lines": [
           1,
@@ -851,6 +867,6 @@
         ]
       }
     },
-    "timestamp": 1632596853
+    "timestamp": 1632598953
   }
 }

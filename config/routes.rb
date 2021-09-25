@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   namespace :api do
     namespace :v1 do
       mount_devise_token_auth_for 'Admin', at: 'auth'
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
         get 'guidance_dashboards', to: 'guidance_dashboards#index'
         get 'guidance_score_reports', to: 'guidance_score_reports#index'
         get 'guidance_behaviour_reports', to: 'guidance_behaviour_reports#index'
-       
+        resources :guidance_bills, only: :index
       end
     
       as :teacher do

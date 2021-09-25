@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-09-25T20:07:33+01:00">2021-09-25T20:07:33+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-09-25T20:42:33+01:00">2021-09-25T20:42:33+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.14
+         1.16
        </span>
     </span> hits/line
     )
@@ -39,12 +39,12 @@
   <a name="AllFiles"></a>
 
   <div>
-    <b>32</b> files in total.
+    <b>33</b> files in total.
   </div>
 
   <div class="t-line-summary">
-    <b>159</b> relevant lines,
-    <span class="green"><b>159</b> lines covered</span> and
+    <b>167</b> relevant lines,
+    <span class="green"><b>167</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -78,6 +78,17 @@
             <td class="cell--number">8</td>
             <td class="cell--number">0</td>
             <td class="cell--number">2.88</td>
+            
+          </tr>
+        
+          <tr class="t-file">
+            <td class="strong t-file__name"><a href="#943da8877a8466479fd5943cde9233274ad7fed2" class="src_link" title="app/controllers/api/v1/guidance_bills_controller.rb">app/controllers/api/v1/guidance_bills_controller.rb</a></td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">11</td>
+            <td class="cell--number">7</td>
+            <td class="cell--number">7</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">1.57</td>
             
           </tr>
         
@@ -414,9 +425,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#968115fcbcc8f59bfd82f49536a3a7c2c4883a93" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">33</td>
-            <td class="cell--number">13</td>
-            <td class="cell--number">13</td>
+            <td class="cell--number">34</td>
+            <td class="cell--number">14</td>
+            <td class="cell--number">14</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -621,6 +632,158 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="15">
+            
+            
+
+            
+
+            <code class="ruby">end</code>
+          </li>
+        </div>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="943da8877a8466479fd5943cde9233274ad7fed2">
+  <div class="header">
+    <h3>app/controllers/api/v1/guidance_bills_controller.rb</h3>
+    <h4>
+      <span class="green">
+  100.0%
+</span>
+
+      lines covered
+    </h4>
+
+    
+
+    <div class="t-line-summary">
+      <b>7</b> relevant lines.
+      <span class="green"><b>7</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+
+    
+
+  </div>
+
+  <pre>
+    <ol>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="1">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">class Api::V1::GuidanceBillsController &lt; ApplicationController</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="2">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    before_action :authenticate_api_v1_guidance!, only: [:index]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="3">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def index </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="4">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        @bills = []</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="5">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        student =  @current_api_v1_guidance.students.find(params[:student_id])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="6">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="7">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        @bills = student.bills</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="8">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="9">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        render &#39;api/v1/guidance_bills/index.json.jbuilder&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="10">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="11">
             
             
 
@@ -8982,8 +9145,8 @@
     
 
     <div class="t-line-summary">
-      <b>13</b> relevant lines.
-      <span class="green"><b>13</b> lines covered</span> and
+      <b>14</b> relevant lines.
+      <span class="green"><b>14</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -9017,13 +9180,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="3">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="3">
+            
             
 
             
 
-            <code class="ruby">  namespace :api do</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -9034,7 +9197,7 @@
 
             
 
-            <code class="ruby">    namespace :v1 do</code>
+            <code class="ruby">  namespace :api do</code>
           </li>
         </div>
       
@@ -9045,12 +9208,23 @@
 
             
 
+            <code class="ruby">    namespace :v1 do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="6">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">      mount_devise_token_auth_for &#39;Admin&#39;, at: &#39;auth&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="6">
+          <li class="never" data-hits="" data-linenumber="7">
             
             
 
@@ -9061,7 +9235,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="7">
+          <li class="covered" data-hits="1" data-linenumber="8">
             <span class="hits">1</span>
             
 
@@ -9072,7 +9246,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="8">
+          <li class="never" data-hits="" data-linenumber="9">
             
             
 
@@ -9083,24 +9257,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="9">
+          <li class="covered" data-hits="1" data-linenumber="10">
             <span class="hits">1</span>
             
 
             
 
             <code class="ruby">      mount_devise_token_auth_for &#39;Teacher&#39;, at: &#39;teacher_auth&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="10">
-            
-            
-
-            
-
-            <code class="ruby"></code>
           </li>
         </div>
       
@@ -9127,7 +9290,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="13">
+          <li class="never" data-hits="" data-linenumber="13">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="14">
             <span class="hits">1</span>
             
 
@@ -9138,7 +9312,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="14">
+          <li class="never" data-hits="" data-linenumber="15">
             
             
 
@@ -9149,7 +9323,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="15">
+          <li class="covered" data-hits="1" data-linenumber="16">
             <span class="hits">1</span>
             
 
@@ -9160,7 +9334,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="16">
+          <li class="never" data-hits="" data-linenumber="17">
             
             
 
@@ -9171,7 +9345,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="17">
+          <li class="covered" data-hits="1" data-linenumber="18">
             <span class="hits">1</span>
             
 
@@ -9182,7 +9356,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="18">
+          <li class="covered" data-hits="1" data-linenumber="19">
             <span class="hits">1</span>
             
 
@@ -9193,7 +9367,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="19">
+          <li class="covered" data-hits="1" data-linenumber="20">
             <span class="hits">1</span>
             
 
@@ -9204,24 +9378,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="20">
-            
-            
-
-            
-
-            <code class="ruby">       </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="21">
-            
+          <li class="covered" data-hits="1" data-linenumber="21">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">        resources :guidance_bills, only: :index</code>
           </li>
         </div>
       
@@ -9232,12 +9395,23 @@
 
             
 
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="23">
+            
+            
+
+            
+
             <code class="ruby">    </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="23">
+          <li class="covered" data-hits="1" data-linenumber="24">
             <span class="hits">1</span>
             
 
@@ -9248,7 +9422,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="24">
+          <li class="never" data-hits="" data-linenumber="25">
             
             
 
@@ -9259,7 +9433,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="25">
+          <li class="never" data-hits="" data-linenumber="26">
             
             
 
@@ -9270,7 +9444,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="26">
+          <li class="covered" data-hits="1" data-linenumber="27">
             <span class="hits">1</span>
             
 
@@ -9281,7 +9455,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="27">
+          <li class="never" data-hits="" data-linenumber="28">
             
             
 
@@ -9292,7 +9466,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="28">
+          <li class="never" data-hits="" data-linenumber="29">
             
             
 
@@ -9303,7 +9477,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="29">
+          <li class="never" data-hits="" data-linenumber="30">
             
             
 
@@ -9314,7 +9488,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="30">
+          <li class="never" data-hits="" data-linenumber="31">
             
             
 
@@ -9325,7 +9499,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="31">
+          <li class="never" data-hits="" data-linenumber="32">
             
             
 
@@ -9336,7 +9510,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="32">
+          <li class="never" data-hits="" data-linenumber="33">
             
             
 
@@ -9347,7 +9521,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="33">
+          <li class="never" data-hits="" data-linenumber="34">
             
             
 
