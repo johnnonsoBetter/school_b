@@ -16,6 +16,7 @@ Rails.application.routes.draw do
         # Define routes for Guidance within this block.
         get 'guidance_dashboards', to: 'guidance_dashboards#index'
         get 'guidance_score_reports', to: 'guidance_score_reports#index'
+        get 'guidance_behaviour_reports', to: 'guidance_behaviour_reports#index'
        
       end
     
