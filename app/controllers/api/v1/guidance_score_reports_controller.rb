@@ -3,6 +3,7 @@ class Api::V1::GuidanceScoreReportsController < ApplicationController
 
      
     def index 
+        
         @score_reports = []
         student =  @current_api_v1_guidance.students.find(params[:student_id])
 
