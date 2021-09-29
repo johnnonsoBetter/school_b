@@ -202,14 +202,6 @@ RSpec.describe "Api::V1::GuidanceBills", type: :request do
           })  
         end
 
-        # it "returns proper json response of the last bill  of stud1" do
-        #   expect(@json_body.last).to include({
-        #     "title"  => "exam fee",
-        #     "description" => "exam fee for 3nd term",
-        #     "total_amount" => 1500,
-        #     "payment_completed" => false
-        #   })  
-        # end
 
       end
       

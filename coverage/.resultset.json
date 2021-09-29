@@ -675,6 +675,7 @@
           null,
           1,
           null,
+          1,
           null,
           1,
           null,
@@ -933,8 +934,41 @@
           null,
           null
         ]
+      },
+      "/root/school_b/app/controllers/api/v1/teacher_behaviour_reports_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          2,
+          null,
+          null,
+          2,
+          null,
+          2,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          4,
+          null,
+          4,
+          null,
+          null,
+          null,
+          1,
+          1,
+          2,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1632935550
+    "timestamp": 1632943013
   }
 }

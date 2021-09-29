@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Api::V1::GuidanceBehaviourReports", type: :request do
   describe "GET /index" do
-    describe "GET /index" do
+   
     
       before do 
         sch = build :school, id: 44
@@ -20,19 +20,16 @@ RSpec.describe "Api::V1::GuidanceBehaviourReports", type: :request do
   
    
         
-         create :behaviour_report, title: "noise maker", teacher: teacher, student: stud1, behaviour_type: "bad", created_at: Time.now
-         create :behaviour_report, title: "troublesome", teacher: teacher, student: stud1, behaviour_type: "bad", created_at: Time.new.prev_day
-         create :behaviour_report, title: "great performance", teacher: teacher, student: stud1, behaviour_type: "good", created_at: Time.now
-         create :behaviour_report, title: "listener", teacher: teacher, student: stud1, behaviour_type: "good", created_at: Time.new.prev_day
+        create :behaviour_report, title: "noise maker", teacher: teacher, student: stud1, behaviour_type: "bad", created_at: Time.now
+        create :behaviour_report, title: "troublesome", teacher: teacher, student: stud1, behaviour_type: "bad", created_at: Time.new.prev_day
+        create :behaviour_report, title: "great performance", teacher: teacher, student: stud1, behaviour_type: "good", created_at: Time.now
+        create :behaviour_report, title: "listener", teacher: teacher, student: stud1, behaviour_type: "good", created_at: Time.new.prev_day
         
-        
-  
         @guidance.students << stud1
         @guidance.students << stud3
         @guidance2.students << stud2
     
-  
-  
+
         @login_url = '/api/v1/guidance_auth/sign_in'
         @guidance_behaviour_reports_url = '/api/v1/guidance_behaviour_reports'
     
@@ -41,8 +38,6 @@ RSpec.describe "Api::V1::GuidanceBehaviourReports", type: :request do
           password: @guidance.password
         }
   
-        
-       
       end
   
       context "when guidance is not authenticated" do
@@ -124,15 +119,9 @@ RSpec.describe "Api::V1::GuidanceBehaviourReports", type: :request do
   
         end
         
-  
-  
-        
-  
-        
+
       end
       
-      
-  
-    end
+
   end
 end
