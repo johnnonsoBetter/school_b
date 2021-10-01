@@ -15,6 +15,8 @@ Rails.application.routes.draw do
         get 'guidance_score_reports', to: 'guidance_score_reports#index'
         get 'guidance_behaviour_reports', to: 'guidance_behaviour_reports#index'
         resources :guidance_bills, only: [:index, :show]
+        put 'student_score_report_drafts/:id', to: 'student_score_report_drafts#update'
+
       end
     
       as :teacher do

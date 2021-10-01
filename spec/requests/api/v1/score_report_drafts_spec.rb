@@ -255,6 +255,7 @@ RSpec.describe "Api::V1::ScoreReportDrafts", type: :request do
         
       end
 
+
       it "returns proper json response of the score_report_draft" do
         subject
         json_body = JSON.parse(response.body)
@@ -266,22 +267,18 @@ RSpec.describe "Api::V1::ScoreReportDrafts", type: :request do
         
       end
 
+      context "when teacher is not permitted " do
 
-      # it "returns proper json response of the last score_report_draft" do
-      #   subject
-      #   json_body = JSON.parse(response.body)
-
-      #   expect(json_body.last).to include({
-      #     "subject" => "maths",
-      #     "max" => 60,
-      #     "score_type" => "homework",
-      #     "published" => false
-      #   })
+        it "returns https status code 401 unauthorized" do
+          @teacher.permitted = false
+          @teacher.save 
+          subject
+          expect(response).to have_http_status(:unauthorized)  
+        end
         
-      # end
-      
+        
+      end
 
-    
 
     end
     
