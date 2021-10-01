@@ -746,6 +746,7 @@
           1,
           1,
           1,
+          1,
           null
         ]
       },
@@ -841,6 +842,16 @@
           null
         ]
       },
+      "/root/school_b/app/models/score_report_draft.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
       "/root/school_b/app/models/score_report.rb": {
         "lines": [
           1,
@@ -857,6 +868,14 @@
           1,
           1,
           null,
+          null
+        ]
+      },
+      "/root/school_b/app/models/student_score_report_draft.rb": {
+        "lines": [
+          1,
+          1,
+          1,
           null
         ]
       },
@@ -1048,6 +1067,6 @@
         ]
       }
     },
-    "timestamp": 1633094966
+    "timestamp": 1633098360
   }
 }

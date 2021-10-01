@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_01_124810) do
+ActiveRecord::Schema.define(version: 2021_10_01_141314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,19 @@ ActiveRecord::Schema.define(version: 2021_10_01_124810) do
     t.index ["name"], name: "index_schools_on_name", unique: true
   end
 
+  create_table "score_report_drafts", force: :cascade do |t|
+    t.bigint "subject_id", null: false
+    t.bigint "teacher_id", null: false
+    t.bigint "score_type_id", null: false
+    t.boolean "published", default: false
+    t.integer "max"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["score_type_id"], name: "index_score_report_drafts_on_score_type_id"
+    t.index ["subject_id"], name: "index_score_report_drafts_on_subject_id"
+    t.index ["teacher_id"], name: "index_score_report_drafts_on_teacher_id"
+  end
+
   create_table "score_reports", force: :cascade do |t|
     t.integer "max"
     t.integer "score"
@@ -148,6 +161,17 @@ ActiveRecord::Schema.define(version: 2021_10_01_124810) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["school_id"], name: "index_score_types_on_school_id"
+  end
+
+  create_table "student_score_report_drafts", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.integer "score", default: 0
+    t.boolean "scored", default: false
+    t.bigint "score_report_draft_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["score_report_draft_id"], name: "index_student_score_report_drafts_on_score_report_draft_id"
+    t.index ["student_id"], name: "index_student_score_report_drafts_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -232,11 +256,16 @@ ActiveRecord::Schema.define(version: 2021_10_01_124810) do
   add_foreign_key "bills", "students"
   add_foreign_key "classrooms", "schools"
   add_foreign_key "payment_histories", "bills"
+  add_foreign_key "score_report_drafts", "score_types"
+  add_foreign_key "score_report_drafts", "subjects"
+  add_foreign_key "score_report_drafts", "teachers"
   add_foreign_key "score_reports", "score_types"
   add_foreign_key "score_reports", "students"
   add_foreign_key "score_reports", "subjects"
   add_foreign_key "score_reports", "teachers"
   add_foreign_key "score_types", "schools"
+  add_foreign_key "student_score_report_drafts", "score_report_drafts"
+  add_foreign_key "student_score_report_drafts", "students"
   add_foreign_key "students", "schools"
   add_foreign_key "subjects", "classrooms"
   add_foreign_key "subjects", "teachers"

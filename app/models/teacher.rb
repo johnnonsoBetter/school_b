@@ -12,4 +12,5 @@ class Teacher < ActiveRecord::Base
   has_many :classrooms, through: :subjects
   has_many :behaviour_reports
   has_many :score_reports
+  has_many :score_report_drafts
 end
