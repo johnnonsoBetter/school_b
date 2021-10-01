@@ -42,6 +42,7 @@ class Api::V1::ScoreReportDraftsController < ApplicationController
 
 
     def index 
+        @score_report_drafts = @teacher.score_report_drafts
         render 'api/v1/score_report_drafts/index.json.jbuilder'
     end
 

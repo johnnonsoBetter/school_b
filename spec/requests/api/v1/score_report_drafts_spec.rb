@@ -101,10 +101,10 @@ RSpec.describe "Api::V1::ScoreReportDrafts", type: :request do
       sub =  create :subject, id: 1, name: "english", classroom: class1, teacher: @teacher
       sub2 =  create :subject, name: "maths", classroom: class1, teacher: @teacher
 
-      create :score_report_draft, max: 50, published: true, score_type: score_type, subject: sub 
-      create :score_report_draft, max: 30, published: true, score_type: score_type, subject: sub 
+      create :score_report_draft, max: 50, published: true, score_type: score_type, subject: sub, teacher: @teacher
+      create :score_report_draft, max: 30, published: true, score_type: score_type, subject: sub, teacher: @teacher
 
-      create :score_report_draft, max: 60, published: false, score_type: score_type, subject: sub2 
+      create :score_report_draft, max: 60, published: false, score_type: score_type, subject: sub2, teacher: @teacher
 
 
 
@@ -160,7 +160,7 @@ RSpec.describe "Api::V1::ScoreReportDrafts", type: :request do
         subject
         json_body = JSON.parse(response.body)
 
-        expect(json_body.first).to include({
+        expect(json_body.last).to include({
           "subject" => "maths",
           "max" => 60,
           "score_type" => "homework",
