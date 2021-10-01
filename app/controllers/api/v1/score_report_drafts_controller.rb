@@ -1,9 +1,9 @@
 class Api::V1::ScoreReportDraftsController < ApplicationController
 
     include PermissionHelper
-    before_action :authenticate_api_v1_teacher!, only: [:create, :index]
-    before_action :find_teacher, only: [:create, :index]
-    before_action :figure_status, only: [:create, :index]
+    before_action :authenticate_api_v1_teacher!, only: [:create, :index, :show]
+    before_action :find_teacher, only: [:create, :index, :show]
+    before_action :figure_status, only: [:create, :index, :show]
 
 
     def create 
@@ -42,9 +42,18 @@ class Api::V1::ScoreReportDraftsController < ApplicationController
 
 
     def index 
-        @score_report_drafts = @teacher.score_report_drafts
+        @score_report_drafts = @teacher.score_report_drafts.includes(:subject, :score_type)
         render 'api/v1/score_report_drafts/index.json.jbuilder'
     end
+
+    def show 
+
+        @score_report_draft = @teacher.score_report_drafts.find_by(id: params[:id])
+        @student_score_report_drafts = @score_report_draft.student_score_report_drafts
+        render 'api/v1/score_report_drafts/show.json.jbuilder'
+    end
+
+
 
 
     private

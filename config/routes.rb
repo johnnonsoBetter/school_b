@@ -21,7 +21,7 @@ Rails.application.routes.draw do
         # Define routes for Teacher within this block.
         resources :teacher_behaviour_reports, only: [:create, :index]
         resources :teacher_score_reports, only: [:create, :index]
-        resources :score_report_drafts, only: [:create, :index]
+        resources :score_report_drafts, only: [:create, :index, :show]
       end
       as :student do
         # Define routes for Student within this block.
