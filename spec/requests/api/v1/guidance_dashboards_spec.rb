@@ -7,10 +7,10 @@ RSpec.describe "Api::V1::GuidanceDashboards", type: :request do
     
     before do 
       sch = build :school, id: 44
-      
-      stud1 = create :student, email: "chi@gmail.com", password: "password", first_name: "chima", last_name: "joy", school: sch
-      stud2 = create :student, school: sch, email: "chisfs1@gmail.com", password: "password", first_name: "ani", last_name: "micheal"
-      stud3 = create :student, school: sch, email: "chisdf2@gmail.com", password: "password", first_name: "praise", last_name: "luna"
+      class1 = create :classroom, name: "ss1", school: sch
+      stud1 = create :student, classroom: class1, email: "chi@gmail.com", password: "password", first_name: "chima", last_name: "joy", school: sch
+      stud2 = create :student, classroom: class1, school: sch, email: "chisfs1@gmail.com", password: "password", first_name: "ani", last_name: "micheal"
+      stud3 = create :student, classroom: class1, school: sch, email: "chisdf2@gmail.com", password: "password", first_name: "praise", last_name: "luna"
   
       @guidance = create :guidance, email: "mak3er@gmail.com", password: "password"
       @guidance2 = create :guidance, email: "shdfgdgfisf@gmail.com", password: "password"

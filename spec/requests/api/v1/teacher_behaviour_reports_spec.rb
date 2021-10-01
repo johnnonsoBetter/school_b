@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe "Api::V1::TeacherBehaviourReports", type: :request do
 
 
-  describe "GET /index" do
+  describe "POST /create" do
    
     before do 
       sch = build :school, id: 44
       class1 = create :classroom, name: "ss1", school: sch
-      stud1 = create :student, id: 34, email: "chi@gmail.com", password: "password", first_name: "chima", last_name: "joy", school: sch
+      stud1 = create :student, classroom: class1, id: 34, email: "chi@gmail.com", password: "password", first_name: "chima", last_name: "joy", school: sch
       @teacher = create :teacher, email: "teacher@mail.com", password: "password", school: sch, permitted: true
       @behaviour_report_params = {behaviour_report: {title: "Noise Maker", description: "we have noticed that chi always makes noise", behaviour_type: "bad", student_id: stud1.id}}
 
@@ -89,9 +89,9 @@ RSpec.describe "Api::V1::TeacherBehaviourReports", type: :request do
       sch = build :school, id: 44
       
       class1 = create :classroom, name: "ss1", school: sch
-      stud1 = create :student, id: 34, email: "chi@gmail.com", password: "password", first_name: "chima", last_name: "joy", school: sch
-      stud2 = create :student, school: sch, email: "chisfs1@gmail.com", password: "password", first_name: "ani", last_name: "micheal"
-      stud3 = create :student, school: sch, email: "chisdf2@gmail.com", password: "password", first_name: "praise", last_name: "luna"
+      stud1 = create :student, classroom: class1, id: 34, email: "chi@gmail.com", password: "password", first_name: "chima", last_name: "joy", school: sch
+      stud2 = create :student, classroom: class1, school: sch, email: "chisfs1@gmail.com", password: "password", first_name: "ani", last_name: "micheal"
+      stud3 = create :student, classroom: class1, school: sch, email: "chisdf2@gmail.com", password: "password", first_name: "praise", last_name: "luna"
  
   
     

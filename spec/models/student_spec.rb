@@ -4,7 +4,8 @@
 
 RSpec.describe Student, type: :model do
     it { should belong_to(:school) } 
-    
+    it { should belong_to(:classroom) } 
     it { should have_many(:score_reports) } 
     it { should have_many(:behaviour_reports) } 
+    
 end

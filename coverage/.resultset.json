@@ -677,6 +677,7 @@
           null,
           1,
           1,
+          1,
           null,
           1,
           null,
@@ -720,11 +721,12 @@
           1,
           1,
           1,
-          null,
+          1,
+          1,
           null,
           1,
           1,
-          94,
+          106,
           null,
           null,
           null
@@ -769,8 +771,8 @@
         "lines": [
           1,
           1,
-          13,
-          3,
+          18,
+          4,
           null,
           null,
           null
@@ -818,6 +820,8 @@
           1,
           1,
           1,
+          1,
+          null,
           null
         ]
       },
@@ -844,6 +848,7 @@
       },
       "/root/school_b/app/models/score_report_draft.rb": {
         "lines": [
+          1,
           1,
           1,
           1,
@@ -980,6 +985,71 @@
           null
         ]
       },
+      "/root/school_b/app/controllers/api/v1/score_report_drafts_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          4,
+          4,
+          null,
+          4,
+          null,
+          4,
+          4,
+          4,
+          null,
+          null,
+          3,
+          6,
+          null,
+          null,
+          null,
+          3,
+          3,
+          null,
+          null,
+          null,
+          null,
+          4,
+          null,
+          3,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          1,
+          4,
+          null,
+          null,
+          1,
+          5,
+          null,
+          null,
+          1,
+          5,
+          null,
+          null
+        ]
+      },
       "/root/school_b/app/controllers/api/v1/teacher_behaviour_reports_controller.rb": {
         "lines": [
           1,
@@ -1067,6 +1137,6 @@
         ]
       }
     },
-    "timestamp": 1633098360
+    "timestamp": 1633108362
   }
 }

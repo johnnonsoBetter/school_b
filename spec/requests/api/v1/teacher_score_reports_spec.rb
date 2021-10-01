@@ -7,9 +7,9 @@ RSpec.describe "Api::V1::TeacherScoreReports", type: :request do
       sch = build :school, id: 44
       
       class1 = create :classroom, name: "ss1", school: sch
-      stud1 = create :student, id: 34, email: "chi@gmail.com", password: "password", first_name: "chima", last_name: "joy", school: sch
-      stud2 = create :student, school: sch, email: "chisfs1@gmail.com", password: "password", first_name: "ani", last_name: "micheal"
-      stud3 = create :student, school: sch, email: "chisdf2@gmail.com", password: "password", first_name: "praise", last_name: "luna", middle_name: "jamu"
+      stud1 = create :student, classroom: class1, id: 34, email: "chi@gmail.com", password: "password", first_name: "chima", last_name: "joy", school: sch
+      stud2 = create :student, classroom: class1, school: sch, email: "chisfs1@gmail.com", password: "password", first_name: "ani", last_name: "micheal"
+      stud3 = create :student, classroom: class1, school: sch, email: "chisdf2@gmail.com", password: "password", first_name: "praise", last_name: "luna", middle_name: "jamu"
       score_t1 = create :score_type, name: "homework", school: sch
       score_t2 = create :score_type, name: "exam", school: sch
     

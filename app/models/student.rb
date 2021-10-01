@@ -8,11 +8,12 @@ class Student < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
   belongs_to :school
+  belongs_to :classroom
   has_and_belongs_to_many :guidances
   has_many :bills
   has_many :score_reports
   has_many :behaviour_reports
-
+  belongs_to :classroom
 
   private 
   def update_full_name 

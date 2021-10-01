@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_01_141314) do
+ActiveRecord::Schema.define(version: 2021_10_01_151149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -196,6 +196,8 @@ ActiveRecord::Schema.define(version: 2021_10_01_141314) do
     t.string "last_name"
     t.string "middle_name"
     t.string "full_name"
+    t.bigint "classroom_id"
+    t.index ["classroom_id"], name: "index_students_on_classroom_id"
     t.index ["confirmation_token"], name: "index_students_on_confirmation_token", unique: true
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
@@ -266,6 +268,7 @@ ActiveRecord::Schema.define(version: 2021_10_01_141314) do
   add_foreign_key "score_types", "schools"
   add_foreign_key "student_score_report_drafts", "score_report_drafts"
   add_foreign_key "student_score_report_drafts", "students"
+  add_foreign_key "students", "classrooms"
   add_foreign_key "students", "schools"
   add_foreign_key "subjects", "classrooms"
   add_foreign_key "subjects", "teachers"
