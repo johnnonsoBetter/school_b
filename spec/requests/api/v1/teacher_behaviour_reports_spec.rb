@@ -9,7 +9,7 @@ RSpec.describe "Api::V1::TeacherBehaviourReports", type: :request do
       sch = build :school, id: 44
       class1 = create :classroom, name: "ss1", school: sch
       stud1 = create :student, id: 34, email: "chi@gmail.com", password: "password", first_name: "chima", last_name: "joy", school: sch
-      @teacher = create :teacher, email: "teacher@mail.com", password: "password", school: sch 
+      @teacher = create :teacher, email: "teacher@mail.com", password: "password", school: sch, permitted: true
       @behaviour_report_params = {behaviour_report: {title: "Noise Maker", description: "we have noticed that chi always makes noise", behaviour_type: "bad", student_id: stud1.id}}
 
       @login_url = '/api/v1/teacher_auth/sign_in'
@@ -40,12 +40,8 @@ RSpec.describe "Api::V1::TeacherBehaviourReports", type: :request do
     end
 
     context "when teacher is authenticated " do
-      
-    
 
       subject {  post @teacher_behaviour_reports_url, headers: @headers, params: @behaviour_report_params } 
-
-     
 
       context "when new behaviour report has been created" do
         it "increment behaviour report by 1" do
@@ -58,6 +54,19 @@ RSpec.describe "Api::V1::TeacherBehaviourReports", type: :request do
         end
         
       end
+
+      context "when teacher is not permitted " do
+
+        it "returns https status code 401 unauthorized" do
+          @teacher.permitted = false
+          @teacher.save 
+          subject
+          expect(response).to have_http_status(:unauthorized)  
+        end
+        
+        
+      end
+      
       
 
 
@@ -87,7 +96,7 @@ RSpec.describe "Api::V1::TeacherBehaviourReports", type: :request do
   
     
 
-      @teacher = create :teacher, email: "teacher@mail.com", password: "password", school: sch 
+      @teacher = create :teacher, email: "teacher@mail.com", password: "password", school: sch, permitted: true
 
  
       
@@ -162,6 +171,18 @@ RSpec.describe "Api::V1::TeacherBehaviourReports", type: :request do
           })  
         end
 
+      end
+
+      context "when teacher is not permitted " do
+
+        it "returns https status code 401 unauthorized" do
+          @teacher.permitted = false
+          @teacher.save 
+          get @teacher_behaviour_reports_url, headers: @headers, params: {student_id: 34, date: Time.new.prev_day}
+          expect(response).to have_http_status(:unauthorized)  
+        end
+        
+        
       end
 
       context "when date params is yesterday " do

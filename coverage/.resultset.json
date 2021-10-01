@@ -676,6 +676,7 @@
           1,
           null,
           1,
+          1,
           null,
           1,
           null,
@@ -711,6 +712,7 @@
           null,
           null,
           1,
+          1,
           null,
           1,
           1,
@@ -718,6 +720,13 @@
           1,
           1,
           1,
+          null,
+          null,
+          1,
+          1,
+          94,
+          null,
+          null,
           null
         ]
       },
@@ -752,6 +761,17 @@
           1,
           null,
           1,
+          null
+        ]
+      },
+      "/root/school_b/app/helpers/permission_helper.rb": {
+        "lines": [
+          1,
+          1,
+          13,
+          3,
+          null,
+          null,
           null
         ]
       },
@@ -852,6 +872,12 @@
           null
         ]
       },
+      "/root/school_b/app/models/term_date.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
       "/root/school_b/app/controllers/application_controller.rb": {
         "lines": [
           1,
@@ -939,6 +965,9 @@
         "lines": [
           1,
           1,
+          1,
+          1,
+          1,
           null,
           1,
           null,
@@ -964,11 +993,61 @@
           1,
           1,
           2,
+          null,
+          null,
+          1,
+          8,
+          null,
+          null,
+          1,
+          8,
+          null,
+          null
+        ]
+      },
+      "/root/school_b/app/controllers/api/v1/teacher_score_reports_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          4,
+          null,
+          4,
+          null,
+          4,
+          2,
+          2,
+          null,
+          null,
+          2,
+          null,
+          null,
+          null,
+          4,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          5,
+          null,
+          null,
+          1,
+          null,
+          5,
+          null,
           null,
           null
         ]
       }
     },
-    "timestamp": 1632943013
+    "timestamp": 1633094966
   }
 }

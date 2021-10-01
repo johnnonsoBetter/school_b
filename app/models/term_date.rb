@@ -1,0 +1,2 @@
+class TermDate < ApplicationRecord
+end
