@@ -15,8 +15,8 @@ Rails.application.routes.draw do
         get 'guidance_score_reports', to: 'guidance_score_reports#index'
         get 'guidance_behaviour_reports', to: 'guidance_behaviour_reports#index'
         resources :guidance_bills, only: [:index, :show]
-        put 'student_score_report_drafts/:id', to: 'student_score_report_drafts#update'
-
+        
+       
       end
     
       as :teacher do
@@ -24,6 +24,9 @@ Rails.application.routes.draw do
         resources :teacher_behaviour_reports, only: [:create, :index]
         resources :teacher_score_reports, only: [:create, :index]
         resources :score_report_drafts, only: [:create, :index, :show]
+        put 'student_score_report_drafts/:id', to: 'student_score_report_drafts#update'
+        post 'publish_drafts', to: 'publish_drafts#create'
+
       end
       as :student do
         # Define routes for Student within this block.
