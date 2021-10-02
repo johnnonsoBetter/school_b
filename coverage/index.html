@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-10-02T12:58:59+01:00">2021-10-02T12:58:59+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-10-02T18:54:34+01:00">2021-10-02T18:54:34+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  99.68%
+  99.7%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.09
+         2.13
        </span>
     </span> hits/line
     )
@@ -39,15 +39,15 @@
   <a name="AllFiles"></a>
 
   <div>
-    <b>43</b> files in total.
+    <b>44</b> files in total.
   </div>
 
   <div class="t-line-summary">
-    <b>316</b> relevant lines,
-    <span class="green"><b>315</b> lines covered</span> and
+    <b>328</b> relevant lines,
+    <span class="green"><b>327</b> lines covered</span> and
     <span class="red"><b>1</b> lines missed. </span>
     (<span class="green">
-  99.68%
+  99.7%
 </span>
 )
   </div>
@@ -159,6 +159,17 @@
           </tr>
         
           <tr class="t-file">
+            <td class="strong t-file__name"><a href="#280d545d5e5f6a35073fb29353ef0d222213eaca" class="src_link" title="app/controllers/api/v1/teacher_dashboards_controller.rb">app/controllers/api/v1/teacher_dashboards_controller.rb</a></td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">23</td>
+            <td class="cell--number">11</td>
+            <td class="cell--number">11</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">2.64</td>
+            
+          </tr>
+        
+          <tr class="t-file">
             <td class="strong t-file__name"><a href="#66990fd48b9e81ef1deeb663304839878b2f51f0" class="src_link" title="app/controllers/api/v1/teacher_score_reports_controller.rb">app/controllers/api/v1/teacher_score_reports_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
             <td class="cell--number">38</td>
@@ -187,7 +198,7 @@
             <td class="cell--number">4</td>
             <td class="cell--number">4</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">10.75</td>
+            <td class="cell--number">12.50</td>
             
           </tr>
         
@@ -535,9 +546,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#968115fcbcc8f59bfd82f49536a3a7c2c4883a93" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">38</td>
-            <td class="cell--number">19</td>
-            <td class="cell--number">19</td>
+            <td class="cell--number">39</td>
+            <td class="cell--number">20</td>
+            <td class="cell--number">20</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -3756,6 +3767,290 @@
 </div>
 
       
+        <div class="source_table" id="280d545d5e5f6a35073fb29353ef0d222213eaca">
+  <div class="header">
+    <h3>app/controllers/api/v1/teacher_dashboards_controller.rb</h3>
+    <h4>
+      <span class="green">
+  100.0%
+</span>
+
+      lines covered
+    </h4>
+
+    
+
+    <div class="t-line-summary">
+      <b>11</b> relevant lines.
+      <span class="green"><b>11</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+
+    
+
+  </div>
+
+  <pre>
+    <ol>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="1">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">class Api::V1::TeacherDashboardsController &lt; ApplicationController</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="2">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    include PermissionHelper</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="3">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    before_action :authenticate_api_v1_teacher!, :find_teacher, :figure_status, only: [:index]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="4">
+            
+            
+
+            
+
+            <code class="ruby">  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="5">
+            
+            
+
+            
+
+            <code class="ruby">   </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="6">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="7">
+            
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="8">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def index </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="5" data-linenumber="9">
+            <span class="hits">5</span>
+            
+
+            
+
+            <code class="ruby">        @score_report_drafts = @teacher.score_report_drafts.where(published: false)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="10">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="5" data-linenumber="11">
+            <span class="hits">5</span>
+            
+
+            
+
+            <code class="ruby">        render &#39;api/v1/teacher_dashboards/index.json.jbuilder&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="12">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="13">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="14">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    private</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="15">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="16">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def find_teacher</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="6" data-linenumber="17">
+            <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">        @teacher = current_api_v1_teacher</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="18">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="19">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="20">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def figure_status</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="6" data-linenumber="21">
+            <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">        check_permission_for @teacher</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="22">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="23">
+            
+            
+
+            
+
+            <code class="ruby">end</code>
+          </li>
+        </div>
+      
+    </ol>
+  </pre>
+</div>
+
+      
         <div class="source_table" id="66990fd48b9e81ef1deeb663304839878b2f51f0">
   <div class="header">
     <h3>app/controllers/api/v1/teacher_score_reports_controller.rb</h3>
@@ -4318,8 +4613,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="33" data-linenumber="3">
-            <span class="hits">33</span>
+          <li class="covered" data-hits="39" data-linenumber="3">
+            <span class="hits">39</span>
             
 
             
@@ -4329,8 +4624,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="4">
-            <span class="hits">8</span>
+          <li class="covered" data-hits="9" data-linenumber="4">
+            <span class="hits">9</span>
             
 
             
@@ -13382,8 +13677,8 @@
     
 
     <div class="t-line-summary">
-      <b>19</b> relevant lines.
-      <span class="green"><b>19</b> lines covered</span> and
+      <b>20</b> relevant lines.
+      <span class="green"><b>20</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -13703,13 +13998,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="29">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="29">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">        get &#39;teacher_dashboards&#39;, to: &#39;teacher_dashboards#index&#39;</code>
           </li>
         </div>
       
@@ -13720,12 +14015,23 @@
 
             
 
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="31">
+            
+            
+
+            
+
             <code class="ruby">      end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="31">
+          <li class="covered" data-hits="1" data-linenumber="32">
             <span class="hits">1</span>
             
 
@@ -13736,7 +14042,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="32">
+          <li class="never" data-hits="" data-linenumber="33">
             
             
 
@@ -13747,7 +14053,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="33">
+          <li class="never" data-hits="" data-linenumber="34">
             
             
 
@@ -13758,7 +14064,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="34">
+          <li class="never" data-hits="" data-linenumber="35">
             
             
 
@@ -13769,7 +14075,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="35">
+          <li class="never" data-hits="" data-linenumber="36">
             
             
 
@@ -13780,7 +14086,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="36">
+          <li class="never" data-hits="" data-linenumber="37">
             
             
 
@@ -13791,7 +14097,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="37">
+          <li class="never" data-hits="" data-linenumber="38">
             
             
 
@@ -13802,7 +14108,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="38">
+          <li class="never" data-hits="" data-linenumber="39">
             
             
 
