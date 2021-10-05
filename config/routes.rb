@@ -25,6 +25,7 @@ Rails.application.routes.draw do
         resources :teacher_score_reports, only: [:create, :index]
         resources :score_report_drafts, only: [:create, :index, :show]
         put 'student_score_report_drafts/:id', to: 'student_score_report_drafts#update'
+        get 'student_score_report_drafts', to: 'student_score_report_drafts#index'
         post 'publish_drafts', to: 'publish_drafts#create'
         get 'teacher_dashboards', to: 'teacher_dashboards#index'
 

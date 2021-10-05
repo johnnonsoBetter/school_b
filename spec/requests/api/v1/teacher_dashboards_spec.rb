@@ -12,7 +12,6 @@ RSpec.describe "Api::V1::TeacherDashboards", type: :request do
       sub =  create :subject, id: 1, name: "english", classroom: class1, teacher: @teacher
       sub2 =  create :subject, name: "maths", classroom: class1, teacher: @teacher
       sub3 =  create :subject, name: "economics", classroom: class1, teacher: @teacher1
-
       create :score_report_draft, max: 50, published: true, score_type: score_type, subject: sub2, teacher: @teacher
       create :score_report_draft, max: 28, published: false, score_type: score_type, subject: sub2, teacher: @teacher
       create :score_report_draft, max: 30, published: true, score_type: score_type, subject: sub, teacher: @teacher
