@@ -144,10 +144,10 @@ RSpec.describe "Api::V1::StudentScoreReportDrafts", type: :request do
 
     context "when teacher is authenticated " do
 
-       subject {  get @student_score_report_drafts_url, headers: @headers, params: {scored: false, score_report_draft_id: 1} } 
+      subject {  get @student_score_report_drafts_url, headers: @headers, params: {scored: false, score_report_draft_id: 1} } 
 
-     
       context "when params scored is false" do
+
         it "returns proper first json response of all student_score_report_draft that has not been scored" do
           
           subject
@@ -174,29 +174,20 @@ RSpec.describe "Api::V1::StudentScoreReportDrafts", type: :request do
         
       end
 
-      # context "when student score report was not succesfully updated" do
-      #   it "returns http status unprocessable_entity" do
-          
-      #     put @student_score_report_drafts_url, headers: @headers, params: {student_score_report_draft: {score: nil }}
-      #     expect(response).to have_http_status(:unprocessable_entity) 
-      #   end
-        
-      # end
-
 
       
 
-      # context "when teacher is not permitted " do
+      context "when teacher is not permitted " do
 
-      #   it "returns https status code 401 unauthorized" do
-      #     @teacher.permitted = false
-      #     @teacher.save 
-      #     subject
-      #     expect(response).to have_http_status(:unauthorized)  
-      #   end
+        it "returns https status code 401 unauthorized" do
+          @teacher.permitted = false
+          @teacher.save 
+          subject
+          expect(response).to have_http_status(:unauthorized)  
+        end
         
         
-      # end
+      end
 
 
     end

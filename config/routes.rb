@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
       mount_devise_token_auth_for 'Guidance', at: 'guidance_auth'
 
+      resources :classrooms, only: [:create, :index, :show]
+
+
+
       as :guidance do
         # Define routes for Guidance within this block.
         get 'guidance_dashboards', to: 'guidance_dashboards#index'
@@ -18,6 +22,8 @@ Rails.application.routes.draw do
         
        
       end
+
+      
     
       as :teacher do
         # Define routes for Teacher within this block.
