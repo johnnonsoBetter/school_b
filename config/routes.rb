@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       mount_devise_token_auth_for 'Guidance', at: 'guidance_auth'
 
       resources :classrooms, only: [:create, :index, :show]
+      resources :subjects, only: [:create, :index, :show]
+
 
 
 
