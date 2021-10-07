@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_06_110031) do
+ActiveRecord::Schema.define(version: 2021_10_07_091538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,14 +62,25 @@ ActiveRecord::Schema.define(version: 2021_10_06_110031) do
     t.index ["teacher_id"], name: "index_behaviour_reports_on_teacher_id"
   end
 
-  create_table "bills", force: :cascade do |t|
+  create_table "bill_reports", force: :cascade do |t|
     t.string "title"
-    t.string "description"
-    t.integer "total_amount"
+    t.integer "amount"
+    t.bigint "school_id", null: false
+    t.bigint "admin_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "optional", default: false
+    t.index ["admin_id"], name: "index_bill_reports_on_admin_id"
+    t.index ["school_id"], name: "index_bill_reports_on_school_id"
+  end
+
+  create_table "bills", force: :cascade do |t|
     t.boolean "payment_completed"
     t.bigint "student_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "bill_report_id"
+    t.index ["bill_report_id"], name: "index_bills_on_bill_report_id"
     t.index ["student_id"], name: "index_bills_on_student_id"
   end
 
@@ -199,6 +210,7 @@ ActiveRecord::Schema.define(version: 2021_10_06_110031) do
     t.string "middle_name"
     t.string "full_name"
     t.bigint "classroom_id"
+    t.integer "total_debt", default: 0
     t.index ["classroom_id"], name: "index_students_on_classroom_id"
     t.index ["confirmation_token"], name: "index_students_on_confirmation_token", unique: true
     t.index ["email"], name: "index_students_on_email", unique: true
@@ -257,6 +269,9 @@ ActiveRecord::Schema.define(version: 2021_10_06_110031) do
   add_foreign_key "admins", "schools"
   add_foreign_key "behaviour_reports", "students"
   add_foreign_key "behaviour_reports", "teachers"
+  add_foreign_key "bill_reports", "admins"
+  add_foreign_key "bill_reports", "schools"
+  add_foreign_key "bills", "bill_reports"
   add_foreign_key "bills", "students"
   add_foreign_key "classrooms", "schools"
   add_foreign_key "payment_histories", "bills"

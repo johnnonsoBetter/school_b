@@ -11,7 +11,7 @@ class Api::V1::StudentScoreReportDraftsController < ApplicationController
         @student_score_report_draft = StudentScoreReportDraft.find_by(id: params[:id])
 
         if @student_score_report_draft.update(student_score_report_draft_params) 
-            render json: "Succesffully Updated", status: :ok 
+            render json: @student_score_report_draft, status: :ok 
         else 
             render json: "Failed to Update", status: :unprocessable_entity
         end
@@ -56,7 +56,7 @@ class Api::V1::StudentScoreReportDraftsController < ApplicationController
     end
 
     def student_score_report_draft_params 
-        params.require(:student_score_report_draft).permit(:score)
+        params.require(:student_score_report_draft).permit(:score, :scored)
     end
 
 
