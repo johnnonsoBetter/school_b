@@ -4,6 +4,7 @@ class BillReport < ApplicationRecord
   has_many :bills
 
   validates :amount, numericality: {greater_than: 0}
+  validates :title, presence: true
   
   
 end

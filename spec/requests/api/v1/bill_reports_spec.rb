@@ -105,20 +105,22 @@ RSpec.describe "Api::V1::BillReports", type: :request do
       end
       
 
-      # context "when new bill_report failed to be created" do
+      context "when new bill_report failed to be created" do
+
+        subject {  post @bill_report_url, headers: @headers, params: {bill_report: {amount: 700, title: "", optional: false}, classroom_ids: [1, 3]} } 
 
 
-      #   it "increment bill_report report by 1" do
-      #     expect{post @bill_report_url, headers: @headers, params: {bill_report: {name: ""}}}.to_not change{bill_report.count}
-      #   end
+        it "does not increment bill_report report by 1" do
+          expect{subject}.not_to change{BillReport.count}
+        end
 
-      #   it "returns htpp status code unprocessable entity" do
-      #     post @bill_report_url, headers: @headers, params: {bill_report: {name: ""}}
-      #     expect(response).to have_http_status(:unprocessable_entity)
+        it "returns htpp status code unprocessable entity" do
+          subject
+          expect(response).to have_http_status(:unprocessable_entity)
           
-      #   end
+        end
 
-      # end
+      end
  
     end
     

@@ -19,13 +19,14 @@ class Api::V1::BillReportsController < ApplicationController
                     @bill_report = BillReport.new bill_report_params
                     @bill_report.school = @admin.school
                     @bill_report.admin = @admin
-                    @bill_report.save!
+                    raise ActiveRecord::Rollback if !@bill_report.save
 
                     
 
                     @students.each do |student| 
 
-                        student.bills.create! bill_report: @bill_report, optional: @bill_report.optional, balance: @bill_report.amount
+                        student.bills.create bill_report: @bill_report, optional: @bill_report.optional, balance: @bill_report.amount
+                       
                         total_debt = 0
                         student.bills.where({payment_completed: false, optional: false}).each do |bill|
 
@@ -54,6 +55,8 @@ class Api::V1::BillReportsController < ApplicationController
 
         if successful 
             render json: @bill_report, status: :created
+        else 
+            render json: @bill_report.errors.messages, status: :unprocessable_entity
         end
     end
 
