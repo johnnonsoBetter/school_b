@@ -23,19 +23,9 @@ RSpec.describe "Api::V1::BillReports", type: :request do
       
       b2 =  create :bill, payment_completed: true, student: stud2, bill_report: bill_report2
 
-
-      # create :bill, payment_completed: false, student: stud1, bill_report: bill_report2
-      # create :bill, payment_completed: false, student: stud2, bill_report: bill_report
-
-
       create :payment_history, amount: 300, bill: b1 
       create :payment_history, amount: 1500, bill: b2
-      # create :payment_history, amount: 100, bill: b1 
-
-
-
-
-
+     
       @login_url = '/api/v1/auth/sign_in'
       @bill_report_url = '/api/v1/bill_reports'
   

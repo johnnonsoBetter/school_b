@@ -11,7 +11,7 @@ class Api::V1::PublishDraftsController < ApplicationController
 
         ScoreReportDraft.transaction(requires_new: true) do 
             ScoreReport.transaction(requires_new: true) do 
-                @score_report_draft.student_score_report_drafts.each do |student_score_report_draft| 
+                @score_report_draft.student_score_report_drafts.where(scored: true).each do |student_score_report_draft| 
                     ScoreReport.create!(
                         student: student_score_report_draft.student, 
                         teacher: @teacher, 

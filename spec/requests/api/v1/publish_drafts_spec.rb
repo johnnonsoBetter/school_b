@@ -14,7 +14,8 @@ RSpec.describe "Api::V1::PublishDrafts", type: :request do
       sub2 =  create :subject, name: "maths", classroom: class1, teacher: @teacher
 
       create :score_report_draft, id: 1, max: 50, published: false, score_type: score_type, subject: sub, teacher: @teacher
-      create :student_score_report_draft, id: 2,  student: stud1, score: 40, score_report_draft_id: 1
+      create :student_score_report_draft, id: 2,  student: stud1, score: 40, score_report_draft_id: 1, scored: true
+      create :student_score_report_draft, id: 4,  student: stud1, score: 0, score_report_draft_id: 1, scored: false
       
 
       @login_url = '/api/v1/teacher_auth/sign_in'
