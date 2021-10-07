@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_07_091538) do
+ActiveRecord::Schema.define(version: 2021_10_07_113317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,11 +75,14 @@ ActiveRecord::Schema.define(version: 2021_10_07_091538) do
   end
 
   create_table "bills", force: :cascade do |t|
-    t.boolean "payment_completed"
+    t.boolean "payment_completed", default: false
     t.bigint "student_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "bill_report_id"
+    t.integer "paid", default: 0
+    t.integer "balance", default: 0
+    t.boolean "optional", default: false
     t.index ["bill_report_id"], name: "index_bills_on_bill_report_id"
     t.index ["student_id"], name: "index_bills_on_student_id"
   end
