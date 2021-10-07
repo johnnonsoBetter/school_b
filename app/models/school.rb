@@ -5,5 +5,5 @@ class School < ApplicationRecord
     has_many :teachers
     has_many :classrooms
     has_many :score_types
-    
+    has_many :bill_reports
 end

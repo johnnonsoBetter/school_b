@@ -742,7 +742,7 @@
           null,
           1,
           1,
-          24,
+          36,
           null,
           null,
           null
@@ -787,8 +787,8 @@
         "lines": [
           1,
           1,
-          7,
-          1,
+          10,
+          2,
           null,
           null,
           null
@@ -803,7 +803,7 @@
           1,
           1,
           1,
-          null,
+          1,
           null
         ]
       },
@@ -879,8 +879,6 @@
           null,
           6,
           null,
-          null,
-          null,
           6,
           6,
           6,
@@ -889,8 +887,6 @@
           6,
           6,
           6,
-          null,
-          null,
           null,
           4,
           null,
@@ -905,10 +901,6 @@
           null,
           null,
           8,
-          null,
-          null,
-          null,
-          null,
           null,
           null,
           4,
@@ -931,6 +923,13 @@
           null,
           null,
           1,
+          null,
+          2,
+          2,
+          null,
+          null,
+          null,
+          1,
           1,
           6,
           null,
@@ -938,16 +937,16 @@
           null,
           null,
           1,
-          7,
+          10,
           null,
           null,
           1,
-          7,
+          10,
           null,
           null
         ]
       }
     },
-    "timestamp": 1633607255
+    "timestamp": 1633614823
   }
 }

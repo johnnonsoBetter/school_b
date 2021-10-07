@@ -126,4 +126,109 @@ RSpec.describe "Api::V1::BillReports", type: :request do
     
 
   end
+
+
+
+  describe "GET /index" do
+   
+    before do 
+      sch = build :school, id: 44
+      @admin = create :admin, email: "admin@mail.com", password: "password", school: sch, permitted: true, full_name: "bose peter"
+      
+      class1 = create :classroom, id: 1, name: "ss1", school: sch
+      class2 = create :classroom, id: 2, name: "ss2", school: sch
+      
+      stud1 = create :student, id: 1, classroom: class1, email: "chi@gmail.com", password: "password", first_name: "chima", last_name: "joy", school: sch
+      stud2 = create :student, id: 2, classroom: class2, school: sch, email: "chisfs1@gmail.com", password: "password", first_name: "ani", last_name: "micheal"
+      stud3 = create :student, id: 3, classroom: class1, school: sch, email: "chisdf2@gmail.com", password: "password", first_name: "praise", last_name: "luna"
+
+
+      bill_report = create :bill_report, title: "school fee", admin: @admin, school: sch, amount: 700
+      bill_report2 = create :bill_report, title: "exam fee", admin: @admin, school: sch, amount: 1500 
+      create :bill_report, title: "lecture fee", admin: @admin, school: sch, amount: 9000 
+
+     
+
+
+
+
+      @login_url = '/api/v1/auth/sign_in'
+      @bill_report_url = '/api/v1/bill_reports'
+  
+      @admin_params = {
+        email: @admin.email,
+        password: @admin.password
+      }
+
+      post @login_url, params: @admin_params
+        
+        @headers = {
+          'access-token' => response.headers['access-token'],
+          'client' => response.headers['client'],
+          'uid' => response.headers['uid']
+        }
+
+    end
+
+    context "when admin is not authenticated" do
+      it "return http status unauthorized" do
+        
+        get @bill_report_url
+        expect(response).to have_http_status(:unauthorized)  
+      end
+      
+    end
+
+    context "when admin is authenticated " do
+
+      subject {  get @bill_report_url, headers: @headers} 
+
+      
+
+      it "returns proper json response of first bill reports" do
+
+        subject
+        json_body = JSON.parse(response.body)
+
+        expect(json_body.first).to include({
+          'title' => 'school fee',
+          'amount' => 700,
+          'admin' => 'bose peter'
+        })  
+        
+      end
+
+      it "returns proper json response of last bill reports" do
+
+        subject
+        json_body = JSON.parse(response.body)
+
+        expect(json_body.last).to include({
+          'title' => 'lecture fee',
+          'amount' => 9000,
+          'admin' => 'bose peter'
+        })  
+        
+      end
+      
+
+      context "when admin is not permitted " do
+
+        it "returns https status code 401 unauthorized" do
+          @admin.permitted = false
+          @admin.save 
+          subject
+          expect(response).to have_http_status(:unauthorized)  
+        end
+        
+        
+      end
+      
+
+     
+ 
+    end
+    
+
+  end
 end

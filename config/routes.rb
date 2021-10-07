@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
       resources :classrooms, only: [:create, :index, :show]
       resources :subjects, only: [:create, :index, :show]
-      resources :bill_reports, only: :create
+      resources :bill_reports, only: [:create, :index]
 
 
 
