@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       resources :subjects, only: [:create, :index, :show]
       resources :bill_reports, only: [:create, :index]
       get 'debtors', to: 'debtors#index'
-      resources :items, only: [:create, :update]
+      resources :items, only: [:create, :update, :destroy]
 
 
 
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
         get 'guidance_score_reports', to: 'guidance_score_reports#index'
         get 'guidance_behaviour_reports', to: 'guidance_behaviour_reports#index'
         resources :guidance_bills, only: [:index, :show]
+
         
        
       end

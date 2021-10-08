@@ -1,8 +1,8 @@
 class Api::V1::ItemsController < ApplicationController
     include PermissionHelper
-    before_action :authenticate_api_v1_admin!, only: [:create, :index, :update]
-    before_action :find_admin, only: [:create, :update]
-    before_action :figure_status, only: [:create, :update]
+    before_action :authenticate_api_v1_admin!, only: [:create, :index, :update, :destroy]
+    before_action :find_admin, only: [:create, :update, :destroy]
+    before_action :figure_status, only: [:create, :update, :destroy]
 
 
     def create 
@@ -19,6 +19,20 @@ class Api::V1::ItemsController < ApplicationController
 
 
         
+    end
+
+    def destroy 
+        @item = Item.find_by(id: params[:id])
+
+        if @item.nil?
+            render json: "Item Not Found", status: :not_found
+        else
+            @item.destroy
+        end
+
+       
+       
+
     end
 
 

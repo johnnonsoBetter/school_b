@@ -175,4 +175,87 @@ RSpec.describe "Api::V1::Items", type: :request do
   end
 
 
+  describe "PUT /update" do
+   
+    before do 
+      sch = build :school, id: 44
+      @admin = create :admin, email: "admin@mail.com", password: "password", school: sch, permitted: true
+      @item_params = {item: {name: "js1 school book", selling_price: 500}}
+      create :item, id: 1, name: "js1 school book", selling_price: 600, school: sch
+
+      @login_url = '/api/v1/auth/sign_in'
+      @item_url = '/api/v1/items/1'
+  
+      @admin_params = {
+        email: @admin.email,
+        password: @admin.password
+      }
+
+      post @login_url, params: @admin_params
+        
+        @headers = {
+          'access-token' => response.headers['access-token'],
+          'client' => response.headers['client'],
+          'uid' => response.headers['uid']
+        }
+
+    end
+
+    context "when admin is not authenticated" do
+      it "return http status unauthorized" do
+        
+        delete @item_url
+        expect(response).to have_http_status(:unauthorized)  
+      end
+      
+    end
+
+    context "when admin is authenticated " do
+
+      subject {  delete @item_url, headers: @headers } 
+
+      context "when new item report has been updated" do
+        it "increment item report by 1" do
+          subject
+          expect(Item.find_by(id: 1)).to eq(nil)
+        end
+
+        it "returns http status ok " do
+          subject
+          expect(response).to have_http_status(:no_content)
+        end
+        
+      end
+
+      context "when admin is not permitted " do
+
+        it "returns https status code 401 unauthorized" do
+          @admin.permitted = false
+          @admin.save 
+          subject
+          expect(response).to have_http_status(:unauthorized)  
+        end
+        
+        
+      end
+      
+
+      context "when item could not be found" do
+
+
+        it "returns htpp status code unprocessable entity" do
+          delete '/api/v1/items/3', headers: @headers
+          expect(response).to have_http_status(:not_found)
+          
+        end
+
+ 
+       end
+
+    end
+    
+
+  end
+
+
 end
