@@ -8,6 +8,7 @@ class Api::V1::TeacherScoreReportsController < ApplicationController
     def index 
         
         @score_reports = []
+        
 
         term_date = TermDate.find(params[:term_date_id])
 

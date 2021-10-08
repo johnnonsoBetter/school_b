@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_07_134228) do
+ActiveRecord::Schema.define(version: 2021_10_08_084929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +128,15 @@ ActiveRecord::Schema.define(version: 2021_10_07_134228) do
     t.bigint "guidance_id", null: false
     t.index ["guidance_id", "student_id"], name: "index_guidances_students_on_guidance_id_and_student_id"
     t.index ["student_id", "guidance_id"], name: "index_guidances_students_on_student_id_and_guidance_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.bigint "school_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "selling_price"
+    t.index ["school_id"], name: "index_items_on_school_id"
   end
 
   create_table "payment_histories", force: :cascade do |t|
@@ -280,6 +289,7 @@ ActiveRecord::Schema.define(version: 2021_10_07_134228) do
   add_foreign_key "bills", "bill_reports"
   add_foreign_key "bills", "students"
   add_foreign_key "classrooms", "schools"
+  add_foreign_key "items", "schools"
   add_foreign_key "payment_histories", "bills"
   add_foreign_key "score_report_drafts", "score_types"
   add_foreign_key "score_report_drafts", "subjects"

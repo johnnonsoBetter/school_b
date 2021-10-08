@@ -6,4 +6,5 @@ class School < ApplicationRecord
     has_many :classrooms
     has_many :score_types
     has_many :bill_reports
+    has_many :items
 end

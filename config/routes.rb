@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :subjects, only: [:create, :index, :show]
       resources :bill_reports, only: [:create, :index]
       get 'debtors', to: 'debtors#index'
+      resources :items, only: :create
 
 
 

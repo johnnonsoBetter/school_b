@@ -48,6 +48,8 @@ class Api::V1::PublishDraftsController < ApplicationController
     def find_score_report_draft 
         @score_report_draft = @teacher.score_report_drafts.find_by(id: params[:score_report_draft_id])
 
+        
+
         unless @score_report_draft 
             render json: "Score Report Draft Not found", status: :not_found
         end
