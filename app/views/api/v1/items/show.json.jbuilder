@@ -1,7 +1,5 @@
 json.item  do 
 
-    json.id @item.id
-    json.name @item.name
-    json.selling_price @item.selling_price
+    json.(@item, :id, :name, :selling_price, :quantity)
 
 end

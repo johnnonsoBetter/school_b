@@ -1,5 +1,5 @@
 json.array! @items do |item|
 
-    json.(item, :id, :name, :selling_price)
+    json.(item, :id, :name, :selling_price, :quantity)
 
 end

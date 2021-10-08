@@ -6,7 +6,7 @@ RSpec.describe "Api::V1::Items", type: :request do
     before do 
       sch = build :school, id: 44
       @admin = create :admin, email: "admin@mail.com", password: "password", school: sch, permitted: true
-      @item_params = {item: {name: "js1 school book", selling_price: 500}}
+      @item_params = {item: {name: "js1 school book", selling_price: 500, quantity: 2}}
 
       @login_url = '/api/v1/auth/sign_in'
       @item_url = '/api/v1/items'
@@ -97,7 +97,7 @@ RSpec.describe "Api::V1::Items", type: :request do
     before do 
       sch = build :school, id: 44
       @admin = create :admin, email: "admin@mail.com", password: "password", school: sch, permitted: true
-      @item_params = {item: {name: "js1 school book", selling_price: 500}}
+      @item_params = {item: {name: "js1 school book", selling_price: 500, quantity: 3}}
       create :item, id: 1, name: "js1 school book", selling_price: 600, school: sch
 
       @login_url = '/api/v1/auth/sign_in'
