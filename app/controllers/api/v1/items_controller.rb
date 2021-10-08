@@ -1,8 +1,9 @@
 class Api::V1::ItemsController < ApplicationController
     include PermissionHelper
-    before_action :authenticate_api_v1_admin!, only: [:create, :index, :update, :destroy]
-    before_action :find_admin, only: [:create, :update, :destroy]
-    before_action :figure_status, only: [:create, :update, :destroy]
+    before_action :authenticate_api_v1_admin!, only: [:create, :index, :update, :destroy, :show]
+    before_action :find_admin, only: [:create, :update, :destroy, :show]
+    before_action :figure_status, only: [:create, :update, :destroy, :show]
+    before_action :find_item, only: [:destroy, :show, :update]
 
 
     def create 
@@ -22,31 +23,25 @@ class Api::V1::ItemsController < ApplicationController
     end
 
     def destroy 
-        @item = Item.find_by(id: params[:id])
-
-        if @item.nil?
-            render json: "Item Not Found", status: :not_found
-        else
-            @item.destroy
-        end
-
        
-       
+        @item.destroy
 
     end
 
 
     def update 
 
-        @item = Item.find_by(id: params[:id])
-
-        
-
+       
         if @item.update(item_params) 
             render json: @item, status: :ok
         else 
             render json: @item.errors.messages, status: :unprocessable_entity 
         end
+    end
+
+    def show 
+        
+        render 'api/v1/items/show.json.jbuilder'
     end
 
     private
@@ -62,6 +57,14 @@ class Api::V1::ItemsController < ApplicationController
 
     def figure_status
         check_permission_for @admin
+    end
+
+    def find_item 
+        @item = Item.find_by(id: params[:id])
+
+        unless @item 
+            render json: "Not Found ", status: :not_found
+        end
     end
 
     
