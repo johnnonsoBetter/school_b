@@ -36,4 +36,13 @@ RSpec.describe Item, type: :routing do
      
     end
 
+    describe "GET" do
+
+        it "routes api/v1/items/ to api/v1/items#index" do
+            expect(get 'api/v1/items/').to    route_to( :controller => 'api/v1/items', :action => 'index')  
+        
+        end
+     
+    end
+
 end

@@ -1,8 +1,8 @@
 class Api::V1::ItemsController < ApplicationController
     include PermissionHelper
-    before_action :authenticate_api_v1_admin!, only: [:create, :index, :update, :destroy, :show]
-    before_action :find_admin, only: [:create, :update, :destroy, :show]
-    before_action :figure_status, only: [:create, :update, :destroy, :show]
+    before_action :authenticate_api_v1_admin!, only: [:create, :index, :update, :destroy, :show, :index]
+    before_action :find_admin, only: [:create, :update, :destroy, :show, :index]
+    before_action :figure_status, only: [:create, :update, :destroy, :show, :index]
     before_action :find_item, only: [:destroy, :show, :update]
 
 
@@ -42,6 +42,12 @@ class Api::V1::ItemsController < ApplicationController
     def show 
         
         render 'api/v1/items/show.json.jbuilder'
+    end
+
+
+    def index 
+        @items = @admin.school.items
+        render 'api/v1/items/index.json.jbuilder'
     end
 
     private

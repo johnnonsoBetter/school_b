@@ -364,6 +364,100 @@ RSpec.describe "Api::V1::Items", type: :request do
   end
 
 
+  describe "GET /index" do
+   
+    before do 
+      sch = build :school, id: 44
+      @admin = create :admin, email: "admin@mail.com", password: "password", school: sch, permitted: true
+      @item_params = {item: {name: "js1 school book", selling_price: 500}}
+      create :item, name: "js1 school book", selling_price: 600, school: sch
+      create :item, name: "js2 book", selling_price: 600, school: sch
+      create :item, name: "ben carson", selling_price: 900, school: sch
+
+      @login_url = '/api/v1/auth/sign_in'
+      @item_url = '/api/v1/items/'
+  
+      @admin_params = {
+        email: @admin.email,
+        password: @admin.password
+      }
+
+      post @login_url, params: @admin_params
+        
+        @headers = {
+          'access-token' => response.headers['access-token'],
+          'client' => response.headers['client'],
+          'uid' => response.headers['uid']
+        }
+
+    end
+
+    context "when admin is not authenticated" do
+      it "return http status unauthorized" do
+        
+        get @item_url
+        expect(response).to have_http_status(:unauthorized)  
+      end
+      
+    end
+
+    context "when admin is authenticated " do
+
+      subject {  get @item_url, headers: @headers } 
+
+      
+
+      context "when admin is not permitted " do
+
+        it "returns https status code 401 unauthorized" do
+          @admin.permitted = false
+          @admin.save 
+          subject
+          expect(response).to have_http_status(:unauthorized)  
+        end
+        
+        
+      end
+
+
+      context "admin is authenticated and permitted" do
+        it "returns proper json first response of items" do
+          subject
+          json_body = JSON.parse(response.body)
+          
+          expect(json_body.first).to include({
+
+            'name' => "js1 school book",
+            'selling_price' => 600,
+
+          })  
+        end
+
+        it "returns proper json last response of items" do
+          subject
+          json_body = JSON.parse(response.body)
+          
+          expect(json_body.last).to include({
+
+            'name' => "ben carson",
+            'selling_price' => 900,
+
+          })  
+        end
+
+     
+        
+      end
+      
+
+    end
+
+    
+    
+
+  end
+
+
   
 
 
