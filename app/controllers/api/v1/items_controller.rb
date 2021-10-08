@@ -1,8 +1,8 @@
 class Api::V1::ItemsController < ApplicationController
     include PermissionHelper
-    before_action :authenticate_api_v1_admin!, only: [:create, :index, :show]
-    before_action :find_admin, only: [:create, :index, :show]
-    before_action :figure_status, only: [:create, :index, :show]
+    before_action :authenticate_api_v1_admin!, only: [:create, :index, :update]
+    before_action :find_admin, only: [:create, :update]
+    before_action :figure_status, only: [:create, :update]
 
 
     def create 
@@ -19,6 +19,20 @@ class Api::V1::ItemsController < ApplicationController
 
 
         
+    end
+
+
+    def update 
+
+        @item = Item.find_by(id: params[:id])
+
+        
+
+        if @item.update(item_params) 
+            render json: @item, status: :ok
+        else 
+            render json: @item.errors.messages, status: :unprocessable_entity 
+        end
     end
 
     private

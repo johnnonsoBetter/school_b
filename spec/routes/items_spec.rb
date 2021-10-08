@@ -7,6 +7,11 @@ RSpec.describe Item, type: :routing do
            
         end
         
+        it "routes api/v1/items/1 to api/v1/items#update" do
+            expect(put 'api/v1/items/1').to    route_to( :controller => 'api/v1/items', :action => 'update', id: "1")  
+        
+        end
+     
     end
 
 end
