@@ -9,4 +9,6 @@ RSpec.describe School, type: :model do
   it { should have_many(:score_types) }
   it { should have_many(:bill_reports) } 
   it { should have_many(:items) } 
+  it { should have_many(:restock_reports) }
+  it { should have_many(:stock_repair_reports) }  
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_08_084929) do
+ActiveRecord::Schema.define(version: 2021_10_08_105655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,6 +147,16 @@ ActiveRecord::Schema.define(version: 2021_10_08_084929) do
     t.index ["bill_id"], name: "index_payment_histories_on_bill_id"
   end
 
+  create_table "restock_reports", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "school_id", null: false
+    t.index ["item_id"], name: "index_restock_reports_on_item_id"
+    t.index ["school_id"], name: "index_restock_reports_on_school_id"
+  end
+
   create_table "schools", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -189,6 +199,16 @@ ActiveRecord::Schema.define(version: 2021_10_08_084929) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["school_id"], name: "index_score_types_on_school_id"
+  end
+
+  create_table "stock_repair_reports", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "school_id", null: false
+    t.index ["item_id"], name: "index_stock_repair_reports_on_item_id"
+    t.index ["school_id"], name: "index_stock_repair_reports_on_school_id"
   end
 
   create_table "student_score_report_drafts", force: :cascade do |t|
@@ -291,6 +311,8 @@ ActiveRecord::Schema.define(version: 2021_10_08_084929) do
   add_foreign_key "classrooms", "schools"
   add_foreign_key "items", "schools"
   add_foreign_key "payment_histories", "bills"
+  add_foreign_key "restock_reports", "items"
+  add_foreign_key "restock_reports", "schools"
   add_foreign_key "score_report_drafts", "score_types"
   add_foreign_key "score_report_drafts", "subjects"
   add_foreign_key "score_report_drafts", "teachers"
@@ -299,6 +321,8 @@ ActiveRecord::Schema.define(version: 2021_10_08_084929) do
   add_foreign_key "score_reports", "subjects"
   add_foreign_key "score_reports", "teachers"
   add_foreign_key "score_types", "schools"
+  add_foreign_key "stock_repair_reports", "items"
+  add_foreign_key "stock_repair_reports", "schools"
   add_foreign_key "student_score_report_drafts", "score_report_drafts"
   add_foreign_key "student_score_report_drafts", "students"
   add_foreign_key "students", "classrooms"
