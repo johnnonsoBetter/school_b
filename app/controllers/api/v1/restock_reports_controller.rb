@@ -7,6 +7,7 @@ class Api::V1::RestockReportsController < ApplicationController
     def create 
 
         @restock_report = @admin.school.restock_reports.new restock_report_params
+        @restock_report.admin = @admin
         successful = false 
         item = @admin.school.items.find_by(id: restock_report_params[:item_id])
 

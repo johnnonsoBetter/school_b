@@ -102,19 +102,19 @@ RSpec.describe "Api::V1::RestockReports", type: :request do
       item = create :item, name: "js1 school book", selling_price: 600, school: sch
       term_date = create :term_date, id: 1, name: "1st term 2021/2021", start_date: Date.new(2021, 9, 4), end_date: Date.new(2021, 10, 11)
 
-      create :restock_report, school: sch, quantity: 4, item: item, created_at: Date.new(2020, 10, 4)
-      create :restock_report, school: sch, quantity: 36, item: item, created_at: Date.new(2021, 10, 8)
+      create :restock_report, school: sch, admin: @admin, quantity: 4, item: item, created_at: Date.new(2020, 10, 4)
+      create :restock_report, school: sch, admin: @admin, quantity: 36, item: item, created_at: Date.new(2021, 10, 8)
 
 
-      create :restock_report, school: sch, quantity: 10, item: item, created_at: Time.now
+      create :restock_report, school: sch, admin: @admin, quantity: 10, item: item, created_at: Time.now
 
       
-      create :restock_report, school: sch, quantity: 7, item: item, created_at: term_date.start_date
+      create :restock_report, school: sch, admin: @admin, quantity: 7, item: item, created_at: term_date.start_date
 
-      create :restock_report, school: sch, quantity: 31, item: item, created_at: Time.now
+      create :restock_report, school: sch, admin: @admin, quantity: 31, item: item, created_at: Time.now
       
       
-      create :restock_report, school: sch, quantity: 15, item: item, created_at: term_date.end_date
+      create :restock_report, school: sch, admin: @admin, quantity: 15, item: item, created_at: term_date.end_date
 
      
 
