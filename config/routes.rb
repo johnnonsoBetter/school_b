@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get 'debtors', to: 'debtors#index'
       resources :items, only: [:create, :update, :destroy, :show, :index]
       resources :restock_reports, only: [:create, :index]
+      resources :expense_reports, only: :create
 
 
 

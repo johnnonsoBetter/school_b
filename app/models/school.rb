@@ -9,4 +9,7 @@ class School < ApplicationRecord
     has_many :items
     has_many :restock_reports
     has_many :stock_repair_reports
+    has_many :expense_reports
+    has_many :sale_reports
+    has_many :debt_recovered_reports
 end

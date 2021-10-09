@@ -73,7 +73,7 @@ RSpec.describe "Api::V1::RestockReports", type: :request do
       context "when new restock_report failed to be created" do
 
 
-          it "increment restock_report report by 1" do
+          it "do not increment restock_report report " do
             expect{post @restock_report_url, headers: @headers, params: {restock_report: {quantity: nil, restock_report_id: 1}} }.to_not change{RestockReport.count}
           end
 

@@ -16,6 +16,7 @@ class Api::V1::TeacherScoreReportsController < ApplicationController
             
             if params[:term_date_id].present? 
                 term_date = TermDate.find(params[:term_date_id])
+                
 
                 @score_reports = @teacher.score_reports.where(subject_id: params[:subject_id], score_type_id: params[:score_type_id]).where(created_at: Date.parse(term_date.start_date).beginning_of_day..Date.parse(term_date.end_date).end_of_day).includes(:score_type, :student)
             end

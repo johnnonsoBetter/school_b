@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_08_120348) do
+ActiveRecord::Schema.define(version: 2021_10_09_091442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,29 @@ ActiveRecord::Schema.define(version: 2021_10_08_120348) do
     t.index ["school_id"], name: "index_classrooms_on_school_id"
   end
 
+  create_table "debt_recovered_reports", force: :cascade do |t|
+    t.string "amount"
+    t.bigint "school_id", null: false
+    t.bigint "admin_id", null: false
+    t.bigint "bill_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_debt_recovered_reports_on_admin_id"
+    t.index ["bill_id"], name: "index_debt_recovered_reports_on_bill_id"
+    t.index ["school_id"], name: "index_debt_recovered_reports_on_school_id"
+  end
+
+  create_table "expense_reports", force: :cascade do |t|
+    t.integer "amount"
+    t.string "title"
+    t.bigint "school_id", null: false
+    t.bigint "admin_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_expense_reports_on_admin_id"
+    t.index ["school_id"], name: "index_expense_reports_on_school_id"
+  end
+
   create_table "guidances", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
@@ -156,6 +179,16 @@ ActiveRecord::Schema.define(version: 2021_10_08_120348) do
     t.bigint "school_id", null: false
     t.index ["item_id"], name: "index_restock_reports_on_item_id"
     t.index ["school_id"], name: "index_restock_reports_on_school_id"
+  end
+
+  create_table "sale_reports", force: :cascade do |t|
+    t.integer "total"
+    t.bigint "school_id", null: false
+    t.bigint "admin_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_sale_reports_on_admin_id"
+    t.index ["school_id"], name: "index_sale_reports_on_school_id"
   end
 
   create_table "schools", force: :cascade do |t|
@@ -310,10 +343,17 @@ ActiveRecord::Schema.define(version: 2021_10_08_120348) do
   add_foreign_key "bills", "bill_reports"
   add_foreign_key "bills", "students"
   add_foreign_key "classrooms", "schools"
+  add_foreign_key "debt_recovered_reports", "admins"
+  add_foreign_key "debt_recovered_reports", "bills"
+  add_foreign_key "debt_recovered_reports", "schools"
+  add_foreign_key "expense_reports", "admins"
+  add_foreign_key "expense_reports", "schools"
   add_foreign_key "items", "schools"
   add_foreign_key "payment_histories", "bills"
   add_foreign_key "restock_reports", "items"
   add_foreign_key "restock_reports", "schools"
+  add_foreign_key "sale_reports", "admins"
+  add_foreign_key "sale_reports", "schools"
   add_foreign_key "score_report_drafts", "score_types"
   add_foreign_key "score_report_drafts", "subjects"
   add_foreign_key "score_report_drafts", "teachers"
