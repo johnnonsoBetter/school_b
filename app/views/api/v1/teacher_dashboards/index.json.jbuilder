@@ -32,3 +32,9 @@ json.set! :term_dates, @term_dates do |term_date|
     json.name term_date.name
     
 end
+
+json.set! :classrooms, @classrooms.to_a do |classroom|
+
+    json.id classroom.id
+    json.name classroom.name
+end

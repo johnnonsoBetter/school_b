@@ -106,6 +106,16 @@ RSpec.describe "Api::V1::TeacherDashboards", type: :request do
         
       end
 
+      it "returns proper json response of teacher classrooms" do
+        subject
+        json_body = JSON.parse(response.body)
+
+        expect(json_body["classrooms"].first).to include({
+          "name" => "ss1"
+        })
+        
+      end
+
 
       context "when teacher is not permitted " do
 

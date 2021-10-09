@@ -45,6 +45,7 @@ Rails.application.routes.draw do
         get 'student_score_report_drafts', to: 'student_score_report_drafts#index'
         post 'publish_drafts', to: 'publish_drafts#create'
         get 'teacher_dashboards', to: 'teacher_dashboards#index'
+        get 'teacher_classroom_students', to: 'teacher_classroom_students#index'
 
       end
       as :student do

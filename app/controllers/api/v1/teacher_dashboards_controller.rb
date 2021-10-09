@@ -9,6 +9,8 @@ class Api::V1::TeacherDashboardsController < ApplicationController
         @score_report_drafts = @teacher.score_report_drafts.where(published: false)
         @score_types = @teacher.school.score_types
         @term_dates = TermDate.all
+        @classrooms = Set.new @teacher.classrooms
+        
         
         render 'api/v1/teacher_dashboards/index.json.jbuilder'
     end
