@@ -13,14 +13,16 @@ class Api::V1::TeacherBehaviourReportsController < ApplicationController
         if @behaviour_report.save
             
             render json: @behaviour_report, status: :created 
+        else 
+            render json: @behaviour_report.errors.messages, status: :unprocessable_entity 
         end
     end
 
 
     def index 
 
-        @behaviour_reports = @teacher.behaviour_reports.where(created_at: Time.zone.parse(params[:date]).beginning_of_day..Time.zone.parse(params[:date]).end_of_day).includes(:teacher)
-           
+        @behaviour_reports = @teacher.behaviour_reports.where(created_at: Time.parse(params[:date]).beginning_of_day..Time.parse(params[:date]).end_of_day).includes(:teacher)
+        
         render 'api/v1/teacher_behaviour_reports/index.json.jbuilder'
     end
 

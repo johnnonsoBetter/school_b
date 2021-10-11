@@ -5,7 +5,7 @@ json.array! @behaviour_reports do |behaviour_report|
     json.description behaviour_report.description 
     json.behaviour_type behaviour_report.behaviour_type
    
-    json.teacher behaviour_report.teacher.full_name
+    json.student behaviour_report.student.full_name
     
 
 end

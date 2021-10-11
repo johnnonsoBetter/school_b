@@ -6,7 +6,8 @@ class Api::V1::DebtorsController < ApplicationController
 
 
     def index 
-        @students = @admin.school.students.where("total_debt > ?", 0) 
+        @students = @admin.school.students.where("total_debt > ?", 0).includes(:classroom)
+       
         render 'api/v1/debtors/index.json.jbuilder'
     end
 
