@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       resources :expense_reports, only: [:create, :index]
       resources :stock_repair_reports, only: :create
       resources :sale_reports, only: [:create, :index]
-      resources :debt_recovered_reports, only: :create
+      resources :debt_recovered_reports, only: [:create, :index]
 
 
 

@@ -155,8 +155,6 @@ RSpec.describe "Api::V1::ExpenseReports", type: :request do
         end
 
      
-        
-
         it "returns proper json response of the first data of expense_reports" do
           expect(@json_body.first).to include({
             'amount' => 300

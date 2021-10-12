@@ -149,171 +149,193 @@ RSpec.describe "Api::V1::DebtRecoveredReports", type: :request do
 
 
 
-  # describe "GET /index" do
-   
-  #   before do 
-  #     sch = build :school, id: 44
-  #     @admin = create :admin, email: "admin@mail.com", password: "password", school: sch, permitted: true
+
   
-  #     item = create :item, name: "js1 school book", selling_price: 600, school: sch
-  #     term_date = create :term_date, id: 1, name: "1st term 2021/2021", start_date: Date.new(2021, 9, 4), end_date: Date.new(2021, 10, 11)
+  describe "GET /index" do
+   
+    before do 
+      sch = build :school, id: 44
+      @admin = create :admin, email: "admin@mail.com", password: "password", school: sch, permitted: true
+  
+    
+      term_date = create :term_date, id: 1, name: "1st term 2021/2021", start_date: Date.new(2021, 9, 4), end_date: Date.new(2021, 10, 11)
 
-  #     create :debt_recovered_report, school: sch, quantity: 4, item: item, created_at: Date.new(2020, 10, 4)
-  #     create :debt_recovered_report, school: sch, quantity: 36, item: item, created_at: Date.new(2021, 10, 8)
+      class1 = create :classroom, id: 1, name: "ss1", school: sch
+      class2 = create :classroom, id: 2, name: "ss2", school: sch
+      
+      stud1 = create :student, id: 1, classroom: class1,  email: "st@mail.com", password: "password", school: sch, total_debt: 1200
+      stud2 = create :student, id: 2, classroom: class2, school: sch, email: "chisfs1@gmail.com", password: "password", first_name: "ani", last_name: "micheal"
+
+      bill_report = create :bill_report, title: "exam fee", admin: @admin, school: sch, amount: 1500 
+      bill_report2 = create :bill_report, title: "a fee", admin: @admin, school: sch, amount: 500 
+      bill_report3 = create :bill_report, title: "b fee", admin: @admin, school: sch, amount: 200 
 
 
-  #     create :debt_recovered_report, school: sch, quantity: 10, item: item, created_at: Time.now
+      @b1 = create :bill, id: 1 , payment_completed: false, student: stud1, bill_report: bill_report, paid: 500, balance: 1000
 
       
-  #     create :debt_recovered_report, school: sch, quantity: 7, item: item, created_at: term_date.start_date
+      b2 =  create :bill, payment_completed: false, student: stud1, bill_report: bill_report2, paid: 300, balance: 200
+      b3 =  create :bill, payment_completed: true, student: stud1, bill_report: bill_report3, paid: 200, balance: 0
 
-  #     create :debt_recovered_report, school: sch, quantity: 31, item: item, created_at: Time.now
-      
-      
-  #     create :debt_recovered_report, school: sch, quantity: 15, item: item, created_at: term_date.end_date
 
      
 
-  #     @login_url = '/api/v1/auth/sign_in'
-  #     @debt_recovered_report_url = '/api/v1/debt_recovered_reports/'
+      create :debt_recovered_report, school: sch, admin: @admin, amount: 100, created_at: Date.new(2020, 10, 4), bill_id: @b1.id
+      create :debt_recovered_report, school: sch, admin: @admin, amount: 300, created_at: Date.new(2021, 9, 4), bill_id: b2.id
+
+      create :debt_recovered_report, school: sch, admin: @admin, amount: 600, created_at: Date.new(2021, 10, 8), bill_id: @b1.id
+
+      create :debt_recovered_report, school: sch, admin: @admin, amount: 950, created_at: Date.new(2021, 10, 11), bill_id: @b1.id
+
+      create :debt_recovered_report, school: sch, admin: @admin, amount: 110, created_at: Time.now, bill_id: b2.id
+
+      create :debt_recovered_report, school: sch, admin: @admin, amount: 450, created_at: Time.now, bill_id: b2.id
+      
+      
+      
+     
+
+      @login_url = '/api/v1/auth/sign_in'
+      @debt_recovered_report_url = '/api/v1/debt_recovered_reports/'
   
-  #     @admin_params = {
-  #       email: @admin.email,
-  #       password: @admin.password
-  #     }
+      @admin_params = {
+        email: @admin.email,
+        password: @admin.password
+      }
 
-  #     post @login_url, params: @admin_params
+      post @login_url, params: @admin_params
         
-  #       @headers = {
-  #         'access-token' => response.headers['access-token'],
-  #         'client' => response.headers['client'],
-  #         'uid' => response.headers['uid']
-  #       }
+        @headers = {
+          'access-token' => response.headers['access-token'],
+          'client' => response.headers['client'],
+          'uid' => response.headers['uid']
+        }
 
-  #   end
+    end
 
-  #   context "when admin is not authenticated" do
-  #     it "return http status unauthorized" do
+    context "when admin is not authenticated" do
+      it "return http status unauthorized" do
         
-  #       get @debt_recovered_report_url
-  #       expect(response).to have_http_status(:unauthorized)  
-  #     end
+        get @debt_recovered_report_url
+        expect(response).to have_http_status(:unauthorized)  
+      end
       
-  #   end
+    end
 
-  #   context "when admin is authenticated " do
+    context "when admin is authenticated " do
 
-  #     subject {  get @debt_recovered_report_url, headers: @headers } 
+      subject {  get @debt_recovered_report_url, headers: @headers } 
 
-  #     context "when term_id params exists" do
-  #       subject {  get @debt_recovered_report_url, headers: @headers, params: {term_id: 1} } 
+      context "when term_id params exists" do
+        subject {  get @debt_recovered_report_url, headers: @headers, params: {term_id: 1} } 
 
-  #       before do 
+        before do 
 
-  #         subject
-  #         @json_body = JSON.parse(response.body)
+          subject
+          @json_body = JSON.parse(response.body)
 
+ 
+        end
 
-  #       end
+     
+        
 
-  #       it "returns proper json response of the first data of debt_recovered_reports" do
-  #         expect(@json_body.first).to include({
-  #           'quantity' => 10
+        it "returns proper json response of the first data of debt_recovered_reports" do
+          expect(@json_body.first).to include({
+            'amount' => 300
             
-  #         })     
-  #       end
+          })     
+        end
 
-  #       it "returns proper json response of the last data of debt_recovered_reports" do
-  #         expect(@json_body.last).to include({
-  #           'quantity' => 15
+        it "returns proper json response of the last data of debt_recovered_reports" do
+          expect(@json_body.last).to include({
+            'amount' => 950
             
-  #         })     
-  #       end
+          })     
+        end
         
         
-  #     end
+      end
 
-  #     context "when date params exists" do
-  #       subject {  get @debt_recovered_report_url, headers: @headers, params: {date: Time.now} } 
+      context "when date params exists" do
+        subject {  get @debt_recovered_report_url, headers: @headers, params: {date: Time.now} } 
 
-  #       before do 
+        before do 
 
-  #         subject
-  #         @json_body = JSON.parse(response.body)
+          subject
+          @json_body = JSON.parse(response.body)
 
 
-  #       end
+        end
 
-  #       it "returns proper json response of the first data of debt_recovered_reports" do
-  #         expect(@json_body.first).to include({
-  #           'quantity' => 10
+        it "returns proper json response of the first data of debt_recovered_reports" do
+          expect(@json_body.first).to include({
+            'amount' => 110
             
-  #         })     
-  #       end
+          })     
+        end
 
-  #       it "returns proper json response of the last data of debt_recovered_reports" do
-  #         expect(@json_body.last).to include({
-  #           'quantity' => 31
+        it "returns proper json response of the last data of debt_recovered_reports" do
+          expect(@json_body.last).to include({
+            'amount' => 450
             
-  #         })     
-  #       end
+          })     
+        end
         
         
-  #     end
+      end
 
-  #     context "when range params exists" do
-  #       subject {  get @debt_recovered_report_url, headers: @headers, params: {date_range: {from: Date.new(2020, 10, 4), to: Time.now}} } 
+      context "when range params exists" do
+        subject {  get @debt_recovered_report_url, headers: @headers, params: {date_range: {from: Date.new(2021, 10, 8), to: Date.new(2021, 10, 11)}} } 
 
-  #       before do 
+        before do 
 
-  #         subject
-  #         @json_body = JSON.parse(response.body)
+          subject
+          @json_body = JSON.parse(response.body)
 
 
-  #       end
+        end
 
-  #       # it "returns proper json response of the first data of debt_recovered_reports" do
-  #       #   expect(@json_body.first).to include({
-  #       #     'quantity' => 4
+        it "returns proper json response of the first data of debt_recovered_reports" do
+          expect(@json_body.first).to include({
+            'amount' => 600
             
-  #       #   })     
-  #       # end
+          })     
+        end
 
-  #       # it "returns proper json response of the last data of debt_recovered_reports" do
-  #       #   expect(@json_body.last).to include({
-  #       #     'quantity' => 36
+        it "returns proper json response of the last data of debt_recovered_reports" do
+          expect(@json_body.last).to include({
+            'amount' => 950
             
-  #       #   })     
-  #       # end
+          })     
+        end
         
         
-  #     end
-      
-
-      
-
-  #     context "when admin is not permitted " do
-
-  #       it "returns https status code 401 unauthorized" do
-  #         @admin.permitted = false
-  #         @admin.save 
-  #         subject
-  #         expect(response).to have_http_status(:unauthorized)  
-  #       end
-        
-        
-  #     end
-
-
-      
+      end
       
 
-  #   end
+      
+
+      context "when admin is not permitted " do
+
+        it "returns https status code 401 unauthorized" do
+          @admin.permitted = false
+          @admin.save 
+          subject
+          expect(response).to have_http_status(:unauthorized)  
+        end
+        
+        
+      end
+
+
+      
+      
+
+    end
 
     
     
 
-  # end
-
-
+  end
 end

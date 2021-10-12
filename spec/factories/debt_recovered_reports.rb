@@ -4,6 +4,6 @@ FactoryBot.define do
     school { nil }
     admin { nil }
     bill { nil }
-    bill_report { nil }
+   
   end
 end
