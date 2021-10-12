@@ -42,22 +42,24 @@ class Api::V1::RestockReportsController < ApplicationController
 
         if params[:term_id].present?
             term = TermDate.find_by(id: params[:term_id])
-
+            
             restock_reports = @admin.school.restock_reports
-            @restock_reports =  restock_reports.where(created_at: Date.parse(term.start_date).beginning_of_day..Date.parse(term.end_date).end_of_day)
+            @restock_reports =  restock_reports.where(created_at: DateTime.parse(term.start_date).beginning_of_day..DateTime.parse(term.end_date).end_of_day).includes(:admin)
+            
 
         elsif params[:date].present? 
             
             restock_reports = @admin.school.restock_reports
-            @restock_reports =  restock_reports.where(created_at: Date.parse(params[:date]).beginning_of_day..Date.parse(params[:date]).end_of_day)
+            @restock_reports =  restock_reports.where(created_at: DateTime.parse(params[:date]).beginning_of_day..DateTime.parse(params[:date]).end_of_day).includes(:admin)
+            
 
         elsif params[:date_range].present?
 
             
             
             restock_reports = @admin.school.restock_reports
-            @restock_reports =  restock_reports.where(created_at: Date.parse(date_range_params[:from]).beginning_of_day..Date.parse(date_range_params[:to]).end_of_day)
-            debugger
+            @restock_reports =  restock_reports.where(created_at: DateTime.parse(date_range_params[:from]).beginning_of_day..DateTime.parse(date_range_params[:to]).end_of_day).includes(:admin)
+            
 
         end
         

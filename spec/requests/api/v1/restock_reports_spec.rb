@@ -103,19 +103,18 @@ RSpec.describe "Api::V1::RestockReports", type: :request do
       term_date = create :term_date, id: 1, name: "1st term 2021/2021", start_date: Date.new(2021, 9, 4), end_date: Date.new(2021, 10, 11)
 
       create :restock_report, school: sch, admin: @admin, quantity: 4, item: item, created_at: Date.new(2020, 10, 4)
+      create :restock_report, school: sch, admin: @admin, quantity: 7, item: item, created_at: Date.new(2021, 9, 4)
+
       create :restock_report, school: sch, admin: @admin, quantity: 36, item: item, created_at: Date.new(2021, 10, 8)
 
+      create :restock_report, school: sch, admin: @admin, quantity: 15, item: item, created_at: Date.new(2021, 10, 11)
 
       create :restock_report, school: sch, admin: @admin, quantity: 10, item: item, created_at: Time.now
-
-      
-      create :restock_report, school: sch, admin: @admin, quantity: 7, item: item, created_at: term_date.start_date
 
       create :restock_report, school: sch, admin: @admin, quantity: 31, item: item, created_at: Time.now
       
       
-      create :restock_report, school: sch, admin: @admin, quantity: 15, item: item, created_at: term_date.end_date
-
+      
      
 
       @login_url = '/api/v1/auth/sign_in'
@@ -162,7 +161,7 @@ RSpec.describe "Api::V1::RestockReports", type: :request do
 
         it "returns proper json response of the first data of restock_reports" do
           expect(@json_body.first).to include({
-            'quantity' => 10
+            'quantity' => 7
             
           })     
         end
@@ -206,7 +205,7 @@ RSpec.describe "Api::V1::RestockReports", type: :request do
       end
 
       context "when range params exists" do
-        subject {  get @restock_report_url, headers: @headers, params: {date_range: {from: Date.new(2020, 10, 4), to: Time.now}} } 
+        subject {  get @restock_report_url, headers: @headers, params: {date_range: {from: Date.new(2021, 10, 8), to: Time.now}} } 
 
         before do 
 
@@ -216,19 +215,19 @@ RSpec.describe "Api::V1::RestockReports", type: :request do
 
         end
 
-        # it "returns proper json response of the first data of restock_reports" do
-        #   expect(@json_body.first).to include({
-        #     'quantity' => 4
+        it "returns proper json response of the first data of restock_reports" do
+          expect(@json_body.first).to include({
+            'quantity' => 36
             
-        #   })     
-        # end
+          })     
+        end
 
-        # it "returns proper json response of the last data of restock_reports" do
-        #   expect(@json_body.last).to include({
-        #     'quantity' => 36
+        it "returns proper json response of the last data of restock_reports" do
+          expect(@json_body.last).to include({
+            'quantity' => 31
             
-        #   })     
-        # end
+          })     
+        end
         
         
       end

@@ -299,7 +299,9 @@ RSpec.describe "Api::V1::Subjects", type: :request do
 
       it "returns proper json response of the subject name" do
 
-        expect(@json_body["classroom"]).to eq("js3")
+        expect(@json_body["classroom"]).to include({
+          'name' => "js3"
+        })
         
       end
       
