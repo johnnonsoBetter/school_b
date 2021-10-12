@@ -796,7 +796,7 @@
         "lines": [
           1,
           1,
-          16,
+          12,
           2,
           null,
           null,
@@ -829,17 +829,6 @@
           null
         ]
       },
-      "/root/school_b/app/models/item.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
       "/root/school_b/app/controllers/application_controller.rb": {
         "lines": [
           1,
@@ -847,7 +836,7 @@
           null
         ]
       },
-      "/root/school_b/app/controllers/api/v1/sale_reports_controller.rb": {
+      "/root/school_b/app/controllers/api/v1/expense_reports_controller.rb": {
         "lines": [
           1,
           1,
@@ -858,57 +847,14 @@
           null,
           1,
           null,
-          8,
-          8,
-          8,
-          8,
-          8,
+          4,
+          4,
           null,
+          4,
+          2,
           null,
-          8,
-          8,
-          8,
+          2,
           null,
-          8,
-          null,
-          8,
-          null,
-          14,
-          14,
-          null,
-          null,
-          null,
-          null,
-          6,
-          null,
-          12,
-          12,
-          null,
-          12,
-          null,
-          null,
-          null,
-          null,
-          6,
-          6,
-          null,
-          null,
-          null,
-          5,
-          null,
-          5,
-          5,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          8,
-          5,
-          null,
-          3,
           null,
           null,
           null,
@@ -916,13 +862,13 @@
           1,
           null,
           6,
+          6,
           null,
           6,
           2,
           null,
           2,
           2,
-          null,
           null,
           4,
           null,
@@ -947,58 +893,27 @@
           1,
           null,
           1,
-          14,
+          4,
           null,
           null,
           null,
           1,
-          16,
+          12,
           null,
           null,
           1,
-          16,
+          12,
           null,
           null,
           1,
           null,
           4,
           null,
-          null
-        ]
-      },
-      "/root/school_b/app/models/sale_report.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/root/school_b/app/models/item_sold.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          12,
-          null,
           null,
           null
         ]
       },
-      "/root/school_b/app/models/stock_repair_report.rb": {
+      "/root/school_b/app/models/expense_report.rb": {
         "lines": [
           1,
           1,
@@ -1015,6 +930,6 @@
         ]
       }
     },
-    "timestamp": 1634045979
+    "timestamp": 1634048040
   }
 }

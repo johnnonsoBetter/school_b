@@ -65,13 +65,14 @@ class Api::V1::SaleReportsController < ApplicationController
     def index 
 
         @sale_reports = []
+        @total = 0
 
         if params[:term_id].present?
             term = TermDate.find_by(id: params[:term_id])
             
             sale_reports = @admin.school.sale_reports
             @sale_reports =  sale_reports.where(created_at: DateTime.parse(term.start_date).beginning_of_day..DateTime.parse(term.end_date).end_of_day).includes(:admin)
-            
+            @total = @sale_reports.sum(:total)
 
         elsif params[:date].present? 
             

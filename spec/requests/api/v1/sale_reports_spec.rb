@@ -197,6 +197,9 @@ RSpec.describe "Api::V1::SaleReports", type: :request do
 
         end
 
+     
+        
+
         it "returns proper json response of the first data of sale_reports" do
           expect(@json_body.first).to include({
             'total' => 300
