@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       resources :sale_reports, only: [:create, :index]
       resources :debt_recovered_reports, only: [:create, :index]
       resources :students, only: :index
+      resources :teachers, only: :index
 
 
 
