@@ -1,8 +1,8 @@
 class Api::V1::StockRepairReportsController < ApplicationController
     include PermissionHelper
-    before_action :authenticate_api_v1_admin!, only: [:create]
-    before_action :find_admin, only: [:create]
-    before_action :figure_status, only: [:create]
+    before_action :authenticate_api_v1_admin!, only: [:create, :index]
+    before_action :find_admin, only: [:create, :index]
+    before_action :figure_status, only: [:create, :index]
 
     def create 
         @stock_repair_report = @admin.school.stock_repair_reports.new  stock_repair_report_params
@@ -34,6 +34,38 @@ class Api::V1::StockRepairReportsController < ApplicationController
 
     end
 
+
+    def index 
+        
+        @stock_repair_reports = []
+
+        if params[:term_id].present?
+            term = TermDate.find_by(id: params[:term_id])
+            
+            stock_repair_reports = @admin.school.stock_repair_reports
+            @stock_repair_reports =  stock_repair_reports.where(created_at: DateTime.parse(term.start_date).beginning_of_day..DateTime.parse(term.end_date).end_of_day).includes(:admin, :item)
+            
+
+        elsif params[:date].present? 
+            
+            stock_repair_reports = @admin.school.stock_repair_reports
+            @stock_repair_reports =  stock_repair_reports.where(created_at: DateTime.parse(params[:date]).beginning_of_day..DateTime.parse(params[:date]).end_of_day).includes(:admin, :item)
+            
+
+        elsif params[:date_range].present?
+
+            
+            
+            stock_repair_reports = @admin.school.stock_repair_reports
+            @stock_repair_reports =  stock_repair_reports.where(created_at: DateTime.parse(date_range_params[:from]).beginning_of_day..DateTime.parse(date_range_params[:to]).end_of_day).includes(:admin, :item)
+            
+
+        end
+        
+        render 'api/v1/stock_repair_reports/index.json.jbuilder'
+    end
+
+
     private
     
     def stock_repair_report_params 
@@ -47,5 +79,10 @@ class Api::V1::StockRepairReportsController < ApplicationController
 
     def figure_status
         check_permission_for @admin
+    end
+
+    def date_range_params 
+
+        params.require(:date_range).permit(:from, :to)
     end
 end

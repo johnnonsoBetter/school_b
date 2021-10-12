@@ -67,14 +67,14 @@ class Api::V1::DebtRecoveredReportsController < ApplicationController
             term = TermDate.find_by(id: params[:term_id])
             
             debt_recovered_reports = @admin.school.debt_recovered_reports
-            @debt_recovered_reports =  debt_recovered_reports.where(created_at: DateTime.parse(term.start_date).beginning_of_day..DateTime.parse(term.end_date).end_of_day).includes(:admin)
+            @debt_recovered_reports =  debt_recovered_reports.where(created_at: DateTime.parse(term.start_date).beginning_of_day..DateTime.parse(term.end_date).end_of_day).includes(:admin, :bill)
             @total = @debt_recovered_reports.sum(:amount)
             
  
         elsif params[:date].present? 
             
             debt_recovered_reports = @admin.school.debt_recovered_reports
-            @debt_recovered_reports =  debt_recovered_reports.where(created_at: DateTime.parse(params[:date]).beginning_of_day..DateTime.parse(params[:date]).end_of_day).includes(:admin)
+            @debt_recovered_reports =  debt_recovered_reports.where(created_at: DateTime.parse(params[:date]).beginning_of_day..DateTime.parse(params[:date]).end_of_day).includes(:admin, :bill)
             
 
         elsif params[:date_range].present?
@@ -82,7 +82,7 @@ class Api::V1::DebtRecoveredReportsController < ApplicationController
             
             
             debt_recovered_reports = @admin.school.debt_recovered_reports
-            @debt_recovered_reports =  debt_recovered_reports.where(created_at: DateTime.parse(date_range_params[:from]).beginning_of_day..DateTime.parse(date_range_params[:to]).end_of_day).includes(:admin)
+            @debt_recovered_reports =  debt_recovered_reports.where(created_at: DateTime.parse(date_range_params[:from]).beginning_of_day..DateTime.parse(date_range_params[:to]).end_of_day).includes(:admin, :bill)
             
 
         end

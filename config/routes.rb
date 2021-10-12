@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       resources :items, only: [:create, :update, :destroy, :show, :index]
       resources :restock_reports, only: [:create, :index]
       resources :expense_reports, only: [:create, :index]
-      resources :stock_repair_reports, only: :create
+      resources :stock_repair_reports, only: [:create, :index]
       resources :sale_reports, only: [:create, :index]
       resources :debt_recovered_reports, only: [:create, :index]
 
