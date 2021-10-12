@@ -13,12 +13,14 @@ Rails.application.routes.draw do
       resources :subjects, only: [:create, :index, :show]
       resources :bill_reports, only: [:create, :index]
       get 'debtors', to: 'debtors#index'
+      get 'debt_bills', to: 'debt_bills#index'
       resources :items, only: [:create, :update, :destroy, :show, :index]
       resources :restock_reports, only: [:create, :index]
       resources :expense_reports, only: [:create, :index]
       resources :stock_repair_reports, only: [:create, :index]
       resources :sale_reports, only: [:create, :index]
       resources :debt_recovered_reports, only: [:create, :index]
+      resources :students, only: :index
 
 
 

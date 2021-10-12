@@ -253,14 +253,8 @@ RSpec.describe "Api::V1::StockRepairReports", type: :request do
         
       end
 
-
-      
-      
-
     end
 
-    
-    
 
   end
 
