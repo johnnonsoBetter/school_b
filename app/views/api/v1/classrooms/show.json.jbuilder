@@ -16,7 +16,7 @@ json.set! :subjects, @classroom.subjects do |subject|
 end
 
 
-json.set! :teachers, @teachers do |teacher|
+json.set! :teachers, @teachers.to_a do |teacher|
 
     json.id teacher.id
     json.full_name teacher.full_name

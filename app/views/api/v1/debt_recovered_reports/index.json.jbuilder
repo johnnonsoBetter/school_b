@@ -5,5 +5,7 @@ json.array! @debt_recovered_reports do |debt_recovered_report|
     json.admin debt_recovered_report.admin
     json.bill debt_recovered_report.bill
     json.bill_report debt_recovered_report.bill.bill_report
+    json.student debt_recovered_report.bill.student
+
 end
 

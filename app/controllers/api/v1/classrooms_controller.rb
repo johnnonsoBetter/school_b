@@ -23,7 +23,7 @@ class Api::V1::ClassroomsController < ApplicationController
 
     def show 
         @classroom = @admin.school.classrooms.find(params[:id])
-        @teachers = @classroom.teachers.where({permitted: true})
+        @teachers = Set.new @classroom.teachers.where({permitted: true})
         render 'api/v1/classrooms/show.json.jbuilder'
     end
 

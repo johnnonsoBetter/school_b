@@ -36,12 +36,12 @@ class Api::V1::ExpenseReportsController < ApplicationController
             @expense_reports =  expense_reports.where(created_at: DateTime.parse(params[:date]).beginning_of_day..DateTime.parse(params[:date]).end_of_day).includes(:admin)
             
 
-        elsif params[:date_range].present?
+        elsif params[:from].present? && params[:to].present?
 
             
             
             expense_reports = @admin.school.expense_reports
-            @expense_reports =  expense_reports.where(created_at: DateTime.parse(date_range_params[:from]).beginning_of_day..DateTime.parse(date_range_params[:to]).end_of_day).includes(:admin)
+            @expense_reports =  expense_reports.where(created_at: DateTime.parse(params[:from]).beginning_of_day..DateTime.parse(params[:to]).end_of_day).includes(:admin)
             
 
         end

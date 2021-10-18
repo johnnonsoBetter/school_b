@@ -18,7 +18,33 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     if Rails.env.development?
-      origins '*'
+      origins 'admin.localhost:3000'
+    else
+      origins 'https://my-app.com'
+    end
+
+    resource '*',
+      headers: :any,
+      expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+  end
+
+   allow do
+    if Rails.env.development?
+      origins 'teacher.localhost:3000'
+    else
+      origins 'https://my-app.com'
+    end
+
+    resource '*',
+      headers: :any,
+      expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+  end
+
+  allow do
+    if Rails.env.development?
+      origins 'parent.localhost:3000'
     else
       origins 'https://my-app.com'
     end

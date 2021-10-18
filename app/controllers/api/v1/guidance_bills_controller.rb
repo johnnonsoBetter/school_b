@@ -5,6 +5,7 @@ class Api::V1::GuidanceBillsController < ApplicationController
         student =  @current_api_v1_guidance.students.find(params[:student_id])
 
         @bills = student.bills
+        
 
         render 'api/v1/guidance_bills/index.json.jbuilder'
     end

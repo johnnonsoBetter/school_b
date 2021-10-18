@@ -77,15 +77,16 @@ class Api::V1::DebtRecoveredReportsController < ApplicationController
             @debt_recovered_reports =  debt_recovered_reports.where(created_at: DateTime.parse(params[:date]).beginning_of_day..DateTime.parse(params[:date]).end_of_day).includes(:admin, :bill)
             
 
-        elsif params[:date_range].present?
+        elsif params[:from].present? && params[:to].present?
 
             
             
             debt_recovered_reports = @admin.school.debt_recovered_reports
-            @debt_recovered_reports =  debt_recovered_reports.where(created_at: DateTime.parse(date_range_params[:from]).beginning_of_day..DateTime.parse(date_range_params[:to]).end_of_day).includes(:admin, :bill)
+            @debt_recovered_reports =  debt_recovered_reports.where(created_at: DateTime.parse(params[:from]).beginning_of_day..DateTime.parse(params[:to]).end_of_day).includes(:admin)
             
 
         end
+
 
         render 'api/v1/debt_recovered_reports/index.json.jbuilder'
     end

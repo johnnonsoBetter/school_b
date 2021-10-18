@@ -23,6 +23,7 @@ class Api::V1::SaleReportsController < ApplicationController
                     items_sold.each do |item_sold| 
                        
                        item = @sale_report.item_solds.new item_id: item_sold[:item_id].to_i, quantity: item_sold[:quantity].to_i
+                       
                        raise ActiveRecord::Rollback if !item.save
                     
                         
@@ -54,6 +55,8 @@ class Api::V1::SaleReportsController < ApplicationController
             end
         end
 
+
+
         if successful 
             render json: @sale_report, status: :created 
         else 
@@ -66,7 +69,7 @@ class Api::V1::SaleReportsController < ApplicationController
 
         @sale_reports = []
         @total = 0
-
+        
         if params[:term_id].present?
             term = TermDate.find_by(id: params[:term_id])
             
@@ -80,12 +83,12 @@ class Api::V1::SaleReportsController < ApplicationController
             @sale_reports =  sale_reports.where(created_at: DateTime.parse(params[:date]).beginning_of_day..DateTime.parse(params[:date]).end_of_day).includes(:admin)
             
 
-        elsif params[:date_range].present?
+        elsif params[:from].present? && params[:to].present?
 
             
             
             sale_reports = @admin.school.sale_reports
-            @sale_reports =  sale_reports.where(created_at: DateTime.parse(date_range_params[:from]).beginning_of_day..DateTime.parse(date_range_params[:to]).end_of_day).includes(:admin)
+            @sale_reports =  sale_reports.where(created_at: DateTime.parse(params[:from]).beginning_of_day..DateTime.parse(params[:to]).end_of_day).includes(:admin)
             
 
         end
