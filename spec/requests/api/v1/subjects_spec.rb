@@ -211,7 +211,7 @@ RSpec.describe "Api::V1::Subjects", type: :request do
       stud1 = create :student, classroom: c3, id: 34, email: "chi@gmail.com", password: "password", first_name: "chima", last_name: "joy", middle_name: "paul", school: sch
       stud2 = create :student, classroom: c3, email: "chi2@gmail.com", password: "password", first_name: "muna", last_name: "p", middle_name: "obi", school: sch
 
-      @teacher1 = create :teacher, email: "teacher@mail.com", password: "password", school: sch, permitted: true, full_name: "teacher 1"
+      @teacher1 = create :teacher, email: "teacher@mail.com", password: "password", school: sch, permitted: true, full_name: "teacher 1", first_name: "teacher", middle_name: "k", last_name: "1"
       
       sub = create :subject, id: 3, name: "mathematics", teacher: @teacher1, classroom: c3 
       
@@ -286,7 +286,7 @@ RSpec.describe "Api::V1::Subjects", type: :request do
       it "returns proper json teacher response" do
         
         expect(@json_body['teacher']).to include({
-          "full_name" => "teacher 1"
+          "full_name" => "teacher k 1"
         })  
         
       end

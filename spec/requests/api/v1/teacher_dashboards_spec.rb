@@ -6,7 +6,7 @@ RSpec.describe "Api::V1::TeacherDashboards", type: :request do
     before do 
       sch = build :school, id: 44
       class1 = create :classroom, name: "ss1", school: sch
-      @teacher = create :teacher, email: "teacher@mail.com", password: "password", school: sch, permitted: true, full_name: "teacher paul"
+      @teacher = create :teacher, email: "teacher@mail.com", password: "password", school: sch, permitted: true, full_name: "teacher paul", first_name: "teacher", middle_name: "k", last_name: "paul"
       @teacher1 = create :teacher, email: "maker@mail.com", password: "password", school: sch, permitted: true
       score_type = create :score_type, id: 1, name: "homework", school: sch
       sub =  create :subject, id: 1, name: "english", classroom: class1, teacher: @teacher
@@ -101,7 +101,7 @@ RSpec.describe "Api::V1::TeacherDashboards", type: :request do
         json_body = JSON.parse(response.body)
 
         expect(json_body["teacher"]).to include({
-          "full_name" => "teacher paul"
+          "full_name" => "teacher k paul"
         })
         
       end

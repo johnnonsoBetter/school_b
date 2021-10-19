@@ -205,7 +205,7 @@ RSpec.describe "Api::V1::RestockReports", type: :request do
       end
 
       context "when range params exists" do
-        subject {  get @restock_report_url, headers: @headers, params: {date_range: {from: Date.new(2021, 10, 8), to: Time.now}} } 
+        subject {  get @restock_report_url, headers: @headers, params: {from: Date.new(2021, 10, 8), to: Time.now} } 
 
         before do 
 

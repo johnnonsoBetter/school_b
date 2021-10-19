@@ -286,7 +286,7 @@ RSpec.describe "Api::V1::DebtRecoveredReports", type: :request do
       end
 
       context "when range params exists" do
-        subject {  get @debt_recovered_report_url, headers: @headers, params: {date_range: {from: Date.new(2021, 10, 8), to: Date.new(2021, 10, 11)}} } 
+        subject {  get @debt_recovered_report_url, headers: @headers, params: {from: Date.new(2021, 10, 8), to: Date.new(2021, 10, 11)} } 
 
         before do 
 

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get 'debtors', to: 'debtors#index'
       get 'debt_bills', to: 'debt_bills#index'
       get 'admin_dashboards', to: 'admin_dashboards#index'
+      get 'admin_student_score_reports', to: 'admin_student_score_reports#index'
       resources :items, only: [:create, :update, :destroy, :show, :index]
       resources :restock_reports, only: [:create, :index]
       resources :expense_reports, only: [:create, :index]

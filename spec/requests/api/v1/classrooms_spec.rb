@@ -183,8 +183,8 @@ RSpec.describe "Api::V1::Classrooms", type: :request do
       stud1 = create :student, classroom: c3, id: 34, email: "chi@gmail.com", password: "password", first_name: "chima", last_name: "joy", middle_name: "paul", school: sch
       stud2 = create :student, classroom: c3, email: "chi2@gmail.com", password: "password", first_name: "muna", last_name: "p", middle_name: "obi", school: sch
 
-      @teacher1 = create :teacher, email: "teacher@mail.com", password: "password", school: sch, permitted: true, full_name: "teacher 1"
-      @teacher2 = create :teacher, email: "t@mail.com", password: "password", school: sch, permitted: true, full_name: "teacher 2"
+      @teacher1 = create :teacher, email: "teacher@mail.com", password: "password", school: sch, permitted: true, full_name: "teacher 1", first_name: "teacher", middle_name: "k", last_name: "1"
+      @teacher2 = create :teacher, email: "t@mail.com", password: "password", school: sch, permitted: true, full_name: "teacher 2", first_name: "teacher", middle_name: "k", last_name: "2"
       @teacher3 = create :teacher, email: "teac@mail.com", password: "password", school: sch, permitted: false, full_name: "teacher 3"
 
       sub = create :subject, name: "maths", teacher: @teacher1, classroom: c3 
@@ -276,7 +276,7 @@ RSpec.describe "Api::V1::Classrooms", type: :request do
       it "returns proper json first classroom teacher that is permitted response" do
         
         expect(@json_body['teachers'].first).to include({
-          "full_name" => "teacher 1"
+          "full_name" => "teacher k 1"
         })  
         
       end
@@ -291,7 +291,7 @@ RSpec.describe "Api::V1::Classrooms", type: :request do
       it "returns proper json last classroom teacher that is permitted response" do
         
         expect(@json_body['teachers'].last).to include({
-          "full_name" => "teacher 2"
+          "full_name" => "teacher k 2"
         })  
         
       end

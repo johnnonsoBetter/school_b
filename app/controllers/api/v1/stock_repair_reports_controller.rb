@@ -51,17 +51,15 @@ class Api::V1::StockRepairReportsController < ApplicationController
             stock_repair_reports = @admin.school.stock_repair_reports
             @stock_repair_reports =  stock_repair_reports.where(created_at: DateTime.parse(params[:date]).beginning_of_day..DateTime.parse(params[:date]).end_of_day).includes(:admin, :item)
             
+        elsif params[:from].present? && params[:to].present?
 
-        elsif params[:date_range].present?
-
-            
-            
+                
+                
             stock_repair_reports = @admin.school.stock_repair_reports
-            @stock_repair_reports =  stock_repair_reports.where(created_at: DateTime.parse(date_range_params[:from]).beginning_of_day..DateTime.parse(date_range_params[:to]).end_of_day).includes(:admin, :item)
+            @stock_repair_reports =  stock_repair_reports.where(created_at: DateTime.parse(params[:from]).beginning_of_day..DateTime.parse(params[:to]).end_of_day).includes(:admin)
             
 
         end
-        
         render 'api/v1/stock_repair_reports/index.json.jbuilder'
     end
 

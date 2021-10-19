@@ -77,11 +77,11 @@ RSpec.describe "Api::V1::StockRepairReports", type: :request do
 
 
           it "do not increment stock_repair_report report " do
-            expect{post @stock_repair_report_url, headers: @headers, params: {stock_repair_report: {quantity: 0, item_id: 1 }} }.to_not change{StockRepairReport.count}
+            expect{post @stock_repair_report_url, headers: @headers, params: {stock_repair_report: {quantity: -1, item_id: 1 }} }.to_not change{StockRepairReport.count}
           end
 
           it "returns htpp status code unprocessable entity" do
-            post @stock_repair_report_url, headers: @headers, params: {stock_repair_report: {quantity: 0, item_id: 1}}
+            post @stock_repair_report_url, headers: @headers, params: {stock_repair_report: {quantity: -1, item_id: 1}}
             expect(response).to have_http_status(:unprocessable_entity)
             
           end
@@ -211,7 +211,7 @@ RSpec.describe "Api::V1::StockRepairReports", type: :request do
       end
 
       context "when range params exists" do
-        subject {  get @stock_repair_report_url, headers: @headers, params: {date_range: {from: Date.new(2021, 10, 8), to: Time.now}} } 
+        subject {  get @stock_repair_report_url, headers: @headers, params: {from: Date.new(2021, 10, 8), to: Time.now} } 
 
         before do 
 
