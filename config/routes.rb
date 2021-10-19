@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get 'admin_dashboards', to: 'admin_dashboards#index'
       get 'admin_student_score_reports', to: 'admin_student_score_reports#index'
       get 'admin_student_behaviour_reports', to: 'admin_student_behaviour_reports#index'
+      get 'admin_student_bills', to: 'admin_student_bills#index'
       resources :items, only: [:create, :update, :destroy, :show, :index]
       resources :restock_reports, only: [:create, :index]
       resources :expense_reports, only: [:create, :index]
@@ -26,22 +27,14 @@ Rails.application.routes.draw do
       resources :students, only: :index
       resources :teachers, only: :index
 
-
-
-
       as :guidance do
         # Define routes for Guidance within this block.
         get 'guidance_dashboards', to: 'guidance_dashboards#index'
         get 'guidance_score_reports', to: 'guidance_score_reports#index'
         get 'guidance_behaviour_reports', to: 'guidance_behaviour_reports#index'
         resources :guidance_bills, only: [:index, :show]
-
-        
-       
       end
 
-      
-    
       as :teacher do
         # Define routes for Teacher within this block.
         resources :teacher_behaviour_reports, only: [:create, :index]
