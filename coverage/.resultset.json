@@ -706,6 +706,7 @@
           1,
           1,
           1,
+          1,
           null,
           null,
           null,
@@ -782,7 +783,7 @@
           null,
           1,
           1,
-          15,
+          9,
           null,
           null,
           null
@@ -809,7 +810,7 @@
           null,
           1,
           1,
-          5,
+          3,
           null,
           null,
           null
@@ -834,7 +835,7 @@
         "lines": [
           1,
           1,
-          4,
+          2,
           0,
           null,
           null,
@@ -879,64 +880,19 @@
           null
         ]
       },
-      "/root/school_b/app/models/score_type.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/root/school_b/app/models/subject.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null,
-          null
-        ]
-      },
       "/root/school_b/app/models/term_date.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/root/school_b/app/models/score_report.rb": {
+      "/root/school_b/app/models/behaviour_report.rb": {
         "lines": [
           1,
-          null,
-          1,
-          1,
-          1,
           1,
           1,
           null,
-          null,
           1,
-          null,
-          1,
-          null,
-          20,
-          20,
-          null,
-          20,
-          0,
-          20,
-          10,
-          10,
-          10,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
           null
         ]
       },
@@ -947,7 +903,7 @@
           null
         ]
       },
-      "/root/school_b/app/controllers/api/v1/admin_student_score_reports_controller.rb": {
+      "/root/school_b/app/controllers/api/v1/admin_student_behaviour_reports_controller.rb": {
         "lines": [
           1,
           1,
@@ -955,44 +911,31 @@
           1,
           1,
           null,
+          null,
           1,
           null,
-          null,
-          null,
-          4,
-          4,
-          4,
-          null,
-          4,
-          null,
           2,
-          null,
+          2,
           null,
           null,
           2,
           null,
-          null,
-          null,
           2,
           null,
           null,
-          null,
-          4,
-          null,
-          null,
           1,
           null,
           1,
-          4,
+          2,
           null,
           null,
           1,
-          4,
+          2,
           null,
           null
         ]
       }
     },
-    "timestamp": 1634636261
+    "timestamp": 1634662884
   }
 }

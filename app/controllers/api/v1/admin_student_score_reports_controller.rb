@@ -1,8 +1,8 @@
 class Api::V1::AdminStudentScoreReportsController < ApplicationController
     include PermissionHelper
-    before_action :authenticate_api_v1_admin!, only: [:create, :index]
-    before_action :find_admin, only: [:create, :index]
-    before_action :figure_status, only: [:create, :index]
+    before_action :authenticate_api_v1_admin!, only: [ :index]
+    before_action :find_admin, only: [ :index]
+    before_action :figure_status, only: [ :index]
 
     def index 
 
@@ -19,9 +19,6 @@ class Api::V1::AdminStudentScoreReportsController < ApplicationController
         else 
 
             @score_type = @admin.school.score_types.find_by_name(params[:score_type])
-
-            
-
             @score_reports = @student.score_reports.where({created_at: DateTime.parse(term.start_date).beginning_of_day..DateTime.parse(term.end_date).end_of_day}).where({score_type_id: @score_type.id})
             
 
