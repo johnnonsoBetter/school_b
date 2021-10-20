@@ -20,7 +20,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     if Rails.env.development?
       origins 'admin.localhost:3000'
     else
-      origins 'http://admin.confamsch.com.ng'
+      origins 'admin.confamsch.com.ng'
     end
 
     resource '*',
@@ -33,7 +33,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     if Rails.env.development?
       origins 'teacher.localhost:3000'
     else
-      origins 'http://teacher.confamsch.com.ng'
+      origins 'teacher.confamsch.com.ng'
     end
 
     resource '*',
@@ -46,7 +46,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     if Rails.env.development?
       origins 'parent.localhost:3000'
     else
-      origins  'http://parent.confamsch.com.ng'
+      origins  'parent.confamsch.com.ng'
     end
 
     resource '*',
