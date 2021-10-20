@@ -12,7 +12,9 @@ class Api::V1::AdminStudentScoreReportsController < ApplicationController
         term = TermDate.find(params[:term_id])
         @score_reports = []
 
-        if params[:score_type] === 'all'
+        
+
+        if params[:score_type] === 'All'
            
             @score_reports = @student.score_reports.where({created_at: DateTime.parse(term.start_date).beginning_of_day..DateTime.parse(term.end_date).end_of_day})
             

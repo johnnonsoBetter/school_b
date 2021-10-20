@@ -7,7 +7,7 @@ class Api::V1::AdminStudentBillsController < ApplicationController
 
     def index 
 
-        @bills = @admin.school.students.find_by_id(params[:student_id]).bills
+        @bills = @admin.school.students.find_by_id(params[:student_id]).bills.includes(:payment_histories)
         render 'api/v1/admin_student_bills/index.json.jbuilder'
     end
 
