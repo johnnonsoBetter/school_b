@@ -776,7 +776,7 @@
           null,
           1,
           1,
-          9,
+          15,
           null,
           null,
           null
@@ -803,7 +803,7 @@
           null,
           1,
           1,
-          0,
+          5,
           null,
           null,
           null
@@ -828,7 +828,7 @@
         "lines": [
           1,
           1,
-          2,
+          0,
           0,
           null,
           null,
@@ -873,27 +873,13 @@
           null
         ]
       },
-      "/root/school_b/app/models/bill_report.rb": {
+      "/root/school_b/app/models/behaviour_report.rb": {
         "lines": [
           1,
           1,
           1,
-          1,
           null,
           1,
-          1,
-          null,
-          null,
-          null
-        ]
-      },
-      "/root/school_b/app/models/bill.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          null,
           null
         ]
       },
@@ -904,42 +890,24 @@
           null
         ]
       },
-      "/root/school_b/app/controllers/api/v1/admin_student_bills_controller.rb": {
+      "/root/school_b/app/controllers/api/v1/guidance_behaviour_reports_controller.rb": {
         "lines": [
           1,
           1,
           1,
-          1,
-          1,
+          4,
+          4,
           null,
           null,
-          1,
-          null,
-          2,
-          2,
+          4,
           null,
           null,
-          1,
+          4,
           null,
-          1,
-          2,
-          null,
-          null,
-          1,
-          2,
-          null,
-          null
-        ]
-      },
-      "/root/school_b/app/models/payment_history.rb": {
-        "lines": [
-          1,
-          1,
-          1,
           null
         ]
       }
     },
-    "timestamp": 1634664310
+    "timestamp": 1634761708
   }
 }
