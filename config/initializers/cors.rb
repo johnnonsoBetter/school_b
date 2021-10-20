@@ -46,7 +46,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     if Rails.env.development?
       origins 'parent.localhost:3000'
     else
-      origins origins 'http://parent.confamsch.com.ng'
+      origins  'http://parent.confamsch.com.ng'
     end
 
     resource '*',
