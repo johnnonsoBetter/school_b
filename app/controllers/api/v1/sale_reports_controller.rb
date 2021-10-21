@@ -92,7 +92,7 @@ class Api::V1::SaleReportsController < ApplicationController
             
 
         end
-
+        @total = @sale_reports.sum(:total)
         render 'api/v1/sale_reports/index.json.jbuilder'
     end
 

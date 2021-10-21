@@ -29,6 +29,7 @@ class Api::V1::DebtRecoveredReportsController < ApplicationController
                         
                         raise ActiveRecord::Rollback if bill.payment_histories.sum(:amount) > bill_report.amount
 
+                        #when payment has been completed update the payment completed attribute to true
                         if bill.payment_histories.sum(:amount) == bill_report.amount
                             bill.toggle!(:payment_completed)
                         end
@@ -72,7 +73,7 @@ class Api::V1::DebtRecoveredReportsController < ApplicationController
             
             debt_recovered_reports = @admin.school.debt_recovered_reports
             @debt_recovered_reports =  debt_recovered_reports.where(created_at: DateTime.parse(term.start_date).beginning_of_day..DateTime.parse(term.end_date).end_of_day).includes(:admin, :bill)
-            @total = @debt_recovered_reports.sum(:amount)
+            
             
  
         elsif params[:date].present? 
@@ -91,6 +92,7 @@ class Api::V1::DebtRecoveredReportsController < ApplicationController
 
         end
 
+        @total = @debt_recovered_reports.sum(:amount)
 
         render 'api/v1/debt_recovered_reports/index.json.jbuilder'
     end

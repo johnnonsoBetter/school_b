@@ -46,6 +46,8 @@ class Api::V1::ExpenseReportsController < ApplicationController
 
         end
 
+        @total = @expense_reports.sum(:amount)
+
         render 'api/v1/expense_reports/index.json.jbuilder'
     end
 
