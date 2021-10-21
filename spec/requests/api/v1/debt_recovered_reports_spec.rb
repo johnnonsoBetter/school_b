@@ -116,6 +116,18 @@ RSpec.describe "Api::V1::DebtRecoveredReports", type: :request do
         
         
       end
+
+
+      context "when bill payment has been completed" do
+        subject {  post @debt_recovered_report_url, headers: @headers, params: {debt_recovered_report: {amount: 1000, bill_id: 1, }} } 
+
+        it "increment bill payment histores count by 2" do
+          subject
+          expect(Bill.find(1).payment_completed).to eq(true)
+        end
+
+      end
+      
       
 
       context "when new debt_recovered_report failed to be created" do

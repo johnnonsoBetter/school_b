@@ -29,6 +29,10 @@ class Api::V1::DebtRecoveredReportsController < ApplicationController
                         
                         raise ActiveRecord::Rollback if bill.payment_histories.sum(:amount) > bill_report.amount
 
+                        if bill.payment_histories.sum(:amount) == bill_report.amount
+                            bill.toggle!(:payment_completed)
+                        end
+
                         #updates bill paid and balance attributes
                         balance = bill_report.amount - bill.payment_histories.sum(:amount)
                         paid = bill_report.amount - balance

@@ -776,7 +776,7 @@
           null,
           1,
           1,
-          15,
+          42,
           null,
           null,
           null
@@ -803,7 +803,7 @@
           null,
           1,
           1,
-          5,
+          0,
           null,
           null,
           null
@@ -828,8 +828,8 @@
         "lines": [
           1,
           1,
-          0,
-          0,
+          19,
+          2,
           null,
           null,
           null
@@ -873,12 +873,34 @@
           null
         ]
       },
-      "/root/school_b/app/models/behaviour_report.rb": {
+      "/root/school_b/app/models/bill_report.rb": {
         "lines": [
           1,
           1,
           1,
+          1,
           null,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/root/school_b/app/models/bill.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/root/school_b/app/models/payment_history.rb": {
+        "lines": [
+          1,
+          1,
           1,
           null
         ]
@@ -890,24 +912,150 @@
           null
         ]
       },
-      "/root/school_b/app/controllers/api/v1/guidance_behaviour_reports_controller.rb": {
+      "/root/school_b/app/controllers/api/v1/debt_recovered_reports_controller.rb": {
         "lines": [
           1,
           1,
           1,
-          4,
-          4,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          11,
+          11,
+          11,
+          null,
+          11,
+          11,
+          11,
+          11,
+          null,
+          null,
+          11,
+          9,
+          9,
+          9,
+          null,
+          null,
+          9,
+          9,
+          null,
+          null,
+          9,
+          null,
+          8,
+          1,
+          null,
+          null,
+          null,
+          8,
+          8,
+          8,
+          null,
+          null,
+          8,
+          8,
+          null,
+          8,
+          8,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          11,
+          8,
+          null,
+          3,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          6,
+          6,
+          null,
+          6,
+          2,
+          null,
+          2,
+          2,
+          2,
           null,
           null,
           4,
           null,
+          2,
+          2,
           null,
-          4,
           null,
+          2,
+          null,
+          null,
+          null,
+          2,
+          2,
+          null,
+          null,
+          null,
+          null,
+          null,
+          6,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          11,
+          null,
+          null,
+          null,
+          1,
+          19,
+          null,
+          null,
+          1,
+          19,
+          null,
+          null,
+          1,
+          null,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/root/school_b/app/models/debt_recovered_report.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/root/school_b/app/models/term_date.rb": {
+        "lines": [
+          1,
           null
         ]
       }
     },
-    "timestamp": 1634761708
+    "timestamp": 1634802504
   }
 }

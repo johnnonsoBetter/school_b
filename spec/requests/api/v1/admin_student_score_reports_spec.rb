@@ -107,7 +107,7 @@ RSpec.describe "Api::V1::AdminStudentScoreReports", type: :request do
       
       before do 
 
-        get @admin_student_score_reports_url, headers: @headers, params: {student_id: 34, term_id: 1, score_type: "all"}
+        get @admin_student_score_reports_url, headers: @headers, params: {student_id: 34, term_id: 1, score_type: "All"}
         @json_body = JSON.parse(response.body)
         
         
