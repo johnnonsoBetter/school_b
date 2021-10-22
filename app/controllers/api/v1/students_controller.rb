@@ -12,6 +12,9 @@ class Api::V1::StudentsController < ApplicationController
         render 'api/v1/students/index.json.jbuilder'
     end
 
+
+    
+
     private 
     def find_admin 
         @admin = current_api_v1_admin

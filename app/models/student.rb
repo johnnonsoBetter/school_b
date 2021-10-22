@@ -7,6 +7,9 @@ class Student < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
+
+  has_one_attached :image
+
   belongs_to :school
   belongs_to :classroom
   has_and_belongs_to_many :guidances
@@ -14,6 +17,8 @@ class Student < ActiveRecord::Base
   has_many :score_reports
   has_many :behaviour_reports
   belongs_to :classroom
+
+  validates :image, presence: true
 
   private 
   def update_full_name 

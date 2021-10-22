@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :articles
   namespace :api do
     namespace :v1 do
       mount_devise_token_auth_for 'Admin', at: 'auth'
@@ -8,6 +9,9 @@ Rails.application.routes.draw do
       mount_devise_token_auth_for 'Teacher', at: 'teacher_auth'
 
       mount_devise_token_auth_for 'Guidance', at: 'guidance_auth'
+
+      resources :products
+      resources :photos
 
       resources :classrooms, only: [:create, :index, :show]
       resources :subjects, only: [:create, :index, :show]

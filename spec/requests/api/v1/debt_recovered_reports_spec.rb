@@ -121,7 +121,7 @@ RSpec.describe "Api::V1::DebtRecoveredReports", type: :request do
       context "when bill payment has been completed" do
         subject {  post @debt_recovered_report_url, headers: @headers, params: {debt_recovered_report: {amount: 1000, bill_id: 1, }} } 
 
-        it "increment bill payment histores count by 2" do
+        it "update bill payment completed to true" do
           subject
           expect(Bill.find(1).payment_completed).to eq(true)
         end

@@ -18,16 +18,22 @@ gem 'puma', '~> 4.1'
 
  gem 'devise'
 
+ gem 'shrine', '~> 3.3'
+gem "shrine-cloudinary", "~> 1.1"
+
  gem 'devise_token_auth'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+ gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+gem 'cloudinary'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
  gem 'rack-cors'
+
+ gem "figaro"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -37,6 +43,7 @@ group :development, :test do
   gem 'simplecov', require: false, group: :test
   gem 'shoulda-matchers'
   gem 'rspec_api_documentation'
+  gem 'dotenv-rails'
 end
 
 group :development do
