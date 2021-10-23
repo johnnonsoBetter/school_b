@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_12_160237) do
+ActiveRecord::Schema.define(version: 2021_10_22_112621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -45,6 +66,13 @@ ActiveRecord::Schema.define(version: 2021_10_12_160237) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
     t.index ["school_id"], name: "index_admins_on_school_id"
     t.index ["uid", "provider"], name: "index_admins_on_uid_and_provider", unique: true
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.text "body"
+    t.text "image_data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "attendances", force: :cascade do |t|
@@ -182,6 +210,19 @@ ActiveRecord::Schema.define(version: 2021_10_12_160237) do
     t.index ["bill_id"], name: "index_payment_histories_on_bill_id"
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "image"
+    t.string "caption"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "restock_reports", force: :cascade do |t|
     t.integer "quantity"
     t.bigint "item_id", null: false
@@ -283,7 +324,6 @@ ActiveRecord::Schema.define(version: 2021_10_12_160237) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "image"
     t.string "email"
     t.json "tokens"
     t.datetime "created_at", precision: 6, null: false
@@ -295,6 +335,7 @@ ActiveRecord::Schema.define(version: 2021_10_12_160237) do
     t.string "full_name"
     t.bigint "classroom_id"
     t.integer "total_debt", default: 0
+    t.string "image"
     t.index ["classroom_id"], name: "index_students_on_classroom_id"
     t.index ["confirmation_token"], name: "index_students_on_confirmation_token", unique: true
     t.index ["email"], name: "index_students_on_email", unique: true
@@ -353,6 +394,7 @@ ActiveRecord::Schema.define(version: 2021_10_12_160237) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "admins", "schools"
   add_foreign_key "behaviour_reports", "students"
   add_foreign_key "behaviour_reports", "teachers"

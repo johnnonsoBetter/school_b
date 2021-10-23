@@ -11,3 +11,11 @@ json.array! @behaviour_reports do |behaviour_report|
     
 
 end
+
+
+json.set! :term_dates, @term_dates do |term_date|
+
+    json.id term_date.id
+    json.name term_date.name
+    
+end
