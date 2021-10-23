@@ -87,7 +87,7 @@ class Api::V1::DebtRecoveredReportsController < ApplicationController
             
             
             debt_recovered_reports = @admin.school.debt_recovered_reports
-            @debt_recovered_reports =  debt_recovered_reports.where(created_at: DateTime.parse(params[:from]).beginning_of_day..DateTime.parse(params[:to]).end_of_day).includes(:admin)
+            @debt_recovered_reports =  debt_recovered_reports.where(created_at: DateTime.parse(params[:from]).beginning_of_day..DateTime.parse(params[:to]).end_of_day).includes(:admin, :bill)
             
 
         end
