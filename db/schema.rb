@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_22_112621) do
+ActiveRecord::Schema.define(version: 2021_10_23_194119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -208,19 +208,6 @@ ActiveRecord::Schema.define(version: 2021_10_22_112621) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bill_id"], name: "index_payment_histories_on_bill_id"
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.string "image"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.string "image"
-    t.string "caption"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "restock_reports", force: :cascade do |t|
