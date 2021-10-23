@@ -8,7 +8,7 @@ class Student < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
 
-  has_one_attached :image
+  
 
   belongs_to :school
   belongs_to :classroom
