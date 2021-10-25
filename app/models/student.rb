@@ -18,8 +18,7 @@ class Student < ActiveRecord::Base
   has_many :behaviour_reports
   belongs_to :classroom
 
-  validates :image, presence: true
-
+  
   private 
   def update_full_name 
     self.full_name = "#{first_name} #{middle_name} #{last_name}"
