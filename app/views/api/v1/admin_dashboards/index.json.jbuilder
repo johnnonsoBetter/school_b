@@ -29,7 +29,6 @@ json.set! :term_dates, @term_dates do |term_date|
     json.name term_date.name
     
 end
-
 json.set! :debt_recovered_reports, @debt_recovered_reports do |debt_recovered_report|
 
     json.id debt_recovered_report.id
