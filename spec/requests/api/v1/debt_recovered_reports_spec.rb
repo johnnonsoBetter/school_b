@@ -13,6 +13,10 @@ RSpec.describe "Api::V1::DebtRecoveredReports", type: :request do
       stud1 = create :student, id: 1, classroom: class1,  email: "st@mail.com", password: "password", school: sch, total_debt: 1200
       stud2 = create :student, id: 2, classroom: class2, school: sch, email: "chisfs1@gmail.com", password: "password", first_name: "ani", last_name: "micheal"
 
+      @guidance = create :guidance, email: "mak3er@gmail.com", password: "password"
+
+
+      @guidance.students << stud1
       bill_report = create :bill_report, title: "exam fee", admin: @admin, school: sch, amount: 1500 
       bill_report2 = create :bill_report, title: "a fee", admin: @admin, school: sch, amount: 500 
       bill_report3 = create :bill_report, title: "b fee", admin: @admin, school: sch, amount: 200 

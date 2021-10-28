@@ -40,14 +40,7 @@ module SchoolB
 
      # This line goes to the head of the file
     # One-time, on the server
-    vapid_key = Webpush.generate_key
-
-    # Save these in your application server settings
-    # puts "****** VAPID_PUBLIC_KEY *******"
-    # puts vapid_key.public_key
-    # puts "****** VAPID_PRIVATE_KEY *******"
-    # puts vapid_key.private_key
-
+    
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'webpush.yml')
       YAML.load(File.open(env_file)).each do |key, value|

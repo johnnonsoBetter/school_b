@@ -44,6 +44,30 @@ class Api::V1::DebtRecoveredReportsController < ApplicationController
                         raise ActiveRecord::Rollback if !student.update(total_debt: total_debt)
 
                         if @debt_recovered_report.save 
+
+                           @message = params[:message]
+                           
+                           student.guidances.each do |guidance| 
+
+                            debugger
+                            subscription = guidance.subscription
+                                Webpush.payload_send(
+                                    endpoint: subscription[:endpoint],
+                                    message: @message,
+                                    p256dh: subscription[:keys][:p256dh],
+                                    auth: subscription[:keys][:auth],
+                                    vapid: {
+                                        subject: ENV['SUBJECT'],
+                                        public_key: ENV['VAPID_PUBLIC_KEY'],
+                                        private_key: ENV['VAPID_PRIVATE_KEY'],
+                                        expiration: 12 * 60 * 60
+                                    }
+                                )
+
+                           end
+
+
+
                             successful = true 
                         end
 
