@@ -23,6 +23,8 @@ gem "shrine-cloudinary", "~> 1.1"
 
  gem 'devise_token_auth'
 
+ gem 'webpush'
+
 # Use Active Storage variant
  gem 'image_processing', '~> 1.2'
 
@@ -34,6 +36,10 @@ gem 'cloudinary'
  gem 'rack-cors'
 
  gem "figaro"
+
+
+ 
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
