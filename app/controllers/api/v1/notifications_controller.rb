@@ -8,8 +8,8 @@ class Api::V1::NotificationsController < ApplicationController
 
      notification = WebPushNotification.new 
      notification.endpoint = params[:endpoint]
-     notification.auth_key = params[:keys][:auth]
-     notification.p256dh_key = params[:keys][:p256dh]
+     # notification.auth_key = params[:keys][:auth]
+     # notification.p256dh_key = params[:keys][:p256dh]
 
     # # t.string "endpoint"
     # # t.string "auth_key"
@@ -17,7 +17,7 @@ class Api::V1::NotificationsController < ApplicationController
     # # t.datetime "created_at", precision: 6, null: false
     # # t.datetime "updated_at", precision: 6, null: false
 
-    #   puts  "this is the notification", notification
+       puts  params[:keys]
 
 
     if notification.save 
