@@ -3,7 +3,7 @@
 # Avoid CORS issues when API is called from the frontend app.
 # Handle Cross-Origin Resource Sharing (CORS) in order to accept cross-origin AJAX requests.
 
-# Read more: https://github.com/cyu/rack-cors
+# Read more: github.com/cyu/rack-cors
 
 # Rails.application.config.middleware.insert_before 0, Rack::Cors do
 #   allow do
@@ -20,7 +20,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     if Rails.env.development?
       origins 'admin.localhost:3000'
     else
-      origins 'https://admin.confamsch.com.ng/'
+      origins 'admin.confamsch.com.ng/'
     end
 
     resource '*',
@@ -33,7 +33,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     if Rails.env.development?
       origins 'teacher.localhost:3000'
     else
-      origins 'https://teacher.confamsch.com.ng/'
+      origins 'teacher.confamsch.com.ng/'
     end
 
     resource '*',
@@ -46,7 +46,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     if Rails.env.development?
       origins 'parent.localhost:3000'
     else
-      origins  'https://parent.confamsch.com.ng/'
+      origins  'parent.confamsch.com.ng/'
     end
 
     resource '*',
