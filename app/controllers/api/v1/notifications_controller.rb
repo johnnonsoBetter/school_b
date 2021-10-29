@@ -19,6 +19,8 @@ class Api::V1::NotificationsController < ApplicationController
 
        puts "this is the key       #{params['endpoint']}"
         puts "this is the key       #{params['endpoint']}"
+        puts "this is my params"
+        puts notification_params
 
 
     if notification.save 
