@@ -17,7 +17,7 @@ class Api::V1::NotificationsController < ApplicationController
     # # t.datetime "created_at", precision: 6, null: false
     # # t.datetime "updated_at", precision: 6, null: false
 
-       puts "this is the key       #{params[:keys]}"
+       puts "this is the key       #{params['keys']}"
 
 
     if notification.save 
