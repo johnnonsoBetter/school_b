@@ -17,7 +17,8 @@ class Api::V1::NotificationsController < ApplicationController
     # # t.datetime "created_at", precision: 6, null: false
     # # t.datetime "updated_at", precision: 6, null: false
 
-       puts "this is the key       #{params['keys']}"
+       puts "this is the key       #{params['endpoint']}"
+        puts "this is the key       #{params['endpoint']}"
 
 
     if notification.save 
@@ -27,5 +28,9 @@ class Api::V1::NotificationsController < ApplicationController
     end
 
 
+  end
+
+  def notification_params 
+    params.permit(:endpoint, :keys)
   end
 end
