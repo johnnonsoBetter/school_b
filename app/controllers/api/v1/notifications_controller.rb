@@ -4,9 +4,9 @@ class Api::V1::NotificationsController < ApplicationController
   def create
 
 
-    
 
-    notification = WebPushNotification.new endpoint: params[:endpoint], auth_key: params[:keys][:auth], p256dh_key: params[:keys][:p256dh]
+
+     notification = WebPushNotification.new endpoint: params[:endpoint], auth_key: params[:keys][:auth], p256dh_key: params[:keys][:p256dh]
 
 
 
