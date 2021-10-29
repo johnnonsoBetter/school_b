@@ -35,7 +35,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     else
       origins 'teacher.confamsch.com.ng'
     end
-
+ 
     resource '*',
       headers: :any,
       expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
