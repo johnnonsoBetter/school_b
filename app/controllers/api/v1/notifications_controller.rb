@@ -7,9 +7,9 @@ class Api::V1::NotificationsController < ApplicationController
 
 
      notification = WebPushNotification.new 
-     notification.endpoint = notification_params[:endpoint]
-     notification.auth_key = notification_params[:keys][:auth]
-     notification.p256dh_key = notification_params[:keys][:p256dh]
+     notification.endpoint = subscription[:endpoint]
+     notification.auth_key = subscription[:keys][:auth]
+     notification.p256dh_key = subscription[:keys][:p256dh]
 
     # # t.string "endpoint"
     # # t.string "auth_key"
@@ -17,7 +17,7 @@ class Api::V1::NotificationsController < ApplicationController
     # # t.datetime "created_at", precision: 6, null: false
     # # t.datetime "updated_at", precision: 6, null: false
 
-        puts notification_params
+        puts subscription
 
 
     if notification.save 
@@ -29,7 +29,7 @@ class Api::V1::NotificationsController < ApplicationController
 
   end
 
-  def notification_params 
+  def subscription 
     params.require(:subscription).permit(:endpoint, :keys)
   end
 end
