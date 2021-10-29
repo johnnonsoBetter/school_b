@@ -7,9 +7,9 @@ class Api::V1::NotificationsController < ApplicationController
 
 
      notification = WebPushNotification.new 
-     notification.endpoint = subscription[:endpoint]
-     notification.auth_key = subscription[:keys][:auth]
-     notification.p256dh_key = subscription[:keys][:p256dh]
+     notification.endpoint = params[:subscription][:endpoint]
+     notification.auth_key = params[:subscription][:keys][:auth]
+     notification.p256dh_key = params[:subscription][:keys][:p256dh]
 
     # # t.string "endpoint"
     # # t.string "auth_key"
