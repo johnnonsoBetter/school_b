@@ -6,15 +6,17 @@ class Api::V1::NotificationsController < ApplicationController
 
 
 
-     notification = WebPushNotification.new endpoint: params[:endpoint], auth_key: params[:keys][:auth], p256dh_key: params[:keys][:p256dh]
+    #  notification = WebPushNotification.new endpoint: params[:endpoint], auth_key: params[:keys][:auth], p256dh_key: params[:keys][:p256dh]
 
 
+      puts  params
 
-    if notification.save 
-      render json: notification, status: :created 
-    else
-      render json: notification.errors.messages, status: :unprocessable_entity
-    end
+
+    # if notification.save 
+    #   render json: notification, status: :created 
+    # else
+    #   render json: notification.errors.messages, status: :unprocessable_entity
+    # end
 
 
   end
