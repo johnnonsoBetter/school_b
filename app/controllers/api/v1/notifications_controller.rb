@@ -18,7 +18,7 @@ class Api::V1::NotificationsController < ApplicationController
     # # t.datetime "updated_at", precision: 6, null: false
 
        puts "this is the key       #{params['endpoint']}"
-        puts "this is the key       #{params['endpoint']}"
+        puts "this is the key       #{params[:vap][:keys]}"
         puts "this is my params"
         puts notification_params
 
