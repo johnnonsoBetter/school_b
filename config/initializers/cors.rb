@@ -18,9 +18,9 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     if Rails.env.development?
-      origins 'https://admin.localhost:3000'
+      origins 'admin.localhost:3000'
     else
-      origins '*'
+      origins 'https://admin.confamsch.com.ng'
     end
 
     resource '*',
@@ -31,9 +31,9 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
 
    allow do
     if Rails.env.development?
-      origins 'https://teacher.localhost:3000'
+      origins 'teacher.localhost:3000'
     else
-      origins '*'
+      origins 'https://teacher.confamsch.com.ng'
     end
 
     resource '*',
@@ -44,9 +44,9 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
 
   allow do
     if Rails.env.development?
-      origins 'https://parent.localhost:3000'
+      origins 'parent.localhost:3000'
     else
-      origins  '*'
+      origins  'https://parent.confamsch.com.ng'
     end
 
     resource '*',
