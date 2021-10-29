@@ -54,14 +54,6 @@
           null,
           null,
           null,
-          null,
-          1,
-          1,
-          null,
-          3,
-          1,
-          null,
-          null,
           null
         ]
       },
@@ -780,6 +772,8 @@
           1,
           null,
           1,
+          null,
+          1,
           1,
           1,
           1,
@@ -927,19 +921,6 @@
           null
         ]
       },
-      "/root/school_b/app/models/web_push_notification.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/root/school_b/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ]
-      },
       "/root/school_b/app/controllers/application_controller.rb": {
         "lines": [
           null,
@@ -958,32 +939,22 @@
           null
         ]
       },
-      "/root/school_b/app/controllers/api/v1/notifications_controller.rb": {
+      "/root/school_b/app/controllers/api/v1/vapid_keys_controller.rb": {
         "lines": [
           1,
           null,
+          1,
           null,
           1,
           null,
-          null,
-          null,
-          null,
           1,
-          null,
-          null,
-          null,
-          1,
-          1,
-          null,
           0,
-          null,
-          null,
           null,
           null,
           null
         ]
       }
     },
-    "timestamp": 1635508185
+    "timestamp": 1635534413
   }
 }

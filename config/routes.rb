@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       resources :photos
       resources :notifications
 
+      get 'vapid_keys', to: 'vapid_keys#index'
+
       resources :classrooms, only: [:create, :index, :show]
       resources :subjects, only: [:create, :index, :show]
       resources :bill_reports, only: [:create, :index]
