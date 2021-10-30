@@ -1,24 +1,16 @@
 class Api::V1::NotificationsController < ApplicationController
-
+  before_action :authenticate_api_v1_guidance!, only: [:create]
 
   def create
 
 
-
+    
 
      notification = WebPushNotification.new 
      notification.endpoint = params[:subscription][:endpoint]
      notification.auth_key = params[:subscription][:keys][:auth]
      notification.p256dh_key = params[:subscription][:keys][:p256dh]
-
-    # # t.string "endpoint"
-    # # t.string "auth_key"
-    # # t.string "p256dh_key"
-    # # t.datetime "created_at", precision: 6, null: false
-    # # t.datetime "updated_at", precision: 6, null: false
-
-        puts subscription
-
+     notification.guidance = current_api_v1_guidance
 
     if notification.save 
       render json: notification, status: :created 

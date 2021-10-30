@@ -1,5 +1,6 @@
 class Api::V1::DebtRecoveredReportsController < ApplicationController
     include PermissionHelper
+    include WebPushNotificationSenderHelper 
     before_action :authenticate_api_v1_admin!, only: [:create, :index]
     before_action :find_admin, only: [:create, :index]
     before_action :figure_status, only: [:create, :index]
@@ -50,7 +51,7 @@ class Api::V1::DebtRecoveredReportsController < ApplicationController
                            student.guidances.each do |guidance| 
 
                                 guidance.web_push_notifications.each do |web_push|
-                                    web_push.send("Payment Recieved")
+                                    send_push_notification("Payment Recieved", web_push)
 
                                 end
 
