@@ -8,4 +8,5 @@ class Guidance < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_and_belongs_to_many :students
+  has_many :web_push_notifications
 end

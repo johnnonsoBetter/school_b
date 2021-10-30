@@ -45,24 +45,14 @@ class Api::V1::DebtRecoveredReportsController < ApplicationController
 
                         if @debt_recovered_report.save 
 
-                           @message = params[:message]
+                          
                            
                            student.guidances.each do |guidance| 
 
-                            debugger
-                            subscription = guidance.subscription
-                                Webpush.payload_send(
-                                    endpoint: subscription[:endpoint],
-                                    message: @message,
-                                    p256dh: subscription[:keys][:p256dh],
-                                    auth: subscription[:keys][:auth],
-                                    vapid: {
-                                        subject: ENV['SUBJECT'],
-                                        public_key: ENV['VAPID_PUBLIC_KEY'],
-                                        private_key: ENV['VAPID_PRIVATE_KEY'],
-                                        expiration: 12 * 60 * 60
-                                    }
-                                )
+                                guidance.web_push_notifications.each do |web_push|
+                                    web_push.send("Payment Recieved")
+
+                                end
 
                            end
 

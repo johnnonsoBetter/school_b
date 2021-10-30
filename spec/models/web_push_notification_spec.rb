@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe WebPushNotification, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # it { should validate_presence_of(:p256dh_key) }
+  # it { should validate_presence_of(:auth_key) }
+  # it { should validate_presence_of(:endpoint) }
+  # it { should belong_to(:guidance) } 
 end
