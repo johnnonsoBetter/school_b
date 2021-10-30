@@ -60,7 +60,33 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     if Rails.env.development?
       origins 'localhost:3000'
     else
-      origins  'localhost:5000'
+      origins  'teacher.localhost:5000'
+    end
+
+    resource '*',
+      headers: :any,
+      expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+  end
+
+  allow do
+    if Rails.env.development?
+      origins 'localhost:3000'
+    else
+      origins  'parent.localhost:5000'
+    end
+
+    resource '*',
+      headers: :any,
+      expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+  end
+
+  allow do
+    if Rails.env.development?
+      origins 'localhost:3000'
+    else
+      origins  'admin.localhost:5000'
     end
 
     resource '*',
