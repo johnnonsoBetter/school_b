@@ -65,11 +65,40 @@ RSpec.describe "Api::V1::Notifications", type: :request do
 
     context "when new webpush notifications has been created " do 
 
-       it "increment web_push_notification by 1" do
+       it "increment web_push_notification count by 1" do
           expect{subject}.to change{WebPushNotification.count}.by(1)
         end
 
+        it "returns http status created" do
+          subject
+          expect(response).to have_http_status(:created)
+          
+        end
+        
     end
+
+
+    context "when webpush notification already exist" do
+      subject {  post '/api/v1/notifications', 
+        params: {subscription: {endpoint: "https://fcm.googleapis.com/fcm/send/dlhl7mv25oM:APA91bHlCX8R5DNiq694bbjJOcAiSAHq61JtdLoaReFOGVRWOlpJbQWn9py9z8Fq5eq4iGJjDBF4VE7SG1JzJHZXJEqzz_Bvf7N542h73QWbIIouIn583PODQmuTBXcF-Y63qOvgeGja", expirationTime:nil ,keys:{p256dh: "BD2G1LyFRbbs-h0IqjfveymT6gvGnj53WgPegl9OUImd46JNsKggeM0IwPDB2X__kWiGrHP9B5I1Lgg07i8ZiKs",auth: "qp9nluZcAppD0LjPVJfSuw"}}},
+        headers: @headers
+      } 
+
+      before do 
+        create :web_push_notification, guidance: @guidance, endpoint: "https://fcm.googleapis.com/fcm/send/dlhl7mv25oM:APA91bHlCX8R5DNiq694bbjJOcAiSAHq61JtdLoaReFOGVRWOlpJbQWn9py9z8Fq5eq4iGJjDBF4VE7SG1JzJHZXJEqzz_Bvf7N542h73QWbIIouIn583PODQmuTBXcF-Y63qOvgeGja", auth_key: "qp9nluZcAppD0LjPVJfSuw", p256dh_key: "BD2G1LyFRbbs-h0IqjfveymT6gvGnj53WgPegl9OUImd46JNsKggeM0IwPDB2X__kWiGrHP9B5I1Lgg07i8ZiKs"
+      end
+      it "do not increment webpushnotification count" do
+        expect{subject}.to_not change{WebPushNotification.count}
+      end
+
+      it "https status to be no content" do
+        subject
+        expect(response).to have_http_status(:no_content)
+      end
+      
+      
+    end
+    
 
      
   end

@@ -1,5 +1,5 @@
 class Api::V1::NotificationsController < ApplicationController
-  before_action :authenticate_api_v1_guidance!, only: [:create]
+  before_action :authenticate_api_v1_guidance!, :find_web_push_notification, only: [:create]
 
   def create
 
@@ -21,7 +21,16 @@ class Api::V1::NotificationsController < ApplicationController
 
   end
 
-  def subscription 
-    params.require(:subscription).permit(:endpoint, :keys)
+  def find_web_push_notification 
+    
+      web_push = current_api_v1_guidance.web_push_notifications.find_by_auth_key(params[:subscription][:keys][:auth])
+
+      
+
+      unless web_push.nil?
+        render json: "", status: :no_content 
+      end
   end
+
+
 end

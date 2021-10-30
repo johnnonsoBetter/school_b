@@ -898,7 +898,7 @@
           null,
           1,
           1,
-          6,
+          15,
           null,
           null,
           null
@@ -961,6 +961,22 @@
       "/root/school_b/app/helpers/web_push_notification_sender_helper.rb": {
         "lines": [
           1,
+          1,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null
         ]
       },
@@ -1023,7 +1039,7 @@
           1,
           null,
           1,
-          2,
+          5,
           null,
           null,
           null
@@ -1039,14 +1055,14 @@
           null,
           null,
           null,
-          1,
-          1,
-          1,
-          1,
-          1,
+          2,
+          2,
+          2,
+          2,
+          2,
           null,
-          1,
-          1,
+          2,
+          2,
           null,
           0,
           null,
@@ -1055,7 +1071,16 @@
           null,
           null,
           1,
-          0,
+          null,
+          4,
+          null,
+          null,
+          null,
+          4,
+          2,
+          null,
+          null,
+          null,
           null,
           null
         ]
@@ -1073,6 +1098,6 @@
         ]
       }
     },
-    "timestamp": 1635608052
+    "timestamp": 1635609493
   }
 }
