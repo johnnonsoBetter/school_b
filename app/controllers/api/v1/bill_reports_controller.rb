@@ -1,5 +1,6 @@
 class Api::V1::BillReportsController < ApplicationController
     include PermissionHelper
+    include WebPushNotificationSenderHelper 
     before_action :authenticate_api_v1_admin!, only: [:create, :index]
     before_action :find_admin, only: [:create, :index]
     before_action :figure_status, only: [:create, :index]
@@ -36,7 +37,18 @@ class Api::V1::BillReportsController < ApplicationController
 
                     if @bill_report.save 
 
+
+                        
+
+                        
+
                         successful = true
+
+                        @students.each do |student| 
+
+                            send_push_notification_to_guidances("New Bill Report #{@bill_report.amount}, The Total Debt is #{@students.sum(:total_debt)}", student.guidances)
+
+                        end
                     end
                 end
             end

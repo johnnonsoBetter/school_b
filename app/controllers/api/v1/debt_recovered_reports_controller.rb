@@ -46,18 +46,7 @@ class Api::V1::DebtRecoveredReportsController < ApplicationController
 
                         if @debt_recovered_report.save 
 
-                          
-                           
-                           student.guidances.each do |guidance| 
-
-                                guidance.web_push_notifications.each do |web_push|
-                                    send_push_notification("Payment Recieved", web_push)
-
-                                end
-
-                           end
-
-
+                           send_push_notification_to_guidances("thanks for the payment of #{@debt_recovered_report.amount}", student.guidances)
 
                             successful = true 
                         end

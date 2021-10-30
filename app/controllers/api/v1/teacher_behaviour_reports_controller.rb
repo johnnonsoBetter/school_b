@@ -1,5 +1,6 @@
 class Api::V1::TeacherBehaviourReportsController < ApplicationController
     include PermissionHelper
+    include WebPushNotificationSenderHelper 
     before_action :authenticate_api_v1_teacher!, only: [:create, :index]
     before_action :find_teacher, only: [:create, :index]
     before_action :figure_status, only: [:create, :index]
@@ -11,7 +12,8 @@ class Api::V1::TeacherBehaviourReportsController < ApplicationController
         
         
         if @behaviour_report.save
-            
+            send_push_notification_to_guidances("#{@behaviour_report.student.full_name} has a new report", @behaviour_report.student.guidances)
+
             render json: @behaviour_report, status: :created 
         else 
             render json: @behaviour_report.errors.messages, status: :unprocessable_entity 

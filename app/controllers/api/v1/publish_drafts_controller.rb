@@ -1,5 +1,6 @@
 class Api::V1::PublishDraftsController < ApplicationController
     include PermissionHelper
+    include WebPushNotificationSenderHelper 
     before_action :authenticate_api_v1_teacher!, only: [:create, :index, :show]
     before_action :find_teacher, only: [:create, :index, :show]
     before_action :figure_status, only: [:create, :index, :show]
@@ -24,7 +25,15 @@ class Api::V1::PublishDraftsController < ApplicationController
                  end
 
                  if @score_report_draft.toggle!(:published) 
+                    
+
                     successfull = true
+                    @score_report_draft.student_score_report_drafts.each do |student_draft|
+
+                        send_push_notification_to_guidances("Your Child #{student_draft.student.full_name} #{@score_report_draft.score_type.name} is out", student_draft.student.guidances)
+
+
+                    end
                  end
             end
         end
