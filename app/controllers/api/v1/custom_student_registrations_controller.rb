@@ -1,17 +1,17 @@
-class Api::V1::CustomStudentsController < DeviseTokenAuth::RegistrationsController
-    include PermissionHelper
+class Api::V1::CustomStudentRegistrationsController < DeviseTokenAuth::RegistrationsController
+
+	include PermissionHelper
     before_action :authenticate_api_v1_admin!, only: [:create]
     before_action :find_admin, only: [:create]
     before_action :figure_status, only: [:create]
    
     def create 
 
-        
+        debugger
         successful = false
         result = Cloudinary::Uploader.upload(params[:image], options = {})
         
-        debugger
-        @student = Student.new student_params
+        @student = Student.new 
         Student.transaction(requires_new: true) do 
 
             @student.school = @admin.school

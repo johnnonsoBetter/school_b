@@ -4,17 +4,21 @@ Rails.application.routes.draw do
     namespace :v1 do
       mount_devise_token_auth_for 'Admin', at: 'auth'
 
-      mount_devise_token_auth_for 'Student', at: 'student_auth'
+      # mount_devise_token_auth_for 'Student', at: 'student_auth'
 
       mount_devise_token_auth_for 'Teacher', at: 'teacher_auth'
 
       mount_devise_token_auth_for 'Guidance', at: 'guidance_auth'
 
+      mount_devise_token_auth_for 'Student', at: 'student_auth', controllers: {
+        registrations:  'api/v1/custom_student_registrations'
+      }
+
       resources :products
       resources :photos
       resources :notifications
 
-      get 'vapid_keys', to: 'vapid_keys#index'
+
 
       resources :classrooms, only: [:create, :index, :show]
       resources :subjects, only: [:create, :index, :show]
