@@ -755,7 +755,7 @@
         "lines": [
           1,
           1,
-          1,
+          null,
           null,
           null,
           null,
@@ -932,15 +932,17 @@
           null,
           1,
           null,
+          1,
           null,
           null,
+          null,
           1,
           1,
           1,
           1,
           1,
           1,
-          1,
+          null,
           null,
           null,
           1,
@@ -1004,16 +1006,34 @@
           null
         ]
       },
-      "/root/school_b/app/controllers/api/v1/custom_student_registrations_controller.rb": {
+      "/root/school_b/app/models/school.rb": {
         "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           1,
           null
         ]
       },
-      "/root/school_b/app/controllers/application_controller.rb": {
+      "/root/school_b/app/models/application_record.rb": {
         "lines": [
-          null,
-          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/root/school_b/app/models/classroom.rb": {
+        "lines": [
           1,
           1,
           1,
@@ -1021,14 +1041,54 @@
           1,
           1,
           null,
+          null
+        ]
+      },
+      "/root/school_b/app/models/score_report.rb": {
+        "lines": [
           1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
           0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
           null,
           null,
           null
         ]
+      },
+      "/root/school_b/app/models/behaviour_report.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          null
+        ]
       }
     },
-    "timestamp": 1635765197
+    "timestamp": 1635786033
   }
 }

@@ -7,6 +7,7 @@ class Student < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
+  validates :first_name, :last_name, :middle_name, :image, :date_of_admission, :date_of_birth, :religion, :state, :lga, :address, presence: true
 
   
 
@@ -16,7 +17,7 @@ class Student < ActiveRecord::Base
   has_many :bills
   has_many :score_reports
   has_many :behaviour_reports
-  belongs_to :classroom
+
 
   
   private 

@@ -7,18 +7,32 @@ class Api::V1::CustomStudentRegistrationsController < DeviseTokenAuth::Registrat
    
     def create 
 
-        debugger
+        
         successful = false
+
+        
         result = Cloudinary::Uploader.upload(params[:image], options = {})
         
         @student = Student.new 
         Student.transaction(requires_new: true) do 
 
             @student.school = @admin.school
-            @student.email = "#{student_params[:first_name]}#{student_params[:last_name]}888@school.edu"
-            @student.password = "#{student_params[:first_name]}888"
+            @student.email = "#{params[:first_name]}#{params[:last_name]}888@school.edu"
+            @student.password = "#{params[:first_name]}888"
             
             @student.image = result['url']
+            @student.first_name = params[:first_name]
+            @student.last_name = params[:last_name]
+            @student.middle_name = params[:middle_name]
+            @student.lga = params[:lga]
+            @student.state = params[:state]
+            @student.religion = params[:religion]
+            @student.date_of_birth = params[:date_of_birth]
+            @student.date_of_admission = params[:date_of_admission]
+            @student.address = params[:address]
+            @student.classroom_id = params[:classroom_id]
+
+
             @student.save
 
             if @student.save 
@@ -29,6 +43,7 @@ class Api::V1::CustomStudentRegistrationsController < DeviseTokenAuth::Registrat
 
         end
 
+        
 
         if successful 
             render json: @student, status: :created 
