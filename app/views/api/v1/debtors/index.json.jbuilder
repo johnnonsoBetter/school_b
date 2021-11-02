@@ -5,6 +5,7 @@ json.array! @students do |student|
     json.last_name student.last_name
     json.full_name student.full_name
     json.total_debt student.total_debt
+    json.image student.image
     json.classroom student.classroom.name
 
 end
