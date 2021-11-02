@@ -7,7 +7,7 @@ class Student < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
-  validates :first_name, :last_name, :middle_name, :image, :date_of_admission, :date_of_birth, :religion, :state, :lga, :address, presence: true
+  # validates :first_name, :last_name, :middle_name, :image, :date_of_admission, :date_of_birth, :religion, :state, :lga, :address, presence: true
 
   
 

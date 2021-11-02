@@ -42,13 +42,13 @@ class Api::V1::DebtRecoveredReportsController < ApplicationController
 
                         #updates the students total debt
                         total_debt = student.bills.where({payment_completed: false}).sum(:balance)
-                        student.update!(total_debt: total_debt)
+                        raise ActiveRecord::Rollback if !student.update!(total_debt: total_debt)
 
                         if @debt_recovered_report.save 
 
                            
                             successful = true 
-                            #send_push_notification_to_guidances("thanks for the payment of #{@debt_recovered_report.amount}", student.guidances)
+                            send_push_notification_to_guidances("thanks for the payment of #{@debt_recovered_report.amount}", student.guidances)
 
                         end
 
@@ -57,7 +57,7 @@ class Api::V1::DebtRecoveredReportsController < ApplicationController
             end
 
         end
-        puts @debt_recovered_report.errors.messages
+        
         if successful 
             render json: @debt_recovered_report, status: :created
         else 
