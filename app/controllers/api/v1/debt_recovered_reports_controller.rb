@@ -42,7 +42,7 @@ class Api::V1::DebtRecoveredReportsController < ApplicationController
 
                         #updates the students total debt
                         total_debt = student.bills.where({payment_completed: false}).sum(:balance)
-                        raise ActiveRecord::Rollback if !student.update(total_debt: total_debt)
+                        student.update!(total_debt: total_debt)
 
                         if @debt_recovered_report.save 
 
