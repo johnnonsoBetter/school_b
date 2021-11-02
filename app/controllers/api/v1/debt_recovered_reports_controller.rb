@@ -57,7 +57,7 @@ class Api::V1::DebtRecoveredReportsController < ApplicationController
             end
 
         end
-
+        puts @debt_recovered_report.errors.messages
         if successful 
             render json: @debt_recovered_report, status: :created
         else 
