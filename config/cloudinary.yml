@@ -2,3 +2,17 @@
 CLOUD_NAME: confamgroup
 CLOUD_API_KEY: 498159184892269
 CLOUD_API_SECRET: iBWDJ8yhTmCfcDyPDZaiXy5TVek
+
+development:
+  cloud_name: "confamgroup"
+  api_key: 498159184892269
+  api_secret: iBWDJ8yhTmCfcDyPDZaiXy5TVek
+  secure: true
+  cdn_subdomain: true
+
+production:
+  cloud_name: "confamgroup"
+  api_key: 498159184892269
+  api_secret: iBWDJ8yhTmCfcDyPDZaiXy5TVek
+  secure: true
+  cdn_subdomain: true
