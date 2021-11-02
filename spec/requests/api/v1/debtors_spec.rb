@@ -12,7 +12,8 @@ RSpec.describe "Api::V1::Debtors", type: :request do
       
       stud1 = create :student, id: 1, classroom: class1, email: "chi@gmail.com", password: "password", first_name: "chima", last_name: "joy", school: sch, total_debt: 300
       stud2 = create :student, id: 2, classroom: class2, school: sch, email: "chisfs1@gmail.com", password: "password", first_name: "ani", last_name: "micheal", total_debt: 4000
-      stud3 = create :student, id: 3, classroom: class1, school: sch, email: "chisdf2@gmail.com", password: "password", first_name: "praise", last_name: "luna", total_debt: 0
+      stud3 = create :student, id: 3, classroom: class1, school: sch, email: "chisdf2@gmail.com", password: "password", first_name: "praise", last_name: "luna", total_debt: 500
+      stud4 = create :student, id: 5, classroom: class2, school: sch, email: "chisdf2sdfsd@gmail.com", password: "password", first_name: "mata", last_name: "luna", total_debt: 0
 
 
 
@@ -49,18 +50,23 @@ RSpec.describe "Api::V1::Debtors", type: :request do
 
       
 
-      it "returns proper json response of first debtor" do
+      
 
-        subject
-        json_body = JSON.parse(response.body)
 
-        expect(json_body.first).to include({
-          'first_name' => 'chima',
-          'total_debt' => 300,
-          'last_name' => 'joy'
-        })  
-        
-      end
+      context "when params classroom_id does not exists" do 
+
+        it "returns proper json response of first debtor" do
+
+          subject
+          json_body = JSON.parse(response.body)
+
+          expect(json_body.first).to include({
+            'first_name' => 'chima',
+            'total_debt' => 300,
+            'last_name' => 'joy'
+          })  
+          
+        end
 
 
       it "returns proper json response of last debtor" do
@@ -69,26 +75,51 @@ RSpec.describe "Api::V1::Debtors", type: :request do
         json_body = JSON.parse(response.body)
 
         expect(json_body.last).to include({
-          'first_name' => 'ani',
-          'total_debt' => 4000,
-          'last_name' => 'micheal'
-        })  
+            'first_name' => 'praise',
+            'total_debt' => 500,
+            'last_name' => 'luna'
+          })  
         
       end
 
 
-      # it "returns proper json response of last debtor" do
 
-      #   subject
-      #   json_body = JSON.parse(response.body)
 
-      #   expect(json_body.last).to include({
-      #     'title' => 'lecture fee',
-      #     'amount' => 9000,
-      #     'admin' => 'bose peter'
-      #   })  
-        
-      # end
+      end
+
+
+      context "when params classroom_id exists" do
+
+      
+
+        it "returns proper json response of first debtor" do
+
+          get @debtor_report_url, headers: @headers, params: {classroom_id: 1}
+          json_body = JSON.parse(response.body)
+
+          expect(json_body.first).to include({
+            'first_name' => 'chima',
+            'total_debt' => 300,
+            'last_name' => 'joy'
+          })  
+          
+        end
+
+
+        it "returns proper json response of last debtor" do
+
+         get @debtor_report_url, headers: @headers, params: {classroom_id: 1}
+          json_body = JSON.parse(response.body)
+
+          expect(json_body.last).to include({
+            'first_name' => 'praise',
+            'total_debt' => 500,
+            'last_name' => 'luna'
+          })  
+          
+        end
+
+      end
       
 
       context "when admin is not permitted " do

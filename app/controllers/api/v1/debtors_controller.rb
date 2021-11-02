@@ -6,7 +6,14 @@ class Api::V1::DebtorsController < ApplicationController
 
 
     def index 
-        @students = @admin.school.students.where("total_debt > ?", 0).includes(:classroom)
+        
+        if params[:classroom_id].present?
+            classroom = @admin.school.classrooms.find_by_id(params[:classroom_id])
+            
+            @students = classroom.students.where("total_debt > ?", 0).includes(:classroom)
+        else
+            @students = @admin.school.students.where("total_debt > ?", 0).includes(:classroom)
+        end
        
         render 'api/v1/debtors/index.json.jbuilder'
     end
