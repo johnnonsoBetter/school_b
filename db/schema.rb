@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_01_163822) do
+ActiveRecord::Schema.define(version: 2021_11_02_133522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -323,6 +323,8 @@ ActiveRecord::Schema.define(version: 2021_11_01_163822) do
     t.string "state"
     t.string "lga"
     t.string "religion"
+    t.string "gender"
+    t.string "admission_no"
     t.index ["classroom_id"], name: "index_students_on_classroom_id"
     t.index ["confirmation_token"], name: "index_students_on_confirmation_token", unique: true
     t.index ["email"], name: "index_students_on_email", unique: true

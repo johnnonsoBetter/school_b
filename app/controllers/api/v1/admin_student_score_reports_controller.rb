@@ -9,7 +9,18 @@ class Api::V1::AdminStudentScoreReportsController < ApplicationController
 
 
         @student = @admin.school.students.find_by_id(params[:student_id])
-        term = TermDate.find(params[:term_id])
+        @score_types = @admin.school.score_types
+
+
+        if params[:term_id].present? 
+
+            term = TermDate.find_by_id(params[:term_id])
+        else 
+
+            term = TermDate.last
+        end
+
+
         @score_reports = []
 
         

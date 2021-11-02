@@ -7,7 +7,8 @@ class Api::V1::CustomStudentRegistrationsController < DeviseTokenAuth::Registrat
    
     def create 
 
-        
+
+        debugger
         successful = false
 
         
@@ -31,6 +32,8 @@ class Api::V1::CustomStudentRegistrationsController < DeviseTokenAuth::Registrat
             @student.date_of_admission = params[:date_of_admission]
             @student.address = params[:address]
             @student.classroom_id = params[:classroom_id]
+            @student.gender = params[:gender]
+            @student.admission_no = params[:admission_no]
 
 
             @student.save
@@ -62,6 +65,7 @@ class Api::V1::CustomStudentRegistrationsController < DeviseTokenAuth::Registrat
     end
 
     def find_admin 
+        debugger
         @admin = current_api_v1_admin
     end
 

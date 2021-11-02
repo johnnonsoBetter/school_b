@@ -14,11 +14,9 @@ Rails.application.routes.draw do
         registrations:  'api/v1/custom_student_registrations'
       }
 
-      resources :products
-      resources :photos
+      
+      
       resources :notifications
-
-
 
       resources :classrooms, only: [:create, :index, :show]
       resources :subjects, only: [:create, :index, :show]
@@ -35,7 +33,7 @@ Rails.application.routes.draw do
       resources :stock_repair_reports, only: [:create, :index]
       resources :sale_reports, only: [:create, :index]
       resources :debt_recovered_reports, only: [:create, :index]
-      resources :students, only: :index
+      resources :students, only: [:index, :show]
       resources :teachers, only: :index
 
       as :guidance do
@@ -58,9 +56,7 @@ Rails.application.routes.draw do
         get 'teacher_classroom_students', to: 'teacher_classroom_students#index'
 
       end
-      as :student do
-        # Define routes for Student within this block.
-      end
+      
 
     end
   end

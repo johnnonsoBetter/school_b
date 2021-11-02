@@ -12,5 +12,13 @@ RSpec.describe "Students", type: :routing do
     
     end
 
+    describe "GET" do
+        it "routes api/v1/students to api/v1/students#show" do
+           expect(get 'api/v1/students/3').to    route_to( :controller => 'api/v1/students', :action => 'show',  id: "3")  
+           
+        end
+    
+    end
+
     
 end

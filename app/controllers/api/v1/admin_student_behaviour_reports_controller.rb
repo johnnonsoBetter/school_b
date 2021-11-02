@@ -8,11 +8,19 @@ class Api::V1::AdminStudentBehaviourReportsController < ApplicationController
     def index 
 
         student = @admin.school.students.find_by_id(params[:student_id])
-        term = TermDate.find_by_id(params[:term_id])
+        term = nil
+
+        if params[:term_id].present? 
+
+            term = TermDate.find_by_id(params[:term_id])
+        else 
+
+            term = TermDate.last
+        end
         
         
         @behaviour_reports = student.behaviour_reports.where(created_at: Time.zone.parse(term.start_date).beginning_of_day..Time.zone.parse(term.end_date).end_of_day).includes(:teacher)
-           
+        @term_dates = TermDate.all
         render 'api/v1/admin_student_behaviour_reports/index.json.jbuilder'
     end
 
