@@ -48,7 +48,7 @@ class Api::V1::DebtRecoveredReportsController < ApplicationController
 
                            
                             successful = true 
-                            send_push_notification_to_guidances("thanks for the payment of #{@debt_recovered_report.amount}", student.guidances)
+                            #send_push_notification_to_guidances("thanks for the payment of #{@debt_recovered_report.amount}", student.guidances)
 
                         end
 
