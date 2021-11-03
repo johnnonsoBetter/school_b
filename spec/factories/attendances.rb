@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :attendance do
-    present { false }
-    term_activity { nil }
+    is_present { true }
+   
   end
 end

@@ -3,5 +3,6 @@ FactoryBot.define do
     sequence :name do |n|
       "school #{n}"
     end
+ 
   end
 end

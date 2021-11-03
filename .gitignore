@@ -30,4 +30,5 @@
 /config/application.yml
 /config/cloudinary.yml
 
+
 /.env

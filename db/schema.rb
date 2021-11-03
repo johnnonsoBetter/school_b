@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_02_133522) do
+ActiveRecord::Schema.define(version: 2021_11_03_140907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,9 +69,13 @@ ActiveRecord::Schema.define(version: 2021_11_02_133522) do
   end
 
   create_table "attendances", force: :cascade do |t|
-    t.boolean "present"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "classroom_id", null: false
+    t.boolean "is_present", default: true
+    t.bigint "student_id", null: false
+    t.index ["classroom_id"], name: "index_attendances_on_classroom_id"
+    t.index ["student_id"], name: "index_attendances_on_student_id"
   end
 
   create_table "behaviour_reports", force: :cascade do |t|
@@ -116,6 +120,7 @@ ActiveRecord::Schema.define(version: 2021_11_02_133522) do
     t.bigint "school_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "class_teacher_id"
     t.index ["school_id"], name: "index_classrooms_on_school_id"
   end
 
@@ -230,6 +235,7 @@ ActiveRecord::Schema.define(version: 2021_11_02_133522) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "no_attendance", default: false
     t.index ["name"], name: "index_schools_on_name", unique: true
   end
 
@@ -325,6 +331,7 @@ ActiveRecord::Schema.define(version: 2021_11_02_133522) do
     t.string "religion"
     t.string "gender"
     t.string "admission_no"
+    t.boolean "active", default: true
     t.index ["classroom_id"], name: "index_students_on_classroom_id"
     t.index ["confirmation_token"], name: "index_students_on_confirmation_token", unique: true
     t.index ["email"], name: "index_students_on_email", unique: true
@@ -395,6 +402,8 @@ ActiveRecord::Schema.define(version: 2021_11_02_133522) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "admins", "schools"
+  add_foreign_key "attendances", "classrooms"
+  add_foreign_key "attendances", "students"
   add_foreign_key "behaviour_reports", "students"
   add_foreign_key "behaviour_reports", "teachers"
   add_foreign_key "bill_reports", "admins"

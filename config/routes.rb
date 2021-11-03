@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       
       
       resources :notifications
+      
 
       resources :classrooms, only: [:create, :index, :show]
       resources :subjects, only: [:create, :index, :show]
@@ -54,6 +55,8 @@ Rails.application.routes.draw do
         post 'publish_drafts', to: 'publish_drafts#create'
         get 'teacher_dashboards', to: 'teacher_dashboards#index'
         get 'teacher_classroom_students', to: 'teacher_classroom_students#index'
+        post 'multiple_attendance_creators', to: 'multiple_attendance_creators#create'
+        resources :attendances, only: [:update]
 
       end
       

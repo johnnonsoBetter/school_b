@@ -17,6 +17,7 @@ class Student < ActiveRecord::Base
   has_many :bills
   has_many :score_reports
   has_many :behaviour_reports
+  has_many :attendances
 
 
   

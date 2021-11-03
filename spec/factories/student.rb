@@ -12,6 +12,7 @@ FactoryBot.define do
       last_name {"string"}
       middle_name {"string"}
       address {"string"}
+      active {true}
     end
   end
   
