@@ -14,6 +14,7 @@ require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
 require 'webpush'
+require 'cloudinary'
 # require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
