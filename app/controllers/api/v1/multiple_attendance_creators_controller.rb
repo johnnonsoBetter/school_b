@@ -31,7 +31,7 @@ class Api::V1::MultipleAttendanceCreatorsController < ApplicationController
 
         if successful 
             @attendances = @classroom.attendances.where(:created_at => Date.today.beginning_of_day..Date.today.end_of_day).includes(:student)
-            render 'api/v1/attendances/create.json.jbuilder', status: :created
+            render 'api/v1/attendances/create.json.jbuilder', status: :created, message: @classroom.name
         else 
             render json: "Failed to mark attendance", status: :unprocessable_entity
         end
@@ -75,7 +75,7 @@ class Api::V1::MultipleAttendanceCreatorsController < ApplicationController
 
         if @classroom.attendances.where(:created_at => Date.today.beginning_of_day..Date.today.end_of_day).exists?
             @attendances = @classroom.attendances.where(:created_at => Date.today.beginning_of_day..Date.today.end_of_day).includes(:student)
-            render 'api/v1/attendances/create.json.jbuilder', status: :ok 
+            render 'api/v1/attendances/create.json.jbuilder', status: :ok , message: @classroom.name
         end
     end
 end

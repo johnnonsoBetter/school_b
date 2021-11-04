@@ -5,8 +5,11 @@ RSpec.describe "Api::V1::TeacherDashboards", type: :request do
    
     before do 
       sch = build :school, id: 44
-      class1 = create :classroom, name: "ss1", school: sch
-      @teacher = create :teacher, email: "teacher@mail.com", password: "password", school: sch, permitted: true, full_name: "teacher paul", first_name: "teacher", middle_name: "k", last_name: "paul"
+      class1 = create :classroom, name: "ss1", school: sch, class_teacher_id: 18
+      class2 = create :classroom, name: "ss2", school: sch, class_teacher_id: 18
+      class3 = create :classroom, name: "ss3", school: sch
+
+      @teacher = create :teacher, id: 18, email: "teacher@mail.com", password: "password", school: sch, permitted: true, full_name: "teacher paul", first_name: "teacher", middle_name: "k", last_name: "paul"
       @teacher1 = create :teacher, email: "maker@mail.com", password: "password", school: sch, permitted: true
       score_type = create :score_type, id: 1, name: "homework", school: sch
       sub =  create :subject, id: 1, name: "english", classroom: class1, teacher: @teacher
@@ -112,6 +115,26 @@ RSpec.describe "Api::V1::TeacherDashboards", type: :request do
 
         expect(json_body["classrooms"].first).to include({
           "name" => "ss1"
+        })
+        
+      end
+
+      it "returns proper json response of classrooms that teacher is class_teacher" do
+        subject
+        json_body = JSON.parse(response.body)
+
+        expect(json_body["my_classrooms"].first).to include({
+          "name" => "ss1"
+        })
+        
+      end
+
+      it "returns proper json response of classrooms that teacher is class_teacher" do
+        subject
+        json_body = JSON.parse(response.body)
+
+        expect(json_body["my_classrooms"].last).to include({
+          "name" => "ss2"
         })
         
       end

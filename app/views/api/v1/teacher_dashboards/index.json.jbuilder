@@ -38,3 +38,9 @@ json.set! :classrooms, @classrooms.to_a do |classroom|
     json.id classroom.id
     json.name classroom.name
 end
+
+json.set! :my_classrooms, @my_classrooms do |classroom|
+
+    json.id classroom.id
+    json.name classroom.name
+end

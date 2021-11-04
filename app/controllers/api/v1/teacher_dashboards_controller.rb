@@ -7,9 +7,11 @@ class Api::V1::TeacherDashboardsController < ApplicationController
     
     def index 
         @score_report_drafts = @teacher.score_report_drafts.where(published: false)
-        @score_types = @teacher.school.score_types
+        school = @teacher.school
+        @score_types = school.score_types
         @term_dates = TermDate.all
         @classrooms = Set.new @teacher.classrooms
+        @my_classrooms = school.classrooms.where(class_teacher_id: @teacher.id)
         
         
         render 'api/v1/teacher_dashboards/index.json.jbuilder'

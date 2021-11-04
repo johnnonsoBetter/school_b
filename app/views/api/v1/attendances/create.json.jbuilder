@@ -1,3 +1,6 @@
+
+
+
 json.array! @attendances do |attendance|
 
     json.id attendance.id
