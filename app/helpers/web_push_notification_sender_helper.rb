@@ -15,6 +15,15 @@ module WebPushNotificationSenderHelper
     end
 
 
+    def send_push_notification_to_guidance(message, guidance) 
+
+      guidance.web_push_notifications.each do |web_push|
+            send_push_notification(message, web_push)
+
+        end
+    end
+
+
 
     private
 

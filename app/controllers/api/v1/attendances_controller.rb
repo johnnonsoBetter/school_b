@@ -1,6 +1,7 @@
 class Api::V1::AttendancesController < ApplicationController
 
     include PermissionHelper
+    include WebPushNotificationSenderHelper
     before_action :authenticate_api_v1_teacher!, only: [:update]
     before_action :find_teacher, only: [:update]
     before_action :figure_status, :find_attendance, :compare_class_teacher_to_current_teacher, only: [:update]
@@ -8,6 +9,13 @@ class Api::V1::AttendancesController < ApplicationController
     def update 
         
         if @attendance.update(attendance_params)
+
+            if !@attendance.is_present
+                student = @attendance.student
+               
+                send_push_notification_to_guidances("#{student.full_name} is Absent", student.guidances)
+
+            end
             render json: @attendance, status: :ok
         else 
             render json: @attendance.errors.messages, status: :unprocessable_entity
