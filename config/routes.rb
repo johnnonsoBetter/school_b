@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       get 'debt_bills', to: 'debt_bills#index'
       get 'admin_dashboards', to: 'admin_dashboards#index'
       get 'admin_student_score_reports', to: 'admin_student_score_reports#index'
+      get 'admin_student_attendances', to: 'admin_student_attendances#index'
       get 'admin_student_behaviour_reports', to: 'admin_student_behaviour_reports#index'
       get 'admin_student_bills', to: 'admin_student_bills#index'
       resources :items, only: [:create, :update, :destroy, :show, :index]
@@ -37,11 +38,13 @@ Rails.application.routes.draw do
       resources :students, only: [:index, :show]
       resources :teachers, only: :index
 
+
       as :guidance do
         # Define routes for Guidance within this block.
         get 'guidance_dashboards', to: 'guidance_dashboards#index'
         get 'guidance_score_reports', to: 'guidance_score_reports#index'
         get 'guidance_behaviour_reports', to: 'guidance_behaviour_reports#index'
+        get 'guidance_student_attendances', to: 'guidance_student_attendances#index'
         resources :guidance_bills, only: [:index, :show]
       end
 
