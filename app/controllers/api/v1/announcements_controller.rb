@@ -1,10 +1,10 @@
 class Api::V1::AnnouncementsController < ApplicationController
     include PermissionHelper
     include WebPushNotificationSenderHelper 
-    before_action :authenticate_api_v1_admin!, only: [:create, :update, :index]
-    before_action :find_admin, only: [:create, :update, :index]
-    before_action :figure_status, only: [:create, :update, :index]
-    before_action :find_announcement, only: :update
+    before_action :authenticate_api_v1_admin!, only: [:create, :update, :index, :destroy]
+    before_action :find_admin, only: [:create, :update, :index, :destroy]
+    before_action :figure_status, only: [:create, :update, :index, :destroy]
+    before_action :find_announcement, only: [:update, :destroy]
 
     def create 
 
@@ -24,6 +24,12 @@ class Api::V1::AnnouncementsController < ApplicationController
         render 'api/v1/announcements/index.json.jbuilder'
     end
 
+    def destroy 
+        @announcement.destroy
+
+        
+    end
+
 
     def update 
 
@@ -41,7 +47,7 @@ class Api::V1::AnnouncementsController < ApplicationController
     private
 
     def announcement_params 
-        params.require(:announcement).permit(:message, :announcement_image_id, :expiration)
+        params.require(:announcement).permit(:message, :announcement_image_id)
     end
 
     def find_admin 

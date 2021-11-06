@@ -27,6 +27,15 @@ RSpec.describe "Announcements", type: :routing do
         
     end
 
+    describe "DELETE" do
+        it "routes api/v1/announcements/3 to api/v1/announcements#destroy" do
+           expect(delete 'api/v1/announcements/3').to    route_to( :controller => 'api/v1/announcements', :action => 'destroy', id: "3")  
+           
+        end
+        
+    end
+
+
 
     
 end

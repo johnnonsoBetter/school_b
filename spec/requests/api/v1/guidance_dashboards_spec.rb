@@ -20,10 +20,10 @@ RSpec.describe "Api::V1::GuidanceDashboards", type: :request do
       @guidance2.students << stud2
 
       create :announcement_image, id: 3
-      create :announcement, school: sch, announcement_image_id: 3, message: "Interhouse sport", expiration: Date.yesterday
-      create :announcement, school: sch, announcement_image_id: 3, message: "Club Review", expiration: Date.today
-      create :announcement, school: sch, announcement_image_id: 3, message: "Mid Term Break Approaching", expiration: Date.tomorrow
-      create :announcement, school: sch, announcement_image_id: 3, message: "Exam Approching", expiration: Date.new(2021, 11, 12)
+      create :announcement, school: sch, announcement_image_id: 3, message: "Interhouse sport"
+      create :announcement, school: sch, announcement_image_id: 3, message: "Club Review"
+      create :announcement, school: sch, announcement_image_id: 3, message: "Mid Term Break Approaching"
+      create :announcement, school: sch, announcement_image_id: 3, message: "Exam Approching"
      
   
 
@@ -85,7 +85,7 @@ RSpec.describe "Api::V1::GuidanceDashboards", type: :request do
       it "returns proper json first announcement response" do
        
         expect(@json_body['announcements'].first).to include({
-          "message" => "Club Review"
+          "message" => "Interhouse sport"
         })  
         
       end

@@ -16,7 +16,7 @@ class Api::V1::AdminDashboardsController < ApplicationController
 		@teachers = school.teachers
 		@term_dates = TermDate.all
 		@total_debts = school.students.sum(:total_debt)
-		@announcements = school.announcements.where("expiration >= ?", Date.today)
+		@announcements = school.announcements.all
 		@debt_recovered_reports =  school.debt_recovered_reports.where(created_at: DateTime.now.beginning_of_day..DateTime.now.end_of_day).includes(:admin, :bill).first(7)
         
         @total_debts_recovered = 0

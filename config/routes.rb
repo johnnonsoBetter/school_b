@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get 'admin_student_attendances', to: 'admin_student_attendances#index'
       get 'admin_student_behaviour_reports', to: 'admin_student_behaviour_reports#index'
       get 'admin_student_bills', to: 'admin_student_bills#index'
+      get 'announcement_images', to: 'announcement_images#index'
       resources :items, only: [:create, :update, :destroy, :show, :index]
       resources :restock_reports, only: [:create, :index]
       resources :expense_reports, only: [:create, :index]
@@ -30,7 +31,7 @@ Rails.application.routes.draw do
       resources :debt_recovered_reports, only: [:create, :index]
       resources :students, only: [:index, :show]
       resources :teachers, only: :index
-      resources :announcements, only: [:create, :update, :index]
+      resources :announcements, only: [:create, :update, :index, :destroy]
 
 
       as :guidance do

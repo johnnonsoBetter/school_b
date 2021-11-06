@@ -28,8 +28,7 @@ json.set! :announcements, @announcements do |announcement|
     json.id announcement.id
     json.image announcement.announcement_image.image
     json.message announcement.message
-    json.expiration announcement.expiration
-    
+  
 end
 
 

@@ -9,7 +9,7 @@ RSpec.describe "Api::V1::Announcements", type: :request do
       sch = build :school, id: 44
       @admin = create :admin, email: "admin@mail.com", password: "password", school: sch, permitted: true
       
-      @announcement_params = {announcement: {message: "Mid Term Break Is Fast approaching by 12th august 2021", announcement_image_id: 3, expiration: Date.today} }
+      @announcement_params = {announcement: {message: "Mid Term Break Is Fast approaching by 12th august 2021", announcement_image_id: 3} }
       create :announcement_image, id: 3
      
       @login_url = '/api/v1/auth/sign_in'
@@ -63,13 +63,13 @@ RSpec.describe "Api::V1::Announcements", type: :request do
         it "does not increment announcement  by 1" do
           expect{
   
-            post @announcement_url, headers: @headers, params: {announcement: {message: "Mid Term Break Is Fast approaching by 12th august 2021", announcement_image_id: 3, expiration: ""} }
+            post @announcement_url, headers: @headers, params: {announcement: {message: "", announcement_image_id: 3} }
   
           }.not_to change{Announcement.count}
         end
   
         it "returns htpp status code unprocessable entity" do
-          post @announcement_url, headers: @headers, params: {announcement: {message: "Mid Term Break Is Fast approaching by 12th august 2021", announcement_image_id: 3, expiration: ""} }
+          post @announcement_url, headers: @headers, params: {announcement: {message: "", announcement_image_id: 3} }
           expect(response).to have_http_status(:unprocessable_entity)
           
         end
@@ -104,10 +104,10 @@ RSpec.describe "Api::V1::Announcements", type: :request do
       sch = build :school, id: 44
       @admin = create :admin, email: "admin@mail.com", password: "password", school: sch, permitted: true
       
-      @announcement_params = {announcement: {message: "Mid Term Break Is Fast approaching by 12th august 2021", announcement_image_id: 3, expiration: Date.today} }
+      @announcement_params = {announcement: {message: "Mid Term Break Is Fast approaching by 12th august 2021", announcement_image_id: 3} }
       
       create :announcement_image, id: 3
-      create :announcement, id: 7, school: sch, announcement_image_id: 3, message: "Mid Term Break Approaching", expiration: Date.tomorrow
+      create :announcement, id: 7, school: sch, announcement_image_id: 3, message: "Mid Term Break Approaching"
      
       @login_url = '/api/v1/auth/sign_in'
       @announcement_url = '/api/v1/announcements/7'
@@ -155,7 +155,7 @@ RSpec.describe "Api::V1::Announcements", type: :request do
        context "when announcement failed to be updated" do
   
         it "returns htpp status code unprocessable entity" do
-          put @announcement_url, headers: @headers, params: {announcement: {message: "", announcement_image_id: 3, expiration: ""} }
+          put @announcement_url, headers: @headers, params: {announcement: {message: "", announcement_image_id: 3} }
           expect(response).to have_http_status(:unprocessable_entity)
           
         end
@@ -166,7 +166,7 @@ RSpec.describe "Api::V1::Announcements", type: :request do
       context "when announcement could not be found" do
   
         it "returns htpp status code unprocessable entity" do
-          put '/api/v1/announcements/4', headers: @headers, params: {announcement: {message: "", announcement_image_id: 3, expiration: ""} }
+          put '/api/v1/announcements/4', headers: @headers, params: {announcement: {message: "", announcement_image_id: 3} }
           expect(response).to have_http_status(:not_found)
           
         end
@@ -195,6 +195,91 @@ RSpec.describe "Api::V1::Announcements", type: :request do
 
 
 
+  describe "DELETE /destroy" do
+
+    before do 
+      sch = build :school, id: 44
+      @admin = create :admin, email: "admin@mail.com", password: "password", school: sch, permitted: true
+      
+      
+      create :announcement_image, id: 3
+      create :announcement, id: 7, school: sch, announcement_image_id: 3, message: "Mid Term Break Approaching"
+     
+      @login_url = '/api/v1/auth/sign_in'
+      @announcement_url = '/api/v1/announcements/7'
+  
+      @admin_params = {
+        email: @admin.email,
+        password: @admin.password
+      }
+  
+      post @login_url, params: @admin_params
+        
+        @headers = {
+          'access-token' => response.headers['access-token'],
+          'client' => response.headers['client'],
+          'uid' => response.headers['uid']
+        }
+  
+    end
+  
+    context "when admin is not authenticated" do
+      it "return http status unauthorized" do
+        
+        delete @announcement_url
+        expect(response).to have_http_status(:unauthorized)  
+      end
+      
+    end
+  
+    context "when admin is authenticated " do
+  
+      subject {  delete @announcement_url, headers: @headers} 
+  
+      context "when announcement  has been deleted" do
+        
+  
+        it "returns http status no content " do
+          subject
+          expect(response).to have_http_status(:no_content)
+        end
+        
+      end
+  
+  
+      context "when announcement could not be found" do
+  
+        it "returns htpp status code unprocessable entity" do
+          delete '/api/v1/announcements/4', headers: @headers
+          expect(response).to have_http_status(:not_found)
+          
+        end
+  
+      end
+      
+  
+      context "when admin is not permitted " do
+  
+        it "returns https status code 401 unauthorized" do
+          @admin.permitted = false
+          @admin.save 
+          subject
+          expect(response).to have_http_status(:unauthorized)  
+        end
+        
+        
+      end
+      
+  
+    
+  
+    end
+    
+  end
+
+
+
+
   describe "GET /index" do
 
     before do 
@@ -202,9 +287,8 @@ RSpec.describe "Api::V1::Announcements", type: :request do
       @admin = create :admin, email: "admin@mail.com", password: "password", school: sch, permitted: true
       
       create :announcement_image, id: 3
-      create :announcement, id: 7, school: sch, announcement_image_id: 3, message: "Mid Term Break Approaching", expiration: Date.tomorrow
-      create :announcement, school: sch, announcement_image_id: 3, message: "Exam Approching", expiration: Date.tomorrow
-     
+      create :announcement, id: 7, school: sch, announcement_image_id: 3, message: "Mid Term Break Approaching"
+      create :announcement, school: sch, announcement_image_id: 3, message: "Exam Approching"
       @login_url = '/api/v1/auth/sign_in'
       @announcement_url = '/api/v1/announcements'
   
