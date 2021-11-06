@@ -8,7 +8,7 @@ class Api::V1::MultipleAttendanceCreatorsController < ApplicationController
         
         successful = false 
 
-        debugger
+        
         Classroom.transaction(requires_new: true) do 
 
             @classroom.students.each do |student|
@@ -55,8 +55,8 @@ class Api::V1::MultipleAttendanceCreatorsController < ApplicationController
     end
 
     def today_is_not_allowed
-       
-        if Time.now.strftime("%A") == "Sunday" || Time.now.strftime("%A") == "Saturday" || @teacher.school.no_attendance == true
+       # Time.now.strftime("%A") == "Sunday" || Time.now.strftime("%A") == "Saturday" || 
+        if @teacher.school.no_attendance == true
             return true
         else 
             return false
