@@ -14,4 +14,5 @@ RSpec.describe School, type: :model do
   it { should have_many(:expense_reports) } 
   it { should have_many(:sale_reports) } 
   it { should have_many(:debt_recovered_reports) } 
+  it { should have_many(:announcements ) } 
 end

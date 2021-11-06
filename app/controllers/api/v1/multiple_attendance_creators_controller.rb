@@ -8,7 +8,7 @@ class Api::V1::MultipleAttendanceCreatorsController < ApplicationController
         
         successful = false 
 
-
+        debugger
         Classroom.transaction(requires_new: true) do 
 
             @classroom.students.each do |student|
@@ -42,6 +42,7 @@ class Api::V1::MultipleAttendanceCreatorsController < ApplicationController
     def find_teacher 
         
         @teacher = current_api_v1_teacher
+        
     end
    
     def figure_status
@@ -68,6 +69,7 @@ class Api::V1::MultipleAttendanceCreatorsController < ApplicationController
     end
 
     def ensure_today_attendance 
+        
         render json: "You Are Not Allowed To Mark Attendance Today", status: :unprocessable_entity if today_is_not_allowed
     end
 

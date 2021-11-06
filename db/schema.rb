@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_03_140907) do
+ActiveRecord::Schema.define(version: 2021_11_05_190536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,23 @@ ActiveRecord::Schema.define(version: 2021_11_03_140907) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
     t.index ["school_id"], name: "index_admins_on_school_id"
     t.index ["uid", "provider"], name: "index_admins_on_uid_and_provider", unique: true
+  end
+
+  create_table "announcement_images", force: :cascade do |t|
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "announcements", force: :cascade do |t|
+    t.string "message"
+    t.date "expiration"
+    t.bigint "announcement_image_id", null: false
+    t.bigint "school_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["announcement_image_id"], name: "index_announcements_on_announcement_image_id"
+    t.index ["school_id"], name: "index_announcements_on_school_id"
   end
 
   create_table "attendances", force: :cascade do |t|
@@ -402,6 +419,8 @@ ActiveRecord::Schema.define(version: 2021_11_03_140907) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "admins", "schools"
+  add_foreign_key "announcements", "announcement_images"
+  add_foreign_key "announcements", "schools"
   add_foreign_key "attendances", "classrooms"
   add_foreign_key "attendances", "students"
   add_foreign_key "behaviour_reports", "students"

@@ -84,13 +84,6 @@ RSpec.describe "Api::V1::Attendances", type: :request do
 
       end
 
-
-      
-      
-
-
-      
-
       context "when teacher is not permitted " do
 
         it "returns https status code 401 unauthorized" do

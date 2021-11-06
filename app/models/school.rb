@@ -12,4 +12,5 @@ class School < ApplicationRecord
     has_many :expense_reports
     has_many :sale_reports
     has_many :debt_recovered_reports
+    has_many :announcements  
 end

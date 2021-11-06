@@ -1,0 +1,2 @@
+class AnnouncementImage < ApplicationRecord
+end
