@@ -23,6 +23,16 @@ json.set! :score_types, @score_types do |score_type|
 end
 
 
+json.set! :announcements, @announcements do |announcement|
+
+    json.id announcement.id
+    json.image announcement.announcement_image.image
+    json.message announcement.message
+    json.expiration announcement.expiration
+    
+end
+
+
 json.set! :term_dates, @term_dates do |term_date|
 
     json.id term_date.id
@@ -43,8 +53,8 @@ end
 
 
 
-json.set! :total_students,  @total_students
-json.set! :total_classrooms,  @classrooms.size
-json.set! :total_teachers,  @teachers.size
-json.set! :total_debts,  @total_debts
-json.set! :total_recovered_reports,  @total_debts_recovered
+# json.set! :total_students,  @total_students
+# json.set! :total_classrooms,  @classrooms.size
+# json.set! :total_teachers,  @teachers.size
+# json.set! :total_debts,  @total_debts
+# json.set! :total_recovered_reports,  @total_debts_recovered

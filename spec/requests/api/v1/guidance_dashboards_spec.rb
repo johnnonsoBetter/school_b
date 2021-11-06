@@ -18,6 +18,13 @@ RSpec.describe "Api::V1::GuidanceDashboards", type: :request do
       @guidance.students << stud1
       @guidance.students << stud3
       @guidance2.students << stud2
+
+      create :announcement_image, id: 3
+      create :announcement, school: sch, announcement_image_id: 3, message: "Interhouse sport", expiration: Date.yesterday
+      create :announcement, school: sch, announcement_image_id: 3, message: "Club Review", expiration: Date.today
+      create :announcement, school: sch, announcement_image_id: 3, message: "Mid Term Break Approaching", expiration: Date.tomorrow
+      create :announcement, school: sch, announcement_image_id: 3, message: "Exam Approching", expiration: Date.new(2021, 11, 12)
+     
   
 
 
@@ -62,17 +69,33 @@ RSpec.describe "Api::V1::GuidanceDashboards", type: :request do
 
       it "returns proper first json response" do
        
-        expect(@json_body.first).to include({
+        expect(@json_body['students'].first).to include({
           'first_name' => 'chima',
           'last_name' => 'joy'
         })   
       end
 
       it "returns proper last json response" do
-        expect(@json_body.last).to include({
+        expect(@json_body['students'].last).to include({
           'first_name' => 'praise',
           'last_name' => 'luna'
         })   
+      end
+
+      it "returns proper json first announcement response" do
+       
+        expect(@json_body['announcements'].first).to include({
+          "message" => "Club Review"
+        })  
+        
+      end
+
+      it "returns proper json last announcement response" do
+       
+        expect(@json_body['announcements'].last).to include({
+          "message" => "Exam Approching"
+        })  
+        
       end
       
       
