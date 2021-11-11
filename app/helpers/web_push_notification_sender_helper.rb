@@ -16,7 +16,7 @@ module WebPushNotificationSenderHelper
             begin
                 send_push_notification(message, web_push)
             rescue StandardError => ex      
-                puts "this webpush has expired, #{web_push.id}"
+               web_push.destory
             end
 
         end
