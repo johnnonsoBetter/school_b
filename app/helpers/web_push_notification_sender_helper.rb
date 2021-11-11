@@ -12,8 +12,12 @@ module WebPushNotificationSenderHelper
 
         guidance.web_push_notifications.each do |web_push|
             
-          send_push_notification(message, web_push)
-            
+          
+            begin
+                
+            rescue  => ex      
+               web_push.destroy
+            end
 
         end
 
