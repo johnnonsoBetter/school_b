@@ -47,6 +47,16 @@ RSpec.describe "Api::V1::Subjects", type: :request do
           expect{subject}.to change{Subject.count}.by(1)
         end
 
+        it "the newly created subject name should be prefixed with the classroom name" do 
+
+          subject
+          sub = @classroom.subjects.first
+
+          expect(sub.name).to eq('js3 english')
+
+
+        end
+
         it "returns http status created " do
           subject
           expect(response).to have_http_status(:created)
@@ -154,7 +164,7 @@ RSpec.describe "Api::V1::Subjects", type: :request do
         subject
         json_body = JSON.parse(response.body)
         expect(json_body.first).to include({
-          "name" => "english"
+          "name" => "js1 english"
         })  
         
       end
@@ -163,7 +173,7 @@ RSpec.describe "Api::V1::Subjects", type: :request do
         subject
         json_body = JSON.parse(response.body)
         expect(json_body.last).to include({
-          "name" => "mathematics"
+          "name" => "js2 mathematics"
         })  
         
       end
@@ -293,7 +303,7 @@ RSpec.describe "Api::V1::Subjects", type: :request do
 
       it "returns proper json response of the subject name" do
 
-        expect(@json_body["subject"]).to eq("mathematics")
+        expect(@json_body["subject"]).to eq("js3 mathematics")
         
       end
 

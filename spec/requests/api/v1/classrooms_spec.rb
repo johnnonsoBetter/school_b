@@ -63,7 +63,6 @@ RSpec.describe "Api::V1::Classrooms", type: :request do
         
         
       end
-      
 
       context "when new classroom failed to be created" do
 
@@ -260,7 +259,7 @@ RSpec.describe "Api::V1::Classrooms", type: :request do
       it "returns proper json first classroom subject response" do
         
         expect(@json_body['subjects'].first).to include({
-          "name" => "maths"
+          "name" => "js3 maths"
         })  
         
       end
@@ -268,7 +267,7 @@ RSpec.describe "Api::V1::Classrooms", type: :request do
       it "returns proper json last classroom subject response" do
         
         expect(@json_body['subjects'].last).to include({
-          "name" => "eng"
+          "name" => "js3 eng"
         })  
         
       end

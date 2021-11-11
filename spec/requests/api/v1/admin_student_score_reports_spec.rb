@@ -83,7 +83,7 @@ RSpec.describe "Api::V1::AdminStudentScoreReports", type: :request do
           expect(@json_body['score_reports'].first).to include({
             'max' => 10,
             'score' => 5,
-            'subject' => 'english',
+            'subject' => 'ss1 english',
             'score_type' => 'exam',
             
           })  
@@ -94,7 +94,7 @@ RSpec.describe "Api::V1::AdminStudentScoreReports", type: :request do
         expect(@json_body['score_reports'].last).to include({
           'max' => 10,
           'score' => 5,
-          'subject' => 'english',
+          'subject' => 'ss1 english',
           'score_type' => 'exam',
           
         })  
@@ -120,7 +120,7 @@ RSpec.describe "Api::V1::AdminStudentScoreReports", type: :request do
         expect(@json_body['score_reports'].first).to include({
           'max' => 20,
           'score' => 10,
-          'subject' => 'english',
+          'subject' => 'ss1 english',
           'score_type' => 'homework',
           
         })  
@@ -130,7 +130,7 @@ RSpec.describe "Api::V1::AdminStudentScoreReports", type: :request do
         expect(@json_body['score_reports'].last).to include({
           'max' => 10,
           'score' => 5,
-          'subject' => 'english',
+          'subject' => 'ss1 english',
           'score_type' => 'exam',
           
         })  

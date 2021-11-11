@@ -147,7 +147,7 @@ RSpec.describe "Api::V1::ScoreReportDrafts", type: :request do
         json_body = JSON.parse(response.body)
 
         expect(json_body.first).to include({
-          "subject" => "english",
+          "subject" => "ss1 english",
           "max" => 50,
           "score_type" => "homework",
           "published" => true
@@ -161,7 +161,7 @@ RSpec.describe "Api::V1::ScoreReportDrafts", type: :request do
         json_body = JSON.parse(response.body)
 
         expect(json_body.last).to include({
-          "subject" => "maths",
+          "subject" => "ss1 maths",
           "max" => 60,
           "score_type" => "homework",
           "published" => false
@@ -247,7 +247,7 @@ RSpec.describe "Api::V1::ScoreReportDrafts", type: :request do
         json_body = JSON.parse(response.body)
 
         expect(json_body["score_report_draft"]).to include({
-          "subject" => "english",
+          "subject" => "ss1 english",
           "max" => 50,
           "score_type" => "homework",
           "published" => true

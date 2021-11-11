@@ -31,7 +31,7 @@ module WebPushNotificationSenderHelper
     def send_push_notification(message, webpush)
 
       Webpush.payload_send(
-        message: message,
+        message: JSON.generate(message),
         endpoint: webpush.endpoint,
         p256dh: webpush.p256dh_key,
         auth: webpush.auth_key,

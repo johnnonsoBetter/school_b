@@ -56,7 +56,7 @@ RSpec.describe "Api::V1::TeacherDashboards", type: :request do
         json_body = JSON.parse(response.body)
 
         expect(json_body["score_report_drafts"].first).to include({
-          "subject" => "maths",
+          "subject" => "ss1 maths",
           "max" => 28,
           "score_type" => "homework",
           "published" => false
@@ -71,7 +71,7 @@ RSpec.describe "Api::V1::TeacherDashboards", type: :request do
         json_body = JSON.parse(response.body)
 
         expect(json_body["score_report_drafts"].last).to include({
-          "subject" => "english",
+          "subject" => "ss1 english",
           "max" => 60,
           "score_type" => "homework",
           "published" => false
@@ -84,7 +84,7 @@ RSpec.describe "Api::V1::TeacherDashboards", type: :request do
         json_body = JSON.parse(response.body)
 
         expect(json_body["subjects"].first).to include({
-          "name" => "english",
+          "name" => "ss1 english",
         })
         
       end
@@ -94,7 +94,7 @@ RSpec.describe "Api::V1::TeacherDashboards", type: :request do
         json_body = JSON.parse(response.body)
 
         expect(json_body["subjects"].last).to include({
-          "name" => "maths",
+          "name" => "ss1 maths",
         })
         
       end

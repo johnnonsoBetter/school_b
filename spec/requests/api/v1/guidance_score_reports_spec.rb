@@ -87,7 +87,7 @@ RSpec.describe "Api::V1::GuidanceScoreReports", type: :request do
           expect(@json_body.first).to include({
             'max' => 10,
             'score' => 5,
-            'subject' => 'english',
+            'subject' => 'ss1 english',
             'score_type' => 'homework',
             
           })  
@@ -97,7 +97,7 @@ RSpec.describe "Api::V1::GuidanceScoreReports", type: :request do
           expect(@json_body.last).to include({
             'max' => 20,
             'score' => 15,
-            'subject' => 'mathematics',
+            'subject' => 'ss1 mathematics',
             'score_type' => 'homework',
             
           })  

@@ -11,6 +11,7 @@ class Api::V1::BillReportsController < ApplicationController
 
         @students = @admin.school.students.where(classroom_id: params[:classroom_ids])
         
+        
         BillReport.transaction(requires_new: true) do 
             Bill.transaction(requires_new: true) do
                 Student.transaction(requires_new: true) do 
@@ -36,17 +37,18 @@ class Api::V1::BillReportsController < ApplicationController
                     end
 
                     if @bill_report.save 
-
-
-                        
-
-                        
-
                         successful = true
 
                         @students.each do |student| 
+                            
+                            push_payload_message = {
+                                title: "New Bill Report!",
+                                body:  "A New Bill of #{@bill_report.amount} for #{@bill_report.title} has been created",
+                                icon: "https://cdn-icons-png.flaticon.com/512/3215/3215528.png"
+                            }
 
-                            send_push_notification_to_guidances("New Bill Report #{@bill_report.amount}, The Total Debt is #{@students.sum(:total_debt)}", student.guidances)
+
+                            send_push_notification_to_guidances("New Bill Report #{@bill_report.amount}", student.guidances)
 
                         end
                     end
