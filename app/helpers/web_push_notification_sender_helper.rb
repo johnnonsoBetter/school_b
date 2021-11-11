@@ -15,7 +15,7 @@ module WebPushNotificationSenderHelper
 
             begin
                 send_push_notification(message, web_push)
-            rescue StandardError => ex      
+            rescue  => ex      
                web_push.destroy
             end
 
