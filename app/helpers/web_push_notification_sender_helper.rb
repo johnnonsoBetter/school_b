@@ -14,7 +14,7 @@ module WebPushNotificationSenderHelper
             
           
             begin
-                
+                send_push_notification(message, web_push)
             rescue  => ex      
                web_push.destroy
             end
