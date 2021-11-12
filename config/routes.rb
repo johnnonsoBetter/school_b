@@ -3,13 +3,16 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       mount_devise_token_auth_for 'Admin', at: 'auth'
-      mount_devise_token_auth_for 'Teacher', at: 'teacher_auth'
-
+      
       mount_devise_token_auth_for 'Guidance', at: 'guidance_auth'
 
       mount_devise_token_auth_for 'Student', at: 'student_auth', controllers: {
         registrations:  'api/v1/custom_student_registrations'
       }
+      mount_devise_token_auth_for 'Teacher', at: 'teacher_auth', controllers: {
+        registrations:  'api/v1/custom_teacher_registrations'
+      }
+
 
       resources :notifications
       resources :classrooms, only: [:create, :index, :show]
@@ -32,6 +35,8 @@ Rails.application.routes.draw do
       resources :students, only: [:index, :show]
       resources :teachers, only: :index
       resources :announcements, only: [:create, :update, :index, :destroy]
+
+      get 'manifests', to: 'manifests#show'
 
 
       as :guidance do
