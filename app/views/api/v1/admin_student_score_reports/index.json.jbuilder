@@ -1,5 +1,5 @@
 
-json.set! :score_reports, @score_reports do |score_report|
+json.array! @score_reports do |score_report|
 
     json.id score_report.id
     json.max score_report.max
@@ -11,18 +11,3 @@ json.set! :score_reports, @score_reports do |score_report|
 
 end
 
-
-
-json.set! :term_dates, TermDate.all do |term_date|
-
-    json.id term_date.id
-    json.name term_date.name
-    
-end
-
-json.set! :score_types, @score_types do |score_type|
-
-    json.id score_type.id
-    json.name score_type.name
-    
-end

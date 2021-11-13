@@ -22,6 +22,15 @@ json.set! :score_types, @score_types do |score_type|
     
 end
 
+json.set! :announcement_images, @announcement_images do |announcement_image|
+
+    json.id announcement_image.id
+    json.image announcement_image.image
+    json.title announcement_image.title
+    
+
+end
+
 
 json.set! :announcements, @announcements do |announcement|
 
@@ -50,10 +59,8 @@ json.set! :debt_recovered_reports, @debt_recovered_reports do |debt_recovered_re
 end
 
 
-
-
-# json.set! :total_students,  @total_students
-# json.set! :total_classrooms,  @classrooms.size
-# json.set! :total_teachers,  @teachers.size
-# json.set! :total_debts,  @total_debts
-# json.set! :total_recovered_reports,  @total_debts_recovered
+json.set! :total_students,  @total_students
+json.set! :total_classrooms,  @classrooms.size
+json.set! :total_teachers,  @teachers.size
+json.set! :total_debts,  @total_debts
+json.set! :total_recovered_reports,  @total_debts_recovered

@@ -80,7 +80,7 @@ RSpec.describe "Api::V1::AdminStudentScoreReports", type: :request do
 
      
         it "returns proper json response of the first score report of stud1" do
-          expect(@json_body['score_reports'].first).to include({
+          expect(@json_body.first).to include({
             'max' => 10,
             'score' => 5,
             'subject' => 'ss1 english',
@@ -91,7 +91,7 @@ RSpec.describe "Api::V1::AdminStudentScoreReports", type: :request do
 
 
       it "returns proper json response of the last score report of stud1" do
-        expect(@json_body['score_reports'].last).to include({
+        expect(@json_body.last).to include({
           'max' => 10,
           'score' => 5,
           'subject' => 'ss1 english',
@@ -117,7 +117,7 @@ RSpec.describe "Api::V1::AdminStudentScoreReports", type: :request do
       it "returns proper json response of the first score report of stud1" do
 
         
-        expect(@json_body['score_reports'].first).to include({
+        expect(@json_body.first).to include({
           'max' => 20,
           'score' => 10,
           'subject' => 'ss1 english',
@@ -127,7 +127,7 @@ RSpec.describe "Api::V1::AdminStudentScoreReports", type: :request do
       end
 
       it "returns proper json response of the last score report of stud1" do
-        expect(@json_body['score_reports'].last).to include({
+        expect(@json_body.last).to include({
           'max' => 10,
           'score' => 5,
           'subject' => 'ss1 english',

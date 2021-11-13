@@ -17,7 +17,7 @@ class Api::V1::GuidanceStudentAttendancesController < ApplicationController
         
 
          @attendances = student.attendances.where(created_at: Time.zone.parse(term.start_date).beginning_of_day..Time.zone.parse(term.end_date).end_of_day)
-         @term_dates = TermDate.all
+       
 
 
         render 'api/v1/guidance_student_attendances/index.json.jbuilder'

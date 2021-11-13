@@ -65,7 +65,7 @@ RSpec.describe "Api::V1::AdminStudentAttendances", type: :request do
       end
 
       it "returns proper json response of the first attendance report of stud1" do
-        expect(@json_body['attendances'].first).to include({
+        expect(@json_body.first).to include({
           
           'is_present' => true
 
@@ -73,7 +73,7 @@ RSpec.describe "Api::V1::AdminStudentAttendances", type: :request do
       end 
 
       it "returns proper json response of the last attendance report of stud1" do
-        expect(@json_body['attendances'].last).to include({
+        expect(@json_body.last).to include({
           
           'is_present' => false
 
@@ -94,7 +94,7 @@ RSpec.describe "Api::V1::AdminStudentAttendances", type: :request do
       end
 
       it "returns proper json response of the first attendance report of stud1" do
-        expect(@json_body['attendances'].first).to include({
+        expect(@json_body.first).to include({
           
           'is_present' => true
 
@@ -102,7 +102,7 @@ RSpec.describe "Api::V1::AdminStudentAttendances", type: :request do
       end 
 
       it "returns proper json response of the last attendance report of stud1" do
-        expect(@json_body['attendances'].last).to include({
+        expect(@json_body.last).to include({
           
           'is_present' => true
 
