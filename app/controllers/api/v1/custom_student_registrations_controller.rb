@@ -12,14 +12,15 @@ class Api::V1::CustomStudentRegistrationsController < DeviseTokenAuth::Registrat
         successful = false
         result = nil
 
-        if params[:image] 
+
+        
+        if params[:image] != "[object Object]"
+
             result = Cloudinary::Uploader.upload(params[:image], options = {})
 
 
         end
 
-        
-        
         
         
         @student = Student.new 
@@ -29,7 +30,8 @@ class Api::V1::CustomStudentRegistrationsController < DeviseTokenAuth::Registrat
             @student.email = "#{params[:first_name]}#{params[:last_name]}888@confam.sch"
             @student.password = "#{params[:first_name]}888"
             
-            @student.image = result['url'] if params[:image]
+            @student.image = result['url'] if params[:image] != "[object Object]"
+
 
             @student.first_name = params[:first_name]
             @student.last_name = params[:last_name]
