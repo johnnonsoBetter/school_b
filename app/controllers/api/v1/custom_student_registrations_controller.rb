@@ -10,30 +10,39 @@ class Api::V1::CustomStudentRegistrationsController < DeviseTokenAuth::Registrat
 
         
         successful = false
+        result = nil
+
+        if params[:image] 
+            result = Cloudinary::Uploader.upload(params[:image], options = {})
+
+
+        end
 
         
-        result = Cloudinary::Uploader.upload(params[:image], options = {})
+        
+        
         
         @student = Student.new 
         Student.transaction(requires_new: true) do 
 
             @student.school = @admin.school
-            @student.email = "#{params[:first_name]}#{params[:last_name]}888@school.edu"
+            @student.email = "#{params[:first_name]}#{params[:last_name]}888@confam.sch"
             @student.password = "#{params[:first_name]}888"
             
-            @student.image = result['url']
+            @student.image = result['url'] if params[:image]
+
             @student.first_name = params[:first_name]
             @student.last_name = params[:last_name]
             @student.middle_name = params[:middle_name]
-            @student.lga = params[:lga]
-            @student.state = params[:state]
-            @student.religion = params[:religion]
-            @student.date_of_birth = params[:date_of_birth]
-            @student.date_of_admission = params[:date_of_admission]
-            @student.address = params[:address]
+            # @student.lga = params[:lga]
+            # @student.state = params[:state]
+            # @student.religion = params[:religion]
+            # @student.date_of_birth = params[:date_of_birth]
+            # @student.date_of_admission = params[:date_of_admission]
+            #@student.address = params[:address]
             @student.classroom_id = params[:classroom_id]
             @student.gender = params[:gender]
-            @student.admission_no = params[:admission_no]
+            #@student.admission_no = params[:admission_no]
 
 
             @student.save

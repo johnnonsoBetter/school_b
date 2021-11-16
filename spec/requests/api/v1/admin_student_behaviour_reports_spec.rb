@@ -70,7 +70,7 @@ RSpec.describe "Api::V1::AdminStudentBehaviourReports", type: :request do
           end
   
           it "returns proper json response of the first behaviour report of stud1" do
-            expect(@json_body['behaviour_reports'].first).to include({
+            expect(@json_body.first).to include({
               'title' => "troublesome",             
               'behaviour_type' => 'bad',
   
@@ -78,7 +78,7 @@ RSpec.describe "Api::V1::AdminStudentBehaviourReports", type: :request do
           end 
 
           it "returns proper json response of the last behaviour report of stud1" do
-            expect(@json_body['behaviour_reports'].last).to include({
+            expect(@json_body.last).to include({
               'title' => "great performance",
               'behaviour_type' => 'good',
             })  

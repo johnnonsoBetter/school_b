@@ -19,8 +19,7 @@ RSpec.describe "Api::V1::CustomStudentRegistrations", type: :request do
        lga: "ohazara",
        religion: "christain",
        gender: "male",
-       admission_no: "97989",
-       image: "shfisshifsfh"
+       admission_no: "97989"
 
        
        }
@@ -57,17 +56,17 @@ RSpec.describe "Api::V1::CustomStudentRegistrations", type: :request do
 
       subject {  post @student_url, headers: @headers, params: @student_params } 
 
-    #   context "when new student report has been created" do
-    #     it "increment student report by 1" do
-    #       expect{subject}.to change{Student.count}.by(1)
-    #     end
+      context "when new student report has been created" do
+        it "increment student report by 1" do
+          expect{subject}.to change{Student.count}.by(1)
+        end
 
-    #     it "returns http status created " do
-    #       subject
-    #       expect(response).to have_http_status(:created)
-    #     end
+        it "returns http status created " do
+          subject
+          expect(response).to have_http_status(:created)
+        end
         
-    #   end
+      end
 
       context "when admin is not permitted " do
 
