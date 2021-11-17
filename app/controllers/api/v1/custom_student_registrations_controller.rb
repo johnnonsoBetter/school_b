@@ -40,7 +40,7 @@ class Api::V1::CustomStudentRegistrationsController < DeviseTokenAuth::Registrat
             # @student.lga = params[:lga]
             # @student.state = params[:state]
             # @student.religion = params[:religion]
-            # @student.date_of_birth = params[:date_of_birth]
+             @student.date_of_birth = params[:date_of_birth]
             # @student.date_of_admission = params[:date_of_admission]
             #@student.address = params[:address]
             @student.classroom_id = params[:classroom_id]
