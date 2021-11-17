@@ -16,7 +16,7 @@ class Api::V1::CustomStudentRegistrationsController < DeviseTokenAuth::Registrat
         
         if params[:image] != "[object Object]"
 
-            result = Cloudinary::Uploader.upload(params[:image], :folder => "#{@admin.school.name}/students/", :overwrite => true, :public_id => "#{params[:first_name]}#{params[:last_name]}888@confam.sch")
+            result = Cloudinary::Uploader.upload(params[:image], :folder => "#{@admin.school.name}/students/", :overwrite => true, :public_id => "#{params[:first_name]}#{params[:last_name]}#{SecureRandom.hex(2)}@confam.sch")
 
 
 
@@ -28,7 +28,7 @@ class Api::V1::CustomStudentRegistrationsController < DeviseTokenAuth::Registrat
         Student.transaction(requires_new: true) do 
 
             @student.school = @admin.school
-            @student.email = "#{params[:first_name]}#{params[:last_name]}888@confam.sch"
+            @student.email = "#{params[:first_name]}#{params[:last_name]}#{SecureRandom.hex(2)}@confam.sch"
             @student.password = "#{params[:first_name]}888"
             
             @student.image = result['url'] if params[:image] != "[object Object]"
