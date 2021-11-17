@@ -16,7 +16,8 @@ class Api::V1::CustomStudentRegistrationsController < DeviseTokenAuth::Registrat
         
         if params[:image] != "[object Object]"
 
-            result = Cloudinary::Uploader.upload(params[:image], options = {})
+            result = Cloudinary::Uploader.upload(params[:image], :folder => "#{@admin.school.name}/students/", :overwrite => true, :public_id => "#{params[:first_name]}#{params[:last_name]}888@confam.sch")
+
 
 
         end
