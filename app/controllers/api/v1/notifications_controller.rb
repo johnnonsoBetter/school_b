@@ -21,6 +21,7 @@ class Api::V1::NotificationsController < ApplicationController
 
   end
 
+  private
   def find_web_push_notification 
     
       web_push = current_api_v1_guidance.web_push_notifications.find_by_auth_key(params[:subscription][:keys][:auth])

@@ -80,12 +80,12 @@ RSpec.describe "Api::V1::Notifications", type: :request do
 
     context "when webpush notification already exist" do
       subject {  post '/api/v1/notifications', 
-        params: {subscription: {endpoint: "https://fcm.googleapis.com/fcm/send/dlhl7mv25oM:APA91bHlCX8R5DNiq694bbjJOcAiSAHq61JtdLoaReFOGVRWOlpJbQWn9py9z8Fq5eq4iGJjDBF4VE7SG1JzJHZXJEqzz_Bvf7N542h73QWbIIouIn583PODQmuTBXcF-Y63qOvgeGja", expirationTime:nil ,keys:{p256dh: "BD2G1LyFRbbs-h0IqjfveymT6gvGnj53WgPegl9OUImd46JNsKggeM0IwPDB2X__kWiGrHP9B5I1Lgg07i8ZiKs",auth: "qp9nluZcAppD0LjPVJfSuw"}}},
+        params: {subscription: {endpoint: "https://fcm.googleapis.com/fcm/send/dlhl7mv25oM:APA91bHlCX8R5DNiq694bbjJOcAiSAHq61JtdLoaReFOGVRWOlpJbQWn9py9z8Fq5eq4iGJjDBF4VE7SG1JzJHZXJEqzz_Bvf7N542h73QWbIIouIn583PODQmuTBXcF-Y63qOvgeGja", expirationTime:nil ,keys:{p256dh: "sfweygPegl9OUImd46JNsKgtrwetrwergeM0IwPDB2X__kWiGrHP9B5I1Lggwrewewr07i8ZiKs",auth: "qpfsdfsfser9nluZcAppD0LjPVJfSuw"}}},
         headers: @headers
       } 
 
       before do 
-        create :web_push_notification, guidance: @guidance, endpoint: "https://fcm.googleapis.com/fcm/send/dlhl7mv25oM:APA91bHlCX8R5DNiq694bbjJOcAiSAHq61JtdLoaReFOGVRWOlpJbQWn9py9z8Fq5eq4iGJjDBF4VE7SG1JzJHZXJEqzz_Bvf7N542h73QWbIIouIn583PODQmuTBXcF-Y63qOvgeGja", auth_key: "qp9nluZcAppD0LjPVJfSuw", p256dh_key: "BD2G1LyFRbbs-h0IqjfveymT6gvGnj53WgPegl9OUImd46JNsKggeM0IwPDB2X__kWiGrHP9B5I1Lgg07i8ZiKs"
+        create :web_push_notification, guidance: @guidance, endpoint: "https://fcm.googleapis.com/fcm/send/dlhl7mv25oM:APA91bHlCX8R5DNiq694bbjJOcAiSAHq61JtdLoaReFOGVRWOlpJbQWn9py9z8Fq5eq4iGJjDBF4VE7SG1JzJHZXJEqzz_Bvf7N542h73QWbIIouIn583PsfsfsfsfsfsfsfsfvgeGja", auth_key: "qp9nluZcAfs4sdfsdfrefefsppD0LjPVJfSuw", p256dh_key: "BD2G1LyFRbbs-h0IqjfvsdfsfwfffsfeymT6gvGnj53WgPegl9OUImd46JNsKggeM0IwPDB2X__kWiGrHP9B5I1Lgg07i8ZiKs"
       end
       it "do not increment webpushnotification count" do
         expect{subject}.to_not change{WebPushNotification.count}

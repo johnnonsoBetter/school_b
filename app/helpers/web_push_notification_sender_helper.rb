@@ -1,14 +1,8 @@
 module WebPushNotificationSenderHelper
     
-
-
     def send_push_notification_to_guidances(message, guidances) 
 
       guidances.each do |guidance| 
-
-
-        
-
 
         guidance.web_push_notifications.each do |web_push|
             
