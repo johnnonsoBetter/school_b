@@ -6,6 +6,26 @@ School-b is a backend application that provides the School_fr, json data to cons
 ## The Full Application
 A morden school management software that takes away pains, by helping schools effectively manage their school curricular activities. https://www.confamsch.com.ng/
 
+
+## Demo.
+This application has three sub-domain. use these credentials to access any sub-domiain 
+
+### Admin
+url: [https://admin.confamsch.com.ng/](https://admin.confamsch.com.ng/)
+email: bobby@gmail.com
+password: password
+
+### Teacher
+url: [https://teacher.confamsch.com.ng/](https://teacher.confamsch.com.ng/)
+email: chima@gmail.com
+password: password
+
+### Parent
+url: [https://parent.confamsch.com.ng/dashboard](https://parent.confamsch.com.ng/dashboard)
+email: isreal@gmail.com
+password: password
+
+
 ## Note.
 This application provides data for its front-end application  [https://github.com/johnnonsoBetter/school_fr](https://github.com/johnnonsoBetter/school_fr)
 
