@@ -27,4 +27,4 @@ Project is created with:
 * School Inventory Management.
 * Automated Reported Cards Generation.
 * Reliable Record Keeping.
-* logins and signup.
+* logins and signup for multiple users
